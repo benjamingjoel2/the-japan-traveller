@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageMeta from '../components/PageMeta.astro';
+import { site, disclosure } from '../config/site.mjs';
+import { publishedCompanies, feedMeta } from '../lib/feed.mjs';
+const title = `About ${site.name}`;
+const description = `What ${site.name} is, who publishes it, how it is edited and how to contact us.`;
+const n = publishedCompanies().length;
+---
+<Base title={title} description={description} path="/about" crumbs={[{ name: 'About', href: '/about' }]}>
+  <h1>About {site.name}</h1>
+  <PageMeta published="2026-11-02" reviewed="2026-11-02" />
+  <div class="prose">
+    <p>{site.name} is a reference for travellers planning a trip to Japan with a local operator. It covers the regions, the seasons, rail and the Japan Rail Pass, ryokan and onsen etiquette, typical routes and entry rules, and lists which verified operators deliver which kind of trip.</p>
+    <h2>Who publishes it</h2>
+    <p>{site.name} is published by <a href={site.publisher.url}>Tourground</a>, which runs a directory and booking platform for travel companies. It is a small, separate site: it does not sell trips and does not take bookings. Read the full <a href="/disclosure">publisher disclosure</a>.</p>
+    <p>{site.editorLine}</p>
+    <h2>How it is written</h2>
+    <ul>
+      <li>Every guide page and answer lists its sources, a published date and a last-reviewed date.</li>
+      <li>Text is published only after it has been reviewed and has at least one source. Drafts are never published.</li>
+      <li>Figures that change (prices, journey times, entry rules, forecast windows) are re-checked on review and dated.</li>
+      <li>We do not publish reviews, testimonials, made-up statistics or quotes.</li>
+    </ul>
+    <h2>How companies get listed</h2>
+    <p>Company facts come only from the Tourground directory export and are never edited by hand here. {disclosure.verifiedOnlyStatement} The current feed{feedMeta().generated_at ? ` (${feedMeta().generated_at})` : ''} contains {n} such {n === 1 ? 'operator' : 'operators'} for Japan. Rankings follow the rules on <a href="/how-we-rank">How we rank</a>.</p>
+    <h2>Contact</h2>
+    <p>Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+    <address>{site.publisher.name}<br />{site.address.lines.map((l) => <>{l}<br /></>)}</address>
+    <p>To correct or remove a company listing, use <a href="/corrections">corrections and removal</a>.</p>
+  </div>
+</Base>

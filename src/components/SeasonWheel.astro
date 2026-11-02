@@ -1,0 +1,32 @@
+---
+// The season wheel: 12 sectors, each a link to that month's page. No JS.
+import { MONTHS, SEASON_EVENTS } from '../data/reference.mjs';
+interface Props { current?: number }
+const { current } = Astro.props;
+const cx = 160, cy = 160, R = 150, r = 62;
+const pt = (rad, a) => [cx + rad * Math.sin(a), cy - rad * Math.cos(a)];
+const seg = (i) => {
+  const a0 = (i / 12) * 2 * Math.PI, a1 = ((i + 1) / 12) * 2 * Math.PI;
+  const [x0, y0] = pt(R, a0), [x1, y1] = pt(R, a1), [x2, y2] = pt(r, a1), [x3, y3] = pt(r, a0);
+  return `M${x0.toFixed(2)},${y0.toFixed(2)} A${R},${R} 0 0 1 ${x1.toFixed(2)},${y1.toFixed(2)} L${x2.toFixed(2)},${y2.toFixed(2)} A${r},${r} 0 0 0 ${x3.toFixed(2)},${y3.toFixed(2)} Z`;
+};
+const KINDS = ['blossom', 'leaves', 'snow', 'festival'];
+const cur = MONTHS.find((m) => m.n === current);
+---
+<svg class="wheel" viewBox="0 0 320 320" width="320" height="320" role="group" aria-label="Season wheel: choose a month">
+  {MONTHS.map((m, i) => {
+    const mid = ((i + 0.5) / 12) * 2 * Math.PI;
+    const [tx, ty] = pt((R + r) / 2 + 14, mid);
+    const kinds = KINDS.filter((k) => SEASON_EVENTS[m.n].some((e) => e[1] === k));
+    return (
+      <a href={`/seasons/${m.slug}`} aria-label={`${m.short} (${m.name})`} aria-current={m.n === current ? 'page' : undefined}>
+        <path class="seg" d={seg(i)} />
+        <text x={tx.toFixed(1)} y={(ty + 4).toFixed(1)} text-anchor="middle">{m.short}</text>
+        {kinds.map((k, j) => { const [dx, dy] = pt((R + r) / 2 - 14, mid + (j - (kinds.length - 1) / 2) * 0.09); return <circle class={`dot-${k}`} cx={dx.toFixed(1)} cy={dy.toFixed(1)} r="3.2" />; })}
+      </a>
+    );
+  })}
+  <circle class="hub" cx={cx} cy={cy} r={r - 4} />
+  <text class="hub-s" x={cx} y={cy - 12} text-anchor="middle">{cur ? 'MONTH' : 'PICK A'}</text>
+  <text class="hub-t" x={cx} y={cy + 16} text-anchor="middle">{cur ? cur.name.slice(0, 3) : 'Month'}</text>
+</svg>

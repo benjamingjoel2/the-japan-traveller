@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import PageMeta from '../components/PageMeta.astro';
+import { site, disclosure } from '../config/site.mjs';
+const title = 'Publisher disclosure';
+const description = `Who publishes ${site.name}, how Tourground makes money, founder-owned brands, paid tiers and how paid content is labelled.`;
+---
+<Base title={title} description={description} path="/disclosure" crumbs={[{ name: 'Publisher disclosure', href: '/disclosure' }]}>
+  <h1>Publisher disclosure</h1>
+  <PageMeta published="2026-11-02" reviewed="2026-11-02" />
+  <div class="prose">
+    {disclosure.publisherDisclosure.map((p) => <p>{p}</p>)}
+    <p>{disclosure.rankingStatement}</p>
+    <p>Questions about this disclosure: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+  </div>
+</Base>

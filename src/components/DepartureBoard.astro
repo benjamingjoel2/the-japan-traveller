@@ -1,0 +1,35 @@
+---
+// Rankings shown as a departure board. Order and rank come ONLY from the
+// feed's rank field (see src/lib/feed.mjs). Never reorder here.
+import { disclosure, site } from '../config/site.mjs';
+import { TIER_LABEL, hasRank } from '../lib/feed.mjs';
+import { regionName, nicheLabel } from '../data/reference.mjs';
+interface Props { companies: any[]; title: string; feedDate?: string | null }
+const { companies, title, feedDate } = Astro.props;
+const C = site.destination.country;
+---
+<div class="board" role="region" aria-label={title} tabindex="0">
+  <div class="board-head"><strong>{title}</strong><span>Feed {feedDate ?? ''}</span></div>
+  {companies.length === 0 ? (
+    <p class="empty">No verified operator in the Tourground directory lists this kind of trip in Japan yet. This list stays empty until one does; we do not pad it.</p>
+  ) : (
+    <table>
+      <caption class="sr-only">{title}</caption>
+      <thead><tr><th scope="col">Rank</th><th scope="col">Operator</th><th scope="col">Region</th><th scope="col">Niche</th><th scope="col">Tier</th></tr></thead>
+      <tbody>
+        {companies.map((c) => (
+          <tr>
+            <td class="rank">{hasRank(c) ? String(c.rank[C]).padStart(2, '0') : '--'}</td>
+            <td>
+              <a href={`/operators/${c.id}`}>{c.name}</a>
+              {c.founder_owned && <><br /><span class="tag">{disclosure.founderOwnedLabel}</span></>}
+            </td>
+            <td>{(c.regions ?? []).map(regionName).join(' · ') || 'Japan'}</td>
+            <td>{c.niches.map(nicheLabel).join(' · ')}</td>
+            <td>{TIER_LABEL[c.tier]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )}
+</div>

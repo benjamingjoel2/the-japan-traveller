@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import DepartureBoard from '../../components/DepartureBoard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import PageMeta from '../../components/PageMeta.astro';
+import Sources from '../../components/Sources.astro';
+import { NICHES } from '../../data/reference.mjs';
+import { publishedCompanies, feedMeta } from '../../lib/feed.mjs';
+import { disclosure, site } from '../../config/site.mjs';
+import { articleNode, itemListNode } from '../../lib/schema.mjs';
+
+export function getStaticPaths() {
+  return NICHES.map((n) => ({ params: { niche: n.slug }, props: { n } }));
+}
+const { n } = Astro.props;
+// Filter by niche; order is the feed's rank, untouched.
+const list = publishedCompanies().filter((c) => (n.niche ? c.niches.includes(n.niche) : true));
+const feed = feedMeta();
+const path = `/rankings/${n.slug}`;
+const description = `${n.blurb} Ranked only by the Tourground directory feed. ${list.length} ${list.length === 1 ? 'operator' : 'operators'} listed.`;
+const sources = [
+  { url: `${site.url}/how-we-rank`, label: 'How we rank (method)' },
+  ...list.flatMap((c) => c.sources.slice(0, 1).map((s) => ({ url: s.url, label: `${c.name}: ${s.label}` }))),
+];
+const reviewed = feed.generated_at ?? n.published;
+---
+<Base title={n.title} description={description} path={path}
+  crumbs={[{ name: 'Rankings', href: '/rankings' }, { name: n.short, href: path }]}
+  jsonld={[list.length ? itemListNode({ name: n.title, path, companies: list }) : null, articleNode({ title: n.title, description, path, published: n.published, reviewed, sources })]}>
+  <AdSlot ad={null} />
+  <h1>{n.title}</h1>
+  <p class="dek">{n.blurb}</p>
+  <PageMeta published={n.published} reviewed={reviewed} sourceCount={sources.length} extra={{ label: 'Operators', value: String(list.length) }} />
+  <DepartureBoard companies={list} title={n.short} feedDate={feed.generated_at} />
+  <p class="note">{disclosure.rankingStatement}</p>
+  <p class="note">{disclosure.verifiedOnlyStatement} {disclosure.founderOwnedExplainer} <a href="/how-we-rank">How we rank</a>.</p>
+  <p class="note">Other lists: {NICHES.filter((x) => x.slug !== n.slug).map((x, i) => <>{i > 0 && ' · '}<a href={`/rankings/${x.slug}`}>{x.short}</a></>)}</p>
+  <Sources sources={sources} note={`Company data: Tourground directory export (${feed.source}), dated ${feed.generated_at}.`} />
+</Base>

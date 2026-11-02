@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import SeasonWheel from '../../components/SeasonWheel.astro';
+import MonthList from '../../components/MonthList.astro';
+import Legend from '../../components/Legend.astro';
+import PageMeta from '../../components/PageMeta.astro';
+import Sources from '../../components/Sources.astro';
+import FounderLabel from '../../components/FounderLabel.astro';
+import { MONTHS, SEASON_EVENTS, SEASON_SOURCES, REGIONS, regionName } from '../../data/reference.mjs';
+import { publishedCompanies, hasRank, TIER_LABEL, feedMeta } from '../../lib/feed.mjs';
+import { site } from '../../config/site.mjs';
+import { articleNode } from '../../lib/schema.mjs';
+
+export function getStaticPaths() {
+  return MONTHS.map((m) => ({ params: { month: m.slug }, props: { m } }));
+}
+const { m } = Astro.props;
+const events = SEASON_EVENTS[m.n];
+const KINDS = [['blossom', 'Blossom'], ['leaves', 'Leaves'], ['snow', 'Snow'], ['festival', 'Festivals'], ['weather', 'Weather and travel']];
+const rows = REGIONS.map((r) => ({ r, cells: KINDS.map(([k]) => events.filter((e) => e[0] === r.slug && e[1] === k).map((e) => e[2])) }))
+  .filter((row) => row.cells.some((c) => c.length));
+const quiet = REGIONS.filter((r) => !rows.some((row) => row.r.slug === r.slug));
+// Operators: published companies whose feed record lists this month. Order = feed rank.
+const operators = publishedCompanies().filter((c) => Array.isArray(c.trip_months) && c.trip_months.includes(m.n));
+const C = site.destination.country;
+const prev = MONTHS[(m.n + 10) % 12], next = MONTHS[m.n % 12];
+const title = `Japan in ${m.name}: blossom, leaves, snow and festivals by region`;
+const description = `What is happening in each region of Japan in ${m.name}, from the season wheel, with the verified operators who run trips in ${m.name}.`;
+const published = '2026-11-02', reviewed = '2026-11-02';
+const path = `/seasons/${m.slug}`;
+---
+<Base title={title} description={description} path={path}
+  crumbs={[{ name: 'Seasons', href: '/seasons' }, { name: m.name, href: path }]}
+  jsonld={[articleNode({ title, description, path, published, reviewed, sources: SEASON_SOURCES })]}>
+  <h1>Japan in {m.name}</h1>
+  <p class="dek">Region by region: blossom, leaves, snow and festivals in {m.name}. Dates are typical windows and move from year to year; festival dates are for the usual calendar.</p>
+  <PageMeta published={published} reviewed={reviewed} sourceCount={SEASON_SOURCES.length} />
+  <div class="wheel-wrap">
+    <div><SeasonWheel current={m.n} /><Legend /></div>
+    <div>
+      <MonthList current={m.n} />
+      <p class="note"><a href={`/seasons/${prev.slug}`}>‹ {prev.name}</a> · <a href={`/seasons/${next.slug}`}>{next.name} ›</a></p>
+    </div>
+  </div>
+
+  <h2>Region by region</h2>
+  <div class="scroll" role="region" aria-label={`Regions in ${m.name}`} tabindex="0">
+    <table class="tt wide">
+      <caption>{m.name} · {rows.length} of {REGIONS.length} regions with sourced entries</caption>
+      <thead><tr><th scope="col">Region</th>{KINDS.map(([, l]) => <th scope="col">{l}</th>)}</tr></thead>
+      <tbody>
+        {rows.map(({ r, cells }) => (
+          <tr><th scope="row">{r.name}</th>{cells.map((c) => <td>{c.length ? c.join('; ') : ''}</td>)}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  {quiet.length > 0 && <p class="note">No entry this month for: {quiet.map((r) => r.name).join(', ')}. That means nothing we can source as notable, not that the region is closed.</p>}
+
+  <h2>Operators who run trips in {m.name}</h2>
+  {operators.length === 0 ? (
+    <p class="callout">No verified operator in the Tourground directory feed lists trips in {m.name} yet.</p>
+  ) : (
+    <div class="scroll" role="region" aria-label={`Operators in ${m.name}`} tabindex="0">
+      <table class="tt compact">
+        <caption>In feed rank order (Japan) · feed {feedMeta().generated_at}</caption>
+        <thead><tr><th scope="col">Rank</th><th scope="col">Operator</th><th scope="col">Regions</th><th scope="col">Tier</th></tr></thead>
+        <tbody>
+          {operators.map((c) => (
+            <tr>
+              <td class="rank">{hasRank(c) ? c.rank[C] : '–'}</td>
+              <th scope="row"><a href={`/operators/${c.id}`}>{c.name}</a>{c.founder_owned && <><br /><FounderLabel /></>}</th>
+              <td>{(c.regions ?? []).map(regionName).join(', ') || 'Japan'}</td>
+              <td>{TIER_LABEL[c.tier]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )}
+  <Sources sources={SEASON_SOURCES} />
+</Base>

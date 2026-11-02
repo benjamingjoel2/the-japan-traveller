@@ -1,0 +1,64 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site, legal } from '../config/site.mjs';
+const a = site.address.lines.join(', ');
+---
+<LegalPage title="Privacy Policy" description={`How ${site.name} handles personal data: what little we collect, why, who processes it, and your rights in the EU, UK, US and Brazil.`} path="/privacy">
+  <h2>Summary</h2>
+  <ul>
+    <li>We do not ask you to create an account, and the site has no forms.</li>
+    <li>We use Vercel Web Analytics to count page views. It does not use cookies and does not identify you.</li>
+    <li>Our hosting provider keeps short-lived technical logs to run and protect the site.</li>
+    <li>If you email us, we use your email to reply.</li>
+    <li>We do not sell or share personal data for advertising, and we do not use advertising or social media trackers.</li>
+  </ul>
+
+  <h2>1. Who is responsible</h2>
+  <p>The controller of personal data processed through {site.domain} is {site.publisher.legalName} (“Tourground”, “we”), {a}. Contact for any privacy question or request: <a href={`mailto:${legal.privacyContact}`}>{legal.privacyContact}</a>.</p>
+
+  <h2>2. What we collect and why</h2>
+  <h3>2.1 Page analytics</h3>
+  <p>We use Vercel Web Analytics to understand which pages are read. When a page loads, it records the page address, the referring page, the browser and operating system, the device type and the country (derived from the IP address). It does not use cookies or similar identifiers on your device. According to Vercel, visitors are counted using a hash of the request that is discarded daily, and the IP address is not stored by the analytics service. We see only aggregated figures.</p>
+  <p>Legal basis: our legitimate interest in understanding how the site is used so we can improve it (Article 6(1)(f) EU GDPR and UK GDPR; Article 7, IX of Brazil's LGPD).</p>
+  <h3>2.2 Hosting and security logs</h3>
+  <p>Our hosting provider, Vercel Inc., processes your IP address, the time of the request, the page requested and your browser's user-agent string to deliver pages and protect the site against abuse. These logs are kept for a short period set by Vercel and are not used to profile you.</p>
+  <p>Legal basis: legitimate interest in running a secure website (same provisions as above).</p>
+  <h3>2.3 Email</h3>
+  <p>If you email <a href={`mailto:${site.email}`}>{site.email}</a>, we receive your email address, name (if given) and the content of your message, and use them only to answer you and to keep a record of correction or removal requests. We keep this correspondence for up to 24 months after the matter is closed, unless we need it longer to meet a legal obligation.</p>
+  <p>Legal basis: legitimate interest in responding to you, or taking steps at your request.</p>
+
+  <h2>3. What we do not do</h2>
+  <ul>
+    <li>No cookies, advertising pixels, social media plugins or cross-site tracking.</li>
+    <li>No sale or “sharing” of personal information (as those terms are defined in the California Consumer Privacy Act as amended by the CPRA), and no targeted advertising.</li>
+    <li>No automated decision-making that has legal or similarly significant effects on you.</li>
+  </ul>
+
+  <h2>4. Who processes data for us</h2>
+  <p>Vercel Inc. (United States) hosts the site and provides Web Analytics as our processor. Our email provider processes messages you send us. We do not give your data to the travel companies listed on this site. If you follow a link to a company's Tourground profile or website, that site's own privacy policy applies.</p>
+
+  <h2>5. International transfers</h2>
+  <p>Vercel processes data in the United States and other countries. Where personal data from the EU, UK or Brazil is transferred to a country without an adequacy decision, the transfer relies on appropriate safeguards such as the EU–US Data Privacy Framework (and its UK extension) where the recipient is certified, or standard contractual clauses approved by the relevant authority.</p>
+
+  <h2>6. Your rights</h2>
+  <h3>EU and UK</h3>
+  <p>You have the right to access your personal data, to have it corrected or erased, to restrict or object to its processing, and to data portability. Where we rely on legitimate interests you may object at any time. You can also complain to your data protection authority; in the UK this is the Information Commissioner's Office (ico.org.uk).</p>
+  <h3>Brazil</h3>
+  <p>Under the LGPD (Lei nº 13.709/2018, Article 18) you may confirm whether we process your data, access it, correct it, have unnecessary or excessive data anonymised, blocked or deleted, request portability, obtain information about who we share it with, and object to processing. You may also petition the Autoridade Nacional de Proteção de Dados (ANPD).</p>
+  <h3>United States</h3>
+  <p>Depending on your state of residence (for example California, Colorado, Connecticut, Virginia and others with comparable laws), you may have the right to know what personal information we hold about you, to access, correct or delete it, and to opt out of sale, sharing or targeted advertising. We do not sell or share personal information or use it for targeted advertising. We will not discriminate against you for exercising a right. You may use an authorised agent.</p>
+  <h3>How to exercise a right</h3>
+  <p>Email <a href={`mailto:${legal.privacyContact}`}>{legal.privacyContact}</a>. We may need to confirm your identity. We will answer within the time the law that applies to you requires (normally one month in the EU and UK, 15 days in Brazil, and 45 days under US state laws). Because we hold very little data, often the answer will be that we hold none linked to you.</p>
+
+  <h2>7. Children</h2>
+  <p>This site is not directed at children under 16 and we do not knowingly collect their personal data.</p>
+
+  <h2>8. Security</h2>
+  <p>The site is served only over HTTPS. Access to our email and hosting accounts is restricted to the people who need it.</p>
+
+  <h2>9. Changes</h2>
+  <p>If we change this policy we will update the effective date at the top. If we ever introduce cookies or tracking that requires consent, we will ask for your consent first.</p>
+
+  <h2>10. Contact</h2>
+  <p>{site.publisher.legalName}, {a}. Email: <a href={`mailto:${legal.privacyContact}`}>{legal.privacyContact}</a>.</p>
+</LegalPage>

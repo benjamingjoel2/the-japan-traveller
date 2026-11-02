@@ -1,0 +1,11 @@
+---
+import { humanDate, isoDate } from '../lib/dates.mjs';
+interface Props { published: Date | string; reviewed: Date | string; sourceCount?: number; extra?: { label: string; value: string } }
+const { published, reviewed, sourceCount, extra } = Astro.props;
+---
+<dl class="meta">
+  <div><dt>Published</dt><dd><time datetime={isoDate(published)}>{humanDate(published)}</time></dd></div>
+  <div><dt>Last reviewed</dt><dd><time datetime={isoDate(reviewed)}>{humanDate(reviewed)}</time></dd></div>
+  {sourceCount !== undefined && <div><dt>Sources</dt><dd><a href="#sources">{sourceCount} listed</a></dd></div>}
+  {extra && <div><dt>{extra.label}</dt><dd>{extra.value}</dd></div>}
+</dl>

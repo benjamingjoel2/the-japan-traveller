@@ -1,0 +1,18 @@
+---
+import { humanDate } from '../lib/dates.mjs';
+interface Src { url: string; label: string; accessed?: Date | string }
+interface Props { sources: Src[]; note?: string }
+const { sources, note } = Astro.props;
+// de-duplicate by URL, keep order
+const seen = new Set();
+const list = sources.filter((s) => (seen.has(s.url) ? false : (seen.add(s.url), true)));
+---
+<section class="sources" aria-labelledby="sources">
+  <h2 id="sources">Sources</h2>
+  {note && <p class="note">{note}</p>}
+  <ol>
+    {list.map((s) => (
+      <li><a href={s.url} rel="noopener">{s.label}</a>{s.accessed && <span class="note"> (checked {humanDate(s.accessed)})</span>}</li>
+    ))}
+  </ol>
+</section>

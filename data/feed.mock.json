@@ -1,0 +1,92 @@
+{
+  "_comment": "MOCK of the Tourground directory export. Do not hand-edit company facts in production: replace this with the real export via `npm run feed:refresh`. Records with is_example: true are fake and are never published in production builds.",
+  "generated_at": "2026-11-02",
+  "source": "Mock export (hand-built from Komorebi's public website, 2026-11-02)",
+  "destinations": [
+    {
+      "slug": "japan",
+      "name": "Japan",
+      "type": "country",
+      "country": "JP",
+      "content_dir": "src/content"
+    }
+  ],
+  "companies": [
+    {
+      "id": "komorebi",
+      "name": "Komorebi",
+      "kind": "dmc",
+      "country_base": "JP",
+      "base_city": "Tokyo",
+      "delivers_in": ["JP"],
+      "sells_from": [],
+      "regions": ["kanto", "kansai", "chubu", "shikoku", "hokkaido"],
+      "niches": ["culture-and-craft", "food-and-sake", "hiking", "winter-and-ski"],
+      "trip_months": [1, 2, 3, 4, 5, 6, 9, 10, 11, 12],
+      "memberships": [],
+      "tier": "founder",
+      "verified": false,
+      "founder_owned": true,
+      "is_example": false,
+      "removed": false,
+      "rank": { "JP": 1 },
+      "summary": "Private, slow journeys in Japan, planned around the seasons and away from the crowds. Ryokan nights, quiet temples at opening time, craft, food and the 72 seasons.",
+      "website": "https://komorebi.tourground.com",
+      "profile_url": "https://komorebi.tourground.com",
+      "sources": [
+        { "url": "https://komorebi.tourground.com", "label": "Komorebi website: home page and organisation data" },
+        { "url": "https://komorebi.tourground.com/journeys", "label": "Komorebi website: Journeys (routes and best months)" },
+        { "url": "https://komorebi.tourground.com/about", "label": "Komorebi website: About" }
+      ],
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "example-operator-one",
+      "name": "Example Operator One (example record)",
+      "kind": "dmc",
+      "country_base": "JP",
+      "base_city": "Kyoto",
+      "delivers_in": ["JP"],
+      "sells_from": ["GB", "US"],
+      "regions": ["kansai", "chugoku"],
+      "niches": ["family", "honeymoon", "culture-and-craft"],
+      "trip_months": [3, 4, 5, 10, 11],
+      "memberships": ["Example Association (example)"],
+      "tier": "platinum",
+      "verified": true,
+      "founder_owned": false,
+      "is_example": true,
+      "removed": false,
+      "rank": { "JP": 2 },
+      "summary": "EXAMPLE RECORD. Fake company used only to test layouts. Never published in production.",
+      "website": "https://example.com",
+      "profile_url": "https://tourground.com/",
+      "sources": [{ "url": "https://example.com", "label": "Example source (fake)" }],
+      "last_checked": "2026-11-02"
+    },
+    {
+      "id": "example-operator-two",
+      "name": "Example Operator Two (example record, unverified)",
+      "kind": "agency",
+      "country_base": "US",
+      "base_city": "",
+      "delivers_in": ["JP"],
+      "sells_from": ["US"],
+      "regions": ["kanto"],
+      "niches": ["food-and-sake"],
+      "trip_months": [7, 8],
+      "memberships": [],
+      "tier": "verified",
+      "verified": false,
+      "founder_owned": false,
+      "is_example": true,
+      "removed": false,
+      "rank": { "JP": 3 },
+      "summary": "EXAMPLE RECORD, UNVERIFIED. Exists to prove that unverified companies are filtered out. Never published.",
+      "website": "https://example.com",
+      "profile_url": "https://tourground.com/",
+      "sources": [{ "url": "https://example.com", "label": "Example source (fake)" }],
+      "last_checked": "2026-11-02"
+    }
+  ]
+}

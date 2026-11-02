@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import PageMeta from '../components/PageMeta.astro';
+import Sources from '../components/Sources.astro';
+import FounderLabel from '../components/FounderLabel.astro';
+import { publishedCompanies, feedMeta, TIER_LABEL, KIND_SHORT, countryName, hasRank } from '../lib/feed.mjs';
+import { NICHES, REGIONS, regionName } from '../data/reference.mjs';
+import { site } from '../config/site.mjs';
+import { articleNode } from '../lib/schema.mjs';
+const list = publishedCompanies();
+const feed = feedMeta();
+const C = site.destination.country;
+const title = 'Compare operators in Japan';
+const description = 'Side-by-side comparison of verified operators in Japan, built only from the Tourground directory feed: type, base, regions, niches, tier and last checked.';
+
+---
+<Base title={title} description={description} path="/compare" crumbs={[{ name: 'Compare', href: '/compare' }]}
+  jsonld={[articleNode({ title, description, path: '/compare', published: '2026-11-02', reviewed: feed.generated_at ?? '2026-11-02', sources: list.flatMap((c) => c.sources.slice(0, 1)) })]}>
+  <h1>Compare operators</h1>
+  <p class="dek">Every column comes from the Tourground directory feed. Nothing is added by hand. Order is feed rank.</p>
+  <PageMeta published="2026-11-02" reviewed={feed.generated_at ?? '2026-11-02'} sourceCount={list.reduce((n, c) => n + c.sources.length, 0)} extra={{ label: 'Operators', value: String(list.length) }} />
+  {list.length < 2 && <p class="callout">Only {list.length} verified {list.length === 1 ? 'operator is' : 'operators are'} in the feed for Japan, so there is little to compare yet. The table fills in as the directory grows.</p>}
+
+  <h2>Profile</h2>
+  <div class="scroll" role="region" aria-label="Operator profile comparison" tabindex="0">
+    <table class="tt wide">
+      <caption>Feed {feed.generated_at}</caption>
+      <thead><tr><th scope="col">Rank</th><th scope="col">Operator</th><th scope="col">Type</th><th scope="col">Based in</th><th scope="col">Sells from</th><th scope="col">Tier</th><th scope="col">Memberships</th><th scope="col">Last checked</th></tr></thead>
+      <tbody>
+        {list.map((c) => (
+          <tr>
+            <td class="rank">{hasRank(c) ? c.rank[C] : '–'}</td>
+            <th scope="row"><a href={`/operators/${c.id}`}>{c.name}</a>{c.founder_owned && <><br /><FounderLabel /></>}</th>
+            <td>{KIND_SHORT[c.kind]}</td>
+            <td>{[c.base_city, countryName(c.country_base)].filter(Boolean).join(', ')}</td>
+            <td>{c.sells_from.length ? c.sells_from.join(', ') : '–'}</td>
+            <td>{TIER_LABEL[c.tier]}</td>
+            <td>{c.memberships?.length ? c.memberships.join(', ') : '–'}</td>
+            <td class="num">{c.last_checked}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Niches</h2>
+  <div class="scroll" role="region" aria-label="Niche comparison" tabindex="0">
+    <table class="tt wide">
+      <caption>● = listed in the feed</caption>
+      <thead><tr><th scope="col">Operator</th>{NICHES.filter((n) => n.niche).map((n) => <th scope="col">{n.short}</th>)}</tr></thead>
+      <tbody>
+        {list.map((c) => (
+          <tr><th scope="row">{c.name}</th>{NICHES.filter((n) => n.niche).map((n) => <td class="num"><span aria-hidden="true">{c.niches.includes(n.niche) ? '●' : '·'}</span><span class="sr-only">{c.niches.includes(n.niche) ? 'Yes' : 'No'}</span></td>)}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Regions</h2>
+  <div class="scroll" role="region" aria-label="Region comparison" tabindex="0">
+    <table class="tt wide">
+      <caption>● = region listed in the feed</caption>
+      <thead><tr><th scope="col">Operator</th>{REGIONS.map((r) => <th scope="col">{r.name.split(' ')[0]}</th>)}</tr></thead>
+      <tbody>
+        {list.map((c) => (
+          <tr><th scope="row">{c.name}</th>{REGIONS.map((r) => <td class="num"><span aria-hidden="true">{(c.regions ?? []).includes(r.slug) ? '●' : '·'}</span><span class="sr-only">{(c.regions ?? []).includes(r.slug) ? 'Yes' : 'No'}</span></td>)}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <Sources sources={list.flatMap((c) => c.sources.map((x) => ({ url: x.url, label: `${c.name}: ${x.label}` })))} note={`Company data: Tourground directory export (${feed.source}).`} />
+</Base>

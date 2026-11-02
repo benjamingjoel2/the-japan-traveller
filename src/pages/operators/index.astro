@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import FounderLabel from '../../components/FounderLabel.astro';
+import { publishedCompanies, feedMeta, TIER_LABEL, KIND_SHORT, countryName, hasRank } from '../../lib/feed.mjs';
+import { disclosure, site } from '../../config/site.mjs';
+const list = publishedCompanies();
+const C = site.destination.country;
+const title = 'Operators in Japan: verified companies';
+const description = 'Fact pages for every verified or founder-owned operator in the Tourground directory that delivers trips in Japan.';
+---
+<Base title={title} description={description} path="/operators" crumbs={[{ name: 'Operators', href: '/operators' }]}>
+  <h1>Operators</h1>
+  <p class="dek">{description} {disclosure.verifiedOnlyStatement}</p>
+  <div class="scroll" role="region" aria-label="Operators" tabindex="0">
+    <table class="tt compact">
+      <caption>{list.length} {list.length === 1 ? 'operator' : 'operators'} · feed {feedMeta().generated_at} · in feed rank order</caption>
+      <thead><tr><th scope="col">Rank</th><th scope="col">Operator</th><th scope="col">Type</th><th scope="col">Based in</th><th scope="col">Tier</th><th scope="col">Last checked</th></tr></thead>
+      <tbody>
+        {list.map((c) => (
+          <tr>
+            <td class="rank">{hasRank(c) ? c.rank[C] : '–'}</td>
+            <th scope="row"><a href={`/operators/${c.id}`}>{c.name}</a>{c.founder_owned && <><br /><FounderLabel /></>}</th>
+            <td>{KIND_SHORT[c.kind]}</td>
+            <td>{[c.base_city, countryName(c.country_base)].filter(Boolean).join(', ')}</td>
+            <td>{TIER_LABEL[c.tier]}</td>
+            <td class="num"><time datetime={c.last_checked}>{c.last_checked}</time></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  {list.length < 3 && <p class="note">The directory currently lists few verified operators for Japan. We publish only what the feed verifies; this page grows as the directory does.</p>}
+</Base>

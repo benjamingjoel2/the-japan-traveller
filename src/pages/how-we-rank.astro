@@ -1,0 +1,34 @@
+---
+import Base from '../layouts/Base.astro';
+import PageMeta from '../components/PageMeta.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { site, disclosure } from '../config/site.mjs';
+import { feedMeta } from '../lib/feed.mjs';
+const title = 'How we rank operators';
+const description = 'Rank is merit, never paid. Where the ranks on this site come from, who is eligible to be listed, and how paid placements are kept separate.';
+---
+<Base title={title} description={description} path="/how-we-rank" crumbs={[{ name: 'How we rank', href: '/how-we-rank' }]}>
+  <h1>How we rank</h1>
+  <p class="dek">{disclosure.rankingStatement}</p>
+  <PageMeta published="2026-11-02" reviewed="2026-11-02" />
+  <div class="prose">
+    <h2>Where the rank comes from</h2>
+    <p>Each company in the Tourground directory export carries a rank for each country it works in. This site uses the rank for {site.destination.name} exactly as it is in the export. We do not change it, combine it with anything else, or reorder it. The Tourground directory method that produces it is described by Tourground on its <a href={site.publisher.url}>main site</a>.</p>
+    <p>The niche lists (for example hiking, or food and sake) keep the same rank. They only filter: a company appears in a niche list if its directory record lists that niche. The number shown in the Rank column is the company's {site.destination.name} rank from the feed, so a niche list can start at a number other than 1.</p>
+    <h2>Who can be listed</h2>
+    <ul>
+      <li>Only companies the directory marks as verified, and Tourground's founder-owned brands.</li>
+      <li>Never unverified companies, prospects or companies removed from the directory. A company removed from the export disappears from this site at the next build.</li>
+      <li>{disclosure.founderOwnedExplainer}</li>
+    </ul>
+    <h2>Payment never affects rank</h2>
+    <p>No company can pay to be listed, to rank higher or to be included in a niche list. Membership tiers (Verified, Black, Platinum) are shown on each company page for transparency. The only difference a paid tier makes on this site is the link: {disclosure.sponsoredLinkNote.toLowerCase()}</p>
+    <h2>Paid placements</h2>
+    <p>Paid placements are not sold yet. When they are, they will be labelled “{disclosure.advertisementLabel}”, shown at the top of a page, visually separate from editorial content and rankings, and never mixed into a ranked list. This is what that label and box look like:</p>
+  </div>
+  <AdSlot specimen={true} />
+  <div class="prose">
+    <h2>Counts</h2>
+    <p>Any count of companies on this site is computed from the current feed{feedMeta().generated_at ? ` (dated ${feedMeta().generated_at})` : ''} at build time. If a list is short or empty, it is because the directory has not verified more companies for that kind of trip yet. We do not pad lists.</p>
+  </div>
+</Base>

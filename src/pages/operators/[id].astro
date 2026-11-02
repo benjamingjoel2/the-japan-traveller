@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import FounderLabel from '../../components/FounderLabel.astro';
+import Sources from '../../components/Sources.astro';
+import PageMeta from '../../components/PageMeta.astro';
+import { publishedCompanies, companyLink, TIER_LABEL, KIND_LABEL, countryName, hasRank, feedMeta } from '../../lib/feed.mjs';
+import { regionName, nicheLabel, MONTHS, NICHES } from '../../data/reference.mjs';
+import { disclosure, site } from '../../config/site.mjs';
+import { companyNode, articleNode } from '../../lib/schema.mjs';
+
+// Pages exist only for companies in the current feed that pass the publishing
+// rules. A removal in the feed unpublishes the page on the next build.
+export function getStaticPaths() {
+  return publishedCompanies().map((c) => ({ params: { id: c.id }, props: { c } }));
+}
+const { c } = Astro.props;
+const C = site.destination.country;
+const link = companyLink(c);
+const path = `/operators/${c.id}`;
+const list = (a) => (a && a.length ? a : null);
+const months = (c.trip_months ?? []).map((n) => MONTHS[n - 1]);
+const description = `${c.name}: ${KIND_LABEL[c.kind].toLowerCase()} based in ${countryName(c.country_base)}. Where it delivers, specialties, verification tier and sources.`.slice(0, 200);
+const lists = NICHES.filter((n) => !n.niche || c.niches.includes(n.niche));
+const feed = feedMeta();
+---
+<Base title={`${c.name}: operator fact page`} description={description} path={path} ogType="profile"
+  crumbs={[{ name: 'Operators', href: '/operators' }, { name: c.name, href: path }]}
+  jsonld={[companyNode(c, path), articleNode({ title: `${c.name}: operator fact page`, description, path, published: c.last_checked, reviewed: c.last_checked, sources: c.sources })]}>
+  <article>
+    <h1>{c.name}</h1>
+    {c.founder_owned && <p><FounderLabel /></p>}
+    <p class="dek">{c.summary}</p>
+    <PageMeta published={c.last_checked} reviewed={c.last_checked} sourceCount={c.sources.length} extra={{ label: 'Tier', value: TIER_LABEL[c.tier] }} />
+
+    <h2>Facts</h2>
+    <dl class="kv">
+      <dt>Rank (Japan)</dt><dd>{hasRank(c) ? <span class="rank">{c.rank[C]}</span> : 'Not ranked'} <span class="note">from the directory feed; <a href="/how-we-rank">how we rank</a></span></dd>
+      <dt>What it does</dt><dd>{KIND_LABEL[c.kind]}</dd>
+      <dt>Based in</dt><dd>{[c.base_city, countryName(c.country_base)].filter(Boolean).join(', ')}</dd>
+      <dt>Delivers in</dt><dd>{c.delivers_in.map(countryName).join(', ')}</dd>
+      {list(c.regions) && <><dt>Regions of Japan</dt><dd>{c.regions.map(regionName).join(', ')}</dd></>}
+      {list(c.sells_from) && <><dt>Sells from</dt><dd>{c.sells_from.map(countryName).join(', ')}</dd></>}
+      <dt>Specialties</dt><dd>{c.niches.length ? c.niches.map(nicheLabel).join(', ') : 'Not stated in the feed'}</dd>
+      {months.length > 0 && <><dt>Trip months</dt><dd>{months.map((m) => <a href={`/seasons/${m.slug}`}>{m.name.slice(0, 3)}</a>).reduce((a, b) => [a, ' · ', b])}</dd></>}
+      <dt>Memberships</dt><dd>{list(c.memberships) ? c.memberships.join(', ') : 'None listed in the feed'}</dd>
+      <dt>Verification tier</dt><dd>{c.founder_owned ? disclosure.founderOwnedLabel : TIER_LABEL[c.tier]}{c.verified ? ' · verified by Tourground' : ''}</dd>
+      <dt>Last checked</dt><dd><time datetime={c.last_checked}>{c.last_checked}</time></dd>
+      <dt>Link</dt><dd><a href={link.href} rel={link.rel}>{link.label}</a>{link.sponsored && <span class="note"> (sponsored link)</span>}</dd>
+    </dl>
+    {c.founder_owned && <p class="note">{disclosure.founderOwnedExplainer}</p>}
+    <p class="note">{disclosure.sponsoredLinkNote}</p>
+
+    <h2>Appears in</h2>
+    <ul>{lists.map((n) => <li><a href={`/rankings/${n.slug}`}>{n.title}</a></li>)}</ul>
+
+    <Sources sources={c.sources} note={`Facts on this page come only from the Tourground directory export (${feed.source}). They are not edited by hand on this site.`} />
+
+    <h2>Is something wrong?</h2>
+    <p><a href={site.correctionsUrl}>{disclosure.correctionLinkText}</a>. See <a href="/corrections">corrections and removal</a> for how requests are handled.</p>
+  </article>
+</Base>

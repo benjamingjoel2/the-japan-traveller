@@ -1,0 +1,156 @@
+---
+import '@fontsource/shippori-mincho/latin-600.css';
+import '@fontsource/zen-kaku-gothic-new/latin-400.css';
+import '@fontsource/zen-kaku-gothic-new/latin-700.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import serifFont from '@fontsource/shippori-mincho/files/shippori-mincho-latin-600-normal.woff2?url';
+import sansFont from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-400-normal.woff2?url';
+import '../styles/global.css';
+import { site, disclosure } from '../config/site.mjs';
+import { graph, websiteNode, publisherNode, breadcrumbNode, abs } from '../lib/schema.mjs';
+
+interface Crumb { name: string; href: string }
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  crumbs?: Crumb[];
+  jsonld?: object[];
+  ogType?: string;
+  noindex?: boolean;
+}
+const { title, description, path, crumbs = [], jsonld = [], ogType = 'article', noindex = false } = Astro.props;
+const canonical = abs(path);
+const isHome = path === '/';
+const fullTitle = isHome ? `${site.name}: ${site.tagline}` : `${title} | ${site.name}`;
+const allCrumbs = isHome ? [] : [{ name: 'Home', href: '/' }, ...crumbs];
+const ld = graph(
+  websiteNode(),
+  isHome ? publisherNode() : null,
+  allCrumbs.length ? breadcrumbNode(allCrumbs) : null,
+  ...jsonld,
+);
+const nav = [
+  { href: '/guide', label: 'Guide' },
+  { href: '/seasons', label: 'Seasons' },
+  { href: '/rail-routes', label: 'Rail routes' },
+  { href: '/rankings', label: 'Rankings' },
+  { href: '/operators', label: 'Operators' },
+  { href: '/questions', label: 'Questions' },
+  { href: '/compare', label: 'Compare' },
+  { href: '/about', label: 'About' },
+];
+const section = '/' + path.split('/')[1];
+const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.colors.accentOnDark}}`;
+---
+<!doctype html>
+<html lang={site.language}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="preload" href={serifFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#1e3557" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/icon-180.png" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={isHome ? 'website' : ogType} />
+    <meta property="og:title" content={isHome ? fullTitle : title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:image" content={`${site.url}/og/default.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${site.name}: ${site.tagline}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style set:html={styleVars}></style>
+    <script type="application/ld+json" set:html={JSON.stringify(ld)}></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header>
+      <div class="strip">
+        <div class="wrap">
+          <span>Reference edition · English</span>
+          <span>{disclosure.footerPublishedBy.replace('.', '')}</span>
+        </div>
+      </div>
+      <div class="masthead">
+        <div class="wrap">
+          <div>
+            <a class="brand" href="/">{site.name}</a>
+            <span class="brand-sub">{site.tagline}</span>
+          </div>
+          <div class="stub" aria-hidden="true">
+            Timetable<b>JP · {site.domain.split('.')[0]}</b>
+          </div>
+        </div>
+      </div>
+      <nav class="platforms" aria-label="Main">
+        <ol>
+          {nav.map((n, i) => (
+            <li>
+              <a href={n.href} aria-current={section === n.href ? 'page' : undefined}>
+                <span class="no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{n.label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap">
+      {allCrumbs.length > 0 && (
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <ol>
+            {allCrumbs.map((c, i) => (
+              <li>{i === allCrumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.href}>{c.name}</a>}</li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div>
+          <p class="pub">{disclosure.footerPublishedBy.replace('Tourground.', '')}<a href={site.publisher.url}>Tourground</a>.</p>
+          <p>{disclosure.footerShort}</p>
+          <p>{site.editorLine}</p>
+        </div>
+        <div>
+          <span class="label">This site</span>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/how-we-rank">How we rank</a></li>
+            <li><a href="/disclosure">Publisher disclosure</a></li>
+            <li><a href="/corrections">Corrections and removal</a></li>
+          </ul>
+        </div>
+        <div>
+          <span class="label">Legal</span>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms</a></li>
+            <li><a href="/cookies">Cookie Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <span class="label">Contact</span>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <address>{site.address.lines.map((l) => <>{l}<br /></>)}</address>
+        </div>
+      </div>
+    </footer>
+    {site.analytics.vercel && <script is:inline defer src="/_vercel/insights/script.js"></script>}
+  </body>
+</html>

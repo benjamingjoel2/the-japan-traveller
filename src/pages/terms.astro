@@ -1,0 +1,40 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site, legal, disclosure } from '../config/site.mjs';
+const a = site.address.lines.join(', ');
+---
+<LegalPage title="Terms of Use" description={`The terms that apply when you use ${site.name}: information only, no bookings, accuracy, links, liability and governing law.`} path="/terms">
+  <h2>1. About these terms</h2>
+  <p>These terms apply to your use of {site.domain} (“the site”), published by {site.publisher.legalName} (“Tourground”, “we”), {a}. By using the site you agree to them. If you do not agree, please do not use the site.</p>
+
+  <h2>2. What the site is</h2>
+  <p>The site is a free reference about travel in Japan. It provides general information only. It is not travel, legal, immigration, medical or financial advice. The site does not sell travel services and you cannot make a booking on it.</p>
+
+  <h2>3. Accuracy</h2>
+  <p>We work to keep information accurate and show when each page was last reviewed and what sources it relies on. Prices, timetables, entry rules, weather and seasonal dates change, and errors can happen. Always confirm important information with the official source (for example the Ministry of Foreign Affairs of Japan for entry rules, and the rail operator for fares and timetables) before you rely on it. To report an error, see <a href="/corrections">corrections and removal</a>.</p>
+
+  <h2>4. Travel companies listed on the site</h2>
+  <p>Company information comes from the Tourground directory. {disclosure.rankingStatement} A listing or rank is not a guarantee of any company's services. If you book with a company, your contract is with that company, on its own terms, and not with the site. Read the <a href="/how-we-rank">ranking method</a> and the <a href="/disclosure">publisher disclosure</a>.</p>
+
+  <h2>5. Links</h2>
+  <p>The site links to other websites, including Tourground profiles, company websites and official sources. We are not responsible for their content, availability or privacy practices. {disclosure.sponsoredLinkNote}</p>
+
+  <h2>6. Intellectual property</h2>
+  <p>The text, tables, design and data compilations on the site belong to Tourground or its licensors. You may read, print and share links to pages and quote short extracts with attribution to {site.name} and a link to the page. You may not republish substantial parts of the site, or use it to create a competing database, without our written permission. Trade marks of third parties belong to their owners.</p>
+
+  <h2>7. Acceptable use</h2>
+  <p>Do not use the site in a way that breaks the law, interferes with its operation or security, or attempts to gain unauthorised access to any system. Automated crawling for indexing and for AI search and assistant services is permitted as set out in our robots.txt file, provided it does not overload the site.</p>
+
+  <h2>8. Liability</h2>
+  <p>The site is provided free of charge and “as is”. To the extent the law allows, we exclude all warranties and are not liable for any loss arising from your use of, or reliance on, the site, including losses from travel arrangements you make with third parties.</p>
+  <p>Nothing in these terms excludes or limits liability that cannot be excluded or limited by law, including liability for death or personal injury caused by negligence or for fraud, or your statutory rights as a consumer in the country where you live (including under EU consumer law, the UK Consumer Rights Act 2015, US state law and Brazil's Consumer Defence Code).</p>
+
+  <h2>9. Changes and availability</h2>
+  <p>We may change, suspend or withdraw the site or any page at any time. We may update these terms; the effective date at the top shows when they last changed.</p>
+
+  <h2>10. Governing law</h2>
+  <p>{legal.governingLawNote} These terms are governed by {legal.governingLaw}. If you are a consumer, you may also bring proceedings in the courts of the country where you live.</p>
+
+  <h2>11. Contact</h2>
+  <p>{site.publisher.legalName}, {a}. Email: <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+</LegalPage>

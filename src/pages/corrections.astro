@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageMeta from '../components/PageMeta.astro';
+import { site, disclosure } from '../config/site.mjs';
+const title = 'Corrections and removal';
+const description = 'How to request a correction to a guide page or a company listing, or the removal of a company, and what happens next.';
+---
+<Base title={title} description={description} path="/corrections" crumbs={[{ name: 'Corrections and removal', href: '/corrections' }]}>
+  <h1>Corrections and removal</h1>
+  <PageMeta published="2026-11-02" reviewed="2026-11-02" />
+  <div class="prose">
+    <h2>Company listings</h2>
+    <p>Company facts on this site come only from the Tourground directory. To correct a fact or to remove a company, use Tourground's contact flow:</p>
+    <p><a href={site.correctionsUrl}><strong>{disclosure.correctionLinkText}</strong></a></p>
+    <p>Every company page carries the same link. Changes are made in the directory, not on this site. Once the directory is updated, the change appears here at the next build. A company removed from the directory is removed from every page of this site, including rankings, at the next build.</p>
+    <h2>Guide pages and answers</h2>
+    <p>If a guide page or answer is wrong or out of date, email <a href={`mailto:${site.email}`}>{site.email}</a> with the page address, what is wrong and, if you can, a source. When we correct a page we update its last-reviewed date and its sources.</p>
+    <h2>What we do not do</h2>
+    <p>We do not accept payment to correct, remove or change any listing or rank, and we do not publish reviews of companies.</p>
+  </div>
+</Base>

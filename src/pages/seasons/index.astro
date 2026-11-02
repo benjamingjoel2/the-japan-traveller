@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import SeasonWheel from '../../components/SeasonWheel.astro';
+import MonthList from '../../components/MonthList.astro';
+import Legend from '../../components/Legend.astro';
+import PageMeta from '../../components/PageMeta.astro';
+import Sources from '../../components/Sources.astro';
+import { MONTHS, SEASON_EVENTS, SEASON_SOURCES } from '../../data/reference.mjs';
+import { articleNode } from '../../lib/schema.mjs';
+const title = 'Season wheel: Japan month by month';
+const description = 'Pick a month to see cherry blossom, autumn leaves, snow and festivals in each region of Japan, and the verified operators who run trips that month.';
+const published = '2026-11-02', reviewed = '2026-11-02';
+const pick = (n, k) => SEASON_EVENTS[n].filter((e) => e[1] === k).length;
+---
+<Base title={title} description={description} path="/seasons" crumbs={[{ name: 'Seasons', href: '/seasons' }]}
+  jsonld={[articleNode({ title, description, path: '/seasons', published, reviewed, sources: SEASON_SOURCES })]}>
+  <h1>Season wheel</h1>
+  <p class="dek">{description}</p>
+  <PageMeta published={published} reviewed={reviewed} sourceCount={SEASON_SOURCES.length} />
+  <div class="wheel-wrap">
+    <div><SeasonWheel /><Legend /></div>
+    <div><MonthList /></div>
+  </div>
+  <h2>The year in one table</h2>
+  <div class="scroll" role="region" aria-label="Notable events per month" tabindex="0">
+    <table class="tt compact">
+      <caption>Number of sourced entries per month by type</caption>
+      <thead><tr><th scope="col">Month</th><th scope="col">Blossom</th><th scope="col">Leaves</th><th scope="col">Snow</th><th scope="col">Festivals</th><th scope="col">Weather notes</th></tr></thead>
+      <tbody>
+        {MONTHS.map((m) => (
+          <tr><th scope="row"><a href={`/seasons/${m.slug}`}>{m.name}</a></th>
+            {['blossom', 'leaves', 'snow', 'festival', 'weather'].map((k) => <td class="num">{pick(m.n, k) || '–'}</td>)}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Background on each season, with normal dates, is in the guide: <a href="/guide/seasons">Japan's seasons, month by month</a>.</p>
+  <Sources sources={SEASON_SOURCES} />
+</Base>

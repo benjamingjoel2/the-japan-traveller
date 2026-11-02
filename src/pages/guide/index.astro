@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import { publishedGuide } from '../../lib/content.mjs';
+import { destinationNode } from '../../lib/schema.mjs';
+const guide = await publishedGuide();
+const title = 'Japan destination guide';
+const description = 'Regions, seasons, rail and the Japan Rail Pass, ryokan and onsen, typical 7, 10 and 14-day routes, and entry basics for Japan.';
+---
+<Base title={title} description={description} path="/guide" crumbs={[{ name: 'Guide', href: '/guide' }]} jsonld={[destinationNode()]}>
+  <h1>{title}</h1>
+  <p class="dek">{description} Each page lists its sources and the date it was last reviewed.</p>
+  <ol class="index">
+    {guide.map((g, i) => (
+      <li><span class="no">{String(i + 1).padStart(2, '0')}</span><div><a href={`/guide/${g.id}`}>{g.data.title}</a><p>{g.data.description}</p></div></li>
+    ))}
+    <li><span class="no">{String(guide.length + 1).padStart(2, '0')}</span><div><a href="/rail-routes">Rail-route table</a><p>Classic routes, typical journey times and Japan Rail Pass coverage.</p></div></li>
+    <li><span class="no">{String(guide.length + 2).padStart(2, '0')}</span><div><a href="/seasons">Season wheel</a><p>Month by month, region by region.</p></div></li>
+  </ol>
+</Base>

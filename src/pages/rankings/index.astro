@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { NICHES } from '../../data/reference.mjs';
+import { publishedCompanies, feedMeta } from '../../lib/feed.mjs';
+import { disclosure } from '../../config/site.mjs';
+const all = publishedCompanies();
+const count = (n) => (n.niche ? all.filter((c) => c.niches.includes(n.niche)).length : all.length);
+const title = 'Ranked lists: operators in Japan by niche';
+const description = 'Verified local operators in Japan ranked by niche, using only the rank in the Tourground directory feed. Never paid for.';
+---
+<Base title={title} description={description} path="/rankings" crumbs={[{ name: 'Rankings', href: '/rankings' }]}>
+  <h1>Ranked lists</h1>
+  <p class="dek">{disclosure.rankingStatement}</p>
+  <p class="note">{disclosure.verifiedOnlyStatement} <a href="/how-we-rank">How we rank</a> · <a href="/disclosure">Publisher disclosure</a></p>
+  <div class="scroll" role="region" aria-label="Ranked lists" tabindex="0">
+    <table class="tt compact">
+      <caption>Lists · counts computed from the feed of {feedMeta().generated_at}</caption>
+      <thead><tr><th scope="col">No.</th><th scope="col">List</th><th scope="col">Operators</th></tr></thead>
+      <tbody>
+        {NICHES.map((n, i) => (
+          <tr><td class="num">{String(i + 1).padStart(2, '0')}</td><th scope="row"><a href={`/rankings/${n.slug}`}>{n.title}</a></th><td class="num">{count(n)}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</Base>

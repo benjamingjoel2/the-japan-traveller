@@ -1,0 +1,35 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageMeta from '../../components/PageMeta.astro';
+import Sources from '../../components/Sources.astro';
+import { publishedQA } from '../../lib/content.mjs';
+import { articleNode, faqNode } from '../../lib/schema.mjs';
+
+export async function getStaticPaths() {
+  const all = await publishedQA();
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry, all } }));
+}
+const { entry, all } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const path = `/questions/${entry.id}`;
+const related = d.related.map((id) => all.find((q) => q.id === id)).filter(Boolean);
+---
+<Base title={d.title} description={d.description} path={path}
+  crumbs={[{ name: 'Questions', href: '/questions' }, { name: d.title, href: path }]}
+  jsonld={[faqNode([{ question: d.question, answer: d.answer }]), articleNode({ title: d.title, description: d.description, path, published: d.published, reviewed: d.reviewed, sources: d.sources })]}>
+  <article>
+    <h1>{d.question}</h1>
+    <div class="answer"><span class="label">Short answer</span><p>{d.answer}</p></div>
+    <PageMeta published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} />
+    <div class="prose"><Content /></div>
+    {related.length > 0 && (
+      <>
+        <h2>Related questions</h2>
+        <ul>{related.map((q) => <li><a href={`/questions/${q.id}`}>{q.data.question}</a></li>)}</ul>
+      </>
+    )}
+    <Sources sources={d.sources} />
+  </article>
+</Base>

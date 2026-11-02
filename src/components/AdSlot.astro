@@ -1,0 +1,20 @@
+---
+// Paid placement slot. Paid placement is NOT built yet: this renders the
+// clearly separated, labelled container only. It must sit at the top of a
+// page, never inside a ranking. Wording comes from src/config/site.mjs.
+import { disclosure } from '../config/site.mjs';
+interface Ad { advertiser: string; text: string; href: string }
+interface Props { ad?: Ad | null; specimen?: boolean }
+const { ad = null, specimen = false } = Astro.props;
+---
+{(ad || specimen) && (
+  <aside class="ad" aria-label={disclosure.advertisementLabel}>
+    <span class="label">{disclosure.advertisementLabel}</span>
+    {ad ? (
+      <p><strong>{ad.advertiser}</strong>: {ad.text} <a href={ad.href} rel="sponsored nofollow">Read more</a></p>
+    ) : (
+      <p>{disclosure.adSlotEmpty}</p>
+    )}
+    <p class="note">{disclosure.advertisementExplainer}</p>
+  </aside>
+)}

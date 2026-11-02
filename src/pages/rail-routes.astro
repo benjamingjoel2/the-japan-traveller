@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import RailTable from '../components/RailTable.astro';
+import PageMeta from '../components/PageMeta.astro';
+import Sources from '../components/Sources.astro';
+import { SOURCES, RAIL_ROUTES, RAIL_CHECKED } from '../data/reference.mjs';
+import { articleNode } from '../lib/schema.mjs';
+const used = [...new Set(RAIL_ROUTES.map((r) => r.source))].map((k) => SOURCES[k]);
+const sources = [SOURCES.jrpPrice, SOURCES.jrpAbout, SOURCES.jntoRailPasses, ...used];
+const title = 'Japan rail-route table: journey times and JR Pass coverage';
+const description = `${RAIL_ROUTES.length} classic Japan rail routes with the typical fastest journey time and whether the Japan Rail Pass covers them. Sourced and dated.`;
+---
+<Base title={title} description={description} path="/rail-routes" crumbs={[{ name: 'Rail routes', href: '/rail-routes' }]}
+  jsonld={[articleNode({ title, description, path: '/rail-routes', published: '2026-11-02', reviewed: RAIL_CHECKED, sources })]}>
+  <h1>Rail-route table</h1>
+  <p class="dek">The classic routes travellers use in Japan, with the typical fastest scheduled journey time and whether the nationwide Japan Rail Pass covers them. For prices and how the pass works, see <a href="/guide/rail-and-the-jr-pass">Rail in Japan and the Japan Rail Pass</a>.</p>
+  <PageMeta published="2026-11-02" reviewed={RAIL_CHECKED} sourceCount={sources.length} />
+  <RailTable />
+  <h2>Reading the table</h2>
+  <div class="prose">
+    <ul>
+      <li><strong>Covered</strong>: the Japan Rail Pass covers the named service with no extra ticket (a seat reservation is free).</li>
+      <li><strong>Covered with special ticket</strong>: Nozomi and Mizuho trains need a separate special ticket on top of the pass. The slower Hikari, Sakura and Kodama trains on the same line are covered without it; the Notes column gives their time.</li>
+      <li><strong>Not covered</strong>: a private railway. Buy a normal ticket or that railway's own pass.</li>
+    </ul>
+  </div>
+  <Sources sources={sources} />
+</Base>

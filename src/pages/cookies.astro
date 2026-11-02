@@ -1,0 +1,23 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site } from '../config/site.mjs';
+---
+<LegalPage title="Cookie Policy" description={`${site.name} sets no cookies. What our cookieless analytics measures, and what happens when you follow a link off the site.`} path="/cookies">
+  <h2>We do not set cookies</h2>
+  <p>{site.name} does not place cookies on your device, and does not use similar technologies such as local storage, pixels or device fingerprinting to track you. Because of this there is no cookie banner: there is nothing to consent to.</p>
+
+  <h2>Analytics without cookies</h2>
+  <p>We use Vercel Web Analytics to count page views. It works without cookies: it receives the page address, the referring page, the browser, operating system, device type and country of each visit, and counts visitors with a hash of the request that is discarded daily. It does not identify you or follow you across other websites. See the <a href="/privacy">Privacy Policy</a> for details.</p>
+
+  <h2>Fonts and other files</h2>
+  <p>All fonts and files are served from our own domain. The site does not load content from advertising networks, social media platforms or other third parties.</p>
+
+  <h2>Links to other sites</h2>
+  <p>When you follow a link to another site, such as a Tourground company profile, a company website or an official source, that site may set its own cookies under its own policy.</p>
+
+  <h2>Changes</h2>
+  <p>If we ever introduce cookies that are not strictly necessary, we will update this policy and ask for your consent before setting them, where the law requires it.</p>
+
+  <h2>Contact</h2>
+  <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+</LegalPage>

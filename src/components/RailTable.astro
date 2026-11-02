@@ -1,0 +1,28 @@
+---
+import { RAIL_ROUTES, RAIL_CHECKED, PASS_LABEL, SOURCES } from '../data/reference.mjs';
+import { humanDate } from '../lib/dates.mjs';
+const SHORT = { jrCentral: 'JR Central', jrEast: 'JR East', jrWest: 'JR West', jrKyushu: 'JR Kyushu', jrHokkaido: 'JR Hokkaido', jrShikoku: 'JR Shikoku', odakyu: 'Odakyu', tobu: 'Tobu' };
+const fmt = (t) => { const [h, m] = t.split('h'); return { iso: `PT${+h}H${+m}M`, text: `${+h}:${m}` }; };
+---
+<div class="scroll" role="region" aria-label="Classic rail routes" tabindex="0">
+  <table class="tt wide">
+    <caption>Classic routes · typical fastest scheduled time · checked {humanDate(RAIL_CHECKED)}</caption>
+    <thead>
+      <tr><th scope="col">From</th><th scope="col">To</th><th scope="col">Service</th><th scope="col">Time (h:mm)</th><th scope="col">Japan Rail Pass</th><th scope="col">Notes</th><th scope="col">Source</th></tr>
+    </thead>
+    <tbody>
+      {RAIL_ROUTES.map((r) => { const t = fmt(r.time); return (
+        <tr>
+          <th scope="row">{r.from}</th>
+          <td>{r.to}</td>
+          <td>{r.service}</td>
+          <td class="time"><time datetime={t.iso}>{t.text}</time></td>
+          <td><span class={`pass ${r.pass}`}>{PASS_LABEL[r.pass]}</span></td>
+          <td>{r.alt}</td>
+          <td><a href={SOURCES[r.source].url} rel="noopener">{SHORT[r.source]}</a></td>
+        </tr>
+      ); })}
+    </tbody>
+  </table>
+</div>
+<p class="note">Times are the typical fastest scheduled journey on the named service, rounded to five minutes, and vary by departure. “Covered with special ticket” means the Nozomi and Mizuho trains need a separate special ticket bought on top of the Japan Rail Pass (since October 2023). Check the operator’s current timetable before you travel.</p>

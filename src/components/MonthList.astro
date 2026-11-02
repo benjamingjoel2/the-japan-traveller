@@ -1,0 +1,10 @@
+---
+import { MONTHS } from '../data/reference.mjs';
+interface Props { current?: number }
+const { current } = Astro.props;
+---
+<nav aria-label="Months">
+  <ol class="monthlist">
+    {MONTHS.map((m) => <li><a href={`/seasons/${m.slug}`} aria-current={m.n === current ? 'page' : undefined}>{String(m.n).padStart(2, '0')} {m.name}</a></li>)}
+  </ol>
+</nav>
