@@ -47,7 +47,7 @@ export function loadFeed() {
     if (c.id && !/^[a-z0-9-]+$/.test(c.id)) errors.push(`${c.id}: id must be a lowercase slug`);
   }
   if (errors.length) throw new Error('Feed validation failed:\n' + errors.join('\n'));
-  cache = { file: path.relative(ROOT, file), ...raw };
+  cache = { ...raw, file: path.relative(ROOT, file), isMock: file === path.join(ROOT, 'data', 'feed.mock.json') };
   return cache;
 }
 
@@ -63,7 +63,11 @@ const COUNTRY = site.destination.country;
 
 /** Published companies that deliver in this destination, ordered by feed rank only. */
 export function publishedCompanies() {
-  const { companies } = loadFeed();
+  const feed = loadFeed();
+  // The mock includes a founder-owned company with a deliberately fake rank.
+  // Never publish mock company data from a production build.
+  if (feed.isMock && process.env.NODE_ENV === 'production') return [];
+  const { companies } = feed;
   return companies
     .filter(isPublishable)
     .filter((c) => c.delivers_in.includes(COUNTRY))
@@ -86,7 +90,7 @@ export function companyById(id) {
 
 export function feedMeta() {
   const f = loadFeed();
-  return { generated_at: f.generated_at ?? null, source: f.source ?? f.file, file: f.file };
+  return { generated_at: f.generated_at ?? null, source: f.source ?? f.file, file: f.file, isMock: f.isMock };
 }
 
 /**

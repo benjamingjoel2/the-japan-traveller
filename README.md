@@ -16,7 +16,7 @@ npm run preview    # serve dist/
 npm run check:links  # check every source URL on the built site
 ```
 
-To see the layout with the fake example operators (never in production):
+To see the layout with the fake example operators during local development (never in production):
 
 ```bash
 INCLUDE_EXAMPLES=true npm run dev
@@ -78,7 +78,7 @@ FEED_URL=https://<directory-export-url> FEED_TOKEN=<optional> npm run feed:refre
 npm run build
 ```
 
-This writes `data/feed.json`, which takes precedence over the mock. Commit it and push; Vercel rebuilds. You can also point a build at any file with `FEED_PATH=path/to/feed.json`.
+This writes `data/feed.json`, which takes precedence over the mock. Commit it and push; Vercel rebuilds. You can also point a build at any file with `FEED_PATH=path/to/feed.json`. Production builds never publish operator data from `data/feed.mock.json`; until a live feed is supplied, operator pages and rankings remain empty and show a feed-unavailable notice.
 
 Rules enforced in `src/lib/feed.mjs`:
 

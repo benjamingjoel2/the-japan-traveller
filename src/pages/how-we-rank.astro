@@ -6,6 +6,7 @@ import { site, disclosure } from '../config/site.mjs';
 import { feedMeta } from '../lib/feed.mjs';
 const title = 'How we rank operators';
 const description = 'Rank is merit, never paid. Where the ranks on this site come from, who is eligible to be listed, and how paid placements are kept separate.';
+const feed = feedMeta();
 ---
 <Base title={title} description={description} path="/how-we-rank" crumbs={[{ name: 'How we rank', href: '/how-we-rank' }]}>
   <h1>How we rank</h1>
@@ -29,6 +30,8 @@ const description = 'Rank is merit, never paid. Where the ranks on this site com
   <AdSlot specimen={true} />
   <div class="prose">
     <h2>Counts</h2>
-    <p>Any count of companies on this site is computed from the current feed{feedMeta().generated_at ? ` (dated ${feedMeta().generated_at})` : ''} at build time. If a list is short or empty, it is because the directory has not verified more companies for that kind of trip yet. We do not pad lists.</p>
+    {feed.isMock
+      ? <p>Operator counts and rankings are unavailable until this site is built with the live Tourground directory feed. Local development uses mock data and does not establish any published rank.</p>
+      : <p>Any count of companies on this site is computed from the current feed{feed.generated_at ? ` (dated ${feed.generated_at})` : ''} at build time. If a list is short or empty, it is because the directory has not verified more companies for that kind of trip yet. We do not pad lists.</p>}
   </div>
 </Base>

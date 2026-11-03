@@ -8,6 +8,7 @@ import sansFont from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-
 import '../styles/global.css';
 import { site, disclosure } from '../config/site.mjs';
 import { graph, websiteNode, publisherNode, breadcrumbNode, abs } from '../lib/schema.mjs';
+import { feedMeta } from '../lib/feed.mjs';
 
 interface Crumb { name: string; href: string }
 interface Props {
@@ -31,17 +32,17 @@ const ld = graph(
   ...jsonld,
 );
 const nav = [
-  { href: '/guide', label: 'Guide' },
+  { href: '/guide', label: 'The guide' },
   { href: '/seasons', label: 'Seasons' },
-  { href: '/rail-routes', label: 'Rail routes' },
-  { href: '/rankings', label: 'Rankings' },
-  { href: '/operators', label: 'Operators' },
-  { href: '/questions', label: 'Questions' },
+  { href: '/rail-routes', label: 'Rail' },
+  { href: '/rankings', label: 'Operators' },
   { href: '/compare', label: 'Compare' },
-  { href: '/about', label: 'About' },
+  { href: '/questions', label: 'Good to know' },
 ];
 const section = '/' + path.split('/')[1];
 const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.colors.accentOnDark}}`;
+const mockFeed = feedMeta().isMock;
+const isProduction = process.env.NODE_ENV === 'production';
 ---
 <!doctype html>
 <html lang={site.language}>
@@ -79,8 +80,8 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
     <header>
       <div class="strip">
         <div class="wrap">
-          <span>Reference edition · English</span>
-          <span>{disclosure.footerPublishedBy.replace('.', '')}</span>
+          <span class="strip-lead"><i aria-hidden="true"></i> THE JAPAN TRAVELLER&nbsp; — &nbsp;A FIELD GUIDE TO JAPAN</span>
+          <a href="/guide">START PLANNING <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div class="masthead">
@@ -90,7 +91,7 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
             <span class="brand-sub">{site.tagline}</span>
           </div>
           <div class="stub" aria-hidden="true">
-            Timetable<b>JP · {site.domain.split('.')[0]}</b>
+            INDEPENDENT TRAVEL JOURNAL<b>ISSUE 01 &nbsp;·&nbsp; JAPAN</b>
           </div>
         </div>
       </div>
@@ -99,7 +100,7 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
           {nav.map((n, i) => (
             <li>
               <a href={n.href} aria-current={section === n.href ? 'page' : undefined}>
-                <span class="no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{n.label}
+                {n.label}
               </a>
             </li>
           ))}
@@ -108,6 +109,13 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
     </header>
 
     <main id="main" class="wrap">
+      {mockFeed && (
+        <p class="callout" role="status">
+          {isProduction
+            ? 'Operator listings and rankings are unavailable until the live Tourground directory feed is connected.'
+            : 'Preview data: operator listings and rankings use the development mock, not the live Tourground directory feed.'}
+        </p>
+      )}
       {allCrumbs.length > 0 && (
         <nav class="crumbs" aria-label="Breadcrumb">
           <ol>

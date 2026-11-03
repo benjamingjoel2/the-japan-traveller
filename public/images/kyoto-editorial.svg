@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Kyoto lane at blue hour</title>
+  <desc id="desc">A quiet illustrated Kyoto lane with wooden machiya houses, glowing lanterns and a distant shrine gate after rain.</desc>
+  <defs>
+    <linearGradient id="sky" x1="600" y1="0" x2="600" y2="850" gradientUnits="userSpaceOnUse"><stop stop-color="#263641"/><stop offset=".52" stop-color="#59646a"/><stop offset="1" stop-color="#b07b56"/></linearGradient>
+    <linearGradient id="road" x1="600" y1="640" x2="600" y2="1400" gradientUnits="userSpaceOnUse"><stop stop-color="#55575a"/><stop offset=".5" stop-color="#252b31"/><stop offset="1" stop-color="#14191e"/></linearGradient>
+    <linearGradient id="leftWall" x1="0" y1="250" x2="420" y2="880" gradientUnits="userSpaceOnUse"><stop stop-color="#5c5145"/><stop offset="1" stop-color="#211f20"/></linearGradient>
+    <linearGradient id="rightWall" x1="1200" y1="230" x2="770" y2="850" gradientUnits="userSpaceOnUse"><stop stop-color="#6c5744"/><stop offset="1" stop-color="#252423"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#ffd69a" stop-opacity=".9"/><stop offset="1" stop-color="#e18a47" stop-opacity="0"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values=".24 0 0 0 .3 .24 0 0 0 .3 .24 0 0 0 .3 0 0 0 .12 0"/></filter>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h1200v850H0z"/>
+  <circle cx="592" cy="310" r="180" fill="#efbc83" opacity=".2" filter="url(#soft)"/>
+  <path d="M0 523 145 449l96 40 127-115 127 76 94-47 94 72 111-101 116 83 102-86 94 53 94-36v347H0V523Z" fill="#39444a" opacity=".58"/>
+  <path d="M0 619 202 515l147 73 150-110 155 94 125-86 140 92 126-84 155 75v280H0V619Z" fill="#343b3d" opacity=".8"/>
+  <path d="M0 197 324 314l110 431L0 1008V197Z" fill="url(#leftWall)"/>
+  <path d="m0 197 199-108 273 127-148 98L0 197Z" fill="#39352f"/>
+  <path d="m0 188 205-129 294 134-29 24L199 89 0 220v-32Z" fill="#201f20"/>
+  <path d="m40 260 218 91v42L38 301v-41Zm0 104 252 103v31L40 396v-32Zm7 112 267 105v30L48 506v-30Z" fill="#8b7358" opacity=".44"/>
+  <path d="M91 320v424m107-379v397m107-351v307" stroke="#151719" stroke-width="18" opacity=".8"/>
+  <path d="m1200 176-301 131-128 434 429 270V176Z" fill="url(#rightWall)"/>
+  <path d="m1200 176-193-99-270 125 134 105 329-131Z" fill="#39352f"/>
+  <path d="m1200 166-198-117-292 131 28 25 271-126 191 130v-43Z" fill="#201f20"/>
+  <path d="m1162 254-218 94v40l220-95-2-39Zm0 104-251 104v31l250-102 1-33Zm-7 112L889 575v29l267-103v-35Z" fill="#9b7956" opacity=".42"/>
+  <path d="M1110 316v421m-107-373v395m-106-348v308" stroke="#17191a" stroke-width="18" opacity=".8"/>
+  <path d="M432 707h336l432 693H0l432-693Z" fill="url(#road)"/>
+  <path d="m465 756 268 1 137 643H330l135-644Z" fill="#737477" opacity=".13"/>
+  <path d="M597 773h7l27 225h-63l29-225Zm-87 339h181l57 288H454l56-288Z" fill="#d5ac7b" opacity=".16"/>
+  <path d="m0 1007 426-291 63 4L0 1182v-175Zm1200 12L772 714l-61 4 489 345v-44Z" fill="#b3a28e" opacity=".17"/>
+  <path d="M535 605h132v121H535z" fill="#a4422d"/>
+  <path d="m510 612 91-78 91 78H510Z" fill="#252323"/>
+  <path d="M549 637h105v88H549z" fill="#292829"/>
+  <path d="M570 640h12v85h-12zm48 0h12v85h-12z" fill="#a4422d"/>
+  <ellipse cx="270" cy="576" rx="142" ry="168" fill="url(#glow)"/>
+  <path d="M240 478h63l24 108-19 40h-72l-20-40 24-108Z" fill="#dd9b5f"/>
+  <path d="M236 478h70v22h-70zm-13 105h96v19h-96z" fill="#382c25"/>
+  <path d="M268 504h8v61h-8z" fill="#fff0ca" opacity=".78"/>
+  <ellipse cx="951" cy="527" rx="140" ry="158" fill="url(#glow)"/>
+  <path d="M922 430h59l22 105-18 40h-67l-19-40 23-105Z" fill="#df9b5c"/>
+  <path d="M918 430h68v21h-68zm-12 102h92v18h-92z" fill="#392c24"/>
+  <path d="M948 455h8v60h-8z" fill="#fff1cc" opacity=".8"/>
+  <path d="M159 861h45m-82 50h57m790-63h44m-1 82h64M405 1067h43m-27 94h57m297-73h62" stroke="#e1ad79" stroke-width="5" opacity=".22" stroke-linecap="round"/>
+  <rect width="1200" height="1400" filter="url(#grain)" opacity=".2"/>
+</svg>

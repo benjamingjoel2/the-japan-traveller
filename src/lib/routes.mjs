@@ -28,8 +28,8 @@ export async function allRoutes() {
     { path: '/how-we-rank', title: 'How we rank', lastmod: base, group: 'About and policies' },
     { path: '/disclosure', title: 'Publisher disclosure', lastmod: base, group: 'About and policies' },
     { path: '/corrections', title: 'Corrections and removal', lastmod: base, group: 'About and policies' },
-    { path: '/privacy', title: 'Privacy Policy', lastmod: site.legalEffectiveDate, group: 'About and policies' },
-    { path: '/terms', title: 'Terms of Use', lastmod: site.legalEffectiveDate, group: 'About and policies' },
-    { path: '/cookies', title: 'Cookie Policy', lastmod: site.legalEffectiveDate, group: 'About and policies' },
+    { path: '/privacy', title: 'Privacy Policy', lastmod: site.legalLastUpdated, group: 'About and policies' },
+    { path: '/terms', title: 'Terms of Use', lastmod: site.legalLastUpdated, group: 'About and policies' },
+    { path: '/cookies', title: 'Cookie Policy', lastmod: site.legalLastUpdated, group: 'About and policies' },
   ];
 }

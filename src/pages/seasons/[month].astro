@@ -59,7 +59,7 @@ const path = `/seasons/${m.slug}`;
 
   <h2>Operators who run trips in {m.name}</h2>
   {operators.length === 0 ? (
-    <p class="callout">No verified operator in the Tourground directory feed lists trips in {m.name} yet.</p>
+    <p class="callout">{feedMeta().isMock ? 'Operator listings are unavailable until the live Tourground directory feed is connected.' : `No verified operator in the Tourground directory feed lists trips in ${m.name} yet.`}</p>
   ) : (
     <div class="scroll" role="region" aria-label={`Operators in ${m.name}`} tabindex="0">
       <table class="tt compact">

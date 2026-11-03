@@ -7,13 +7,14 @@ const list = publishedCompanies();
 const C = site.destination.country;
 const title = 'Operators in Japan: verified companies';
 const description = 'Fact pages for every verified or founder-owned operator in the Tourground directory that delivers trips in Japan.';
+const feed = feedMeta();
 ---
 <Base title={title} description={description} path="/operators" crumbs={[{ name: 'Operators', href: '/operators' }]}>
   <h1>Operators</h1>
   <p class="dek">{description} {disclosure.verifiedOnlyStatement}</p>
   <div class="scroll" role="region" aria-label="Operators" tabindex="0">
     <table class="tt compact">
-      <caption>{list.length} {list.length === 1 ? 'operator' : 'operators'} · feed {feedMeta().generated_at} · in feed rank order</caption>
+      <caption>{feed.isMock ? 'Live directory data unavailable' : `${list.length} ${list.length === 1 ? 'operator' : 'operators'} · feed ${feed.generated_at} · in feed rank order`}</caption>
       <thead><tr><th scope="col">Rank</th><th scope="col">Operator</th><th scope="col">Type</th><th scope="col">Based in</th><th scope="col">Tier</th><th scope="col">Last checked</th></tr></thead>
       <tbody>
         {list.map((c) => (
@@ -29,5 +30,7 @@ const description = 'Fact pages for every verified or founder-owned operator in 
       </tbody>
     </table>
   </div>
-  {list.length < 3 && <p class="note">The directory currently lists few verified operators for Japan. We publish only what the feed verifies; this page grows as the directory does.</p>}
+  {feed.isMock
+    ? <p class="callout">Operator listings are unavailable until the live Tourground directory feed is connected.</p>
+    : list.length < 3 && <p class="note">The directory currently lists few verified operators for Japan. We publish only what the feed verifies; this page grows as the directory does.</p>}
 </Base>

@@ -18,13 +18,15 @@ const description = 'Side-by-side comparison of verified operators in Japan, bui
   jsonld={[articleNode({ title, description, path: '/compare', published: '2026-11-02', reviewed: feed.generated_at ?? '2026-11-02', sources: list.flatMap((c) => c.sources.slice(0, 1)) })]}>
   <h1>Compare operators</h1>
   <p class="dek">Every column comes from the Tourground directory feed. Nothing is added by hand. Order is feed rank.</p>
-  <PageMeta published="2026-11-02" reviewed={feed.generated_at ?? '2026-11-02'} sourceCount={list.reduce((n, c) => n + c.sources.length, 0)} extra={{ label: 'Operators', value: String(list.length) }} />
-  {list.length < 2 && <p class="callout">Only {list.length} verified {list.length === 1 ? 'operator is' : 'operators are'} in the feed for Japan, so there is little to compare yet. The table fills in as the directory grows.</p>}
+  <PageMeta published="2026-11-02" reviewed={feed.generated_at ?? '2026-11-02'} sourceCount={list.reduce((n, c) => n + c.sources.length, 0)} extra={feed.isMock ? undefined : { label: 'Operators', value: String(list.length) }} />
+  {feed.isMock
+    ? <p class="callout">Operator comparison is unavailable until the live Tourground directory feed is connected.</p>
+    : list.length < 2 && <p class="callout">Only {list.length} verified {list.length === 1 ? 'operator is' : 'operators are'} in the feed for Japan, so there is little to compare yet. The table fills in as the directory grows.</p>}
 
   <h2>Profile</h2>
   <div class="scroll" role="region" aria-label="Operator profile comparison" tabindex="0">
     <table class="tt wide">
-      <caption>Feed {feed.generated_at}</caption>
+      <caption>{feed.isMock ? 'Live directory data unavailable' : `Feed ${feed.generated_at}`}</caption>
       <thead><tr><th scope="col">Rank</th><th scope="col">Operator</th><th scope="col">Type</th><th scope="col">Based in</th><th scope="col">Sells from</th><th scope="col">Tier</th><th scope="col">Memberships</th><th scope="col">Last checked</th></tr></thead>
       <tbody>
         {list.map((c) => (

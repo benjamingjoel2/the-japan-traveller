@@ -2,16 +2,17 @@
 // Rankings shown as a departure board. Order and rank come ONLY from the
 // feed's rank field (see src/lib/feed.mjs). Never reorder here.
 import { disclosure, site } from '../config/site.mjs';
-import { TIER_LABEL, hasRank } from '../lib/feed.mjs';
+import { TIER_LABEL, hasRank, feedMeta } from '../lib/feed.mjs';
 import { regionName, nicheLabel } from '../data/reference.mjs';
 interface Props { companies: any[]; title: string; feedDate?: string | null }
 const { companies, title, feedDate } = Astro.props;
+const mockFeed = feedMeta().isMock;
 const C = site.destination.country;
 ---
 <div class="board" role="region" aria-label={title} tabindex="0">
   <div class="board-head"><strong>{title}</strong><span>Feed {feedDate ?? ''}</span></div>
   {companies.length === 0 ? (
-    <p class="empty">No verified operator in the Tourground directory lists this kind of trip in Japan yet. This list stays empty until one does; we do not pad it.</p>
+    <p class="empty">{mockFeed ? 'This list is unavailable until the live Tourground directory feed is connected.' : 'No verified operator in the Tourground directory lists this kind of trip in Japan yet. This list stays empty until one does; we do not pad it.'}</p>
   ) : (
     <table>
       <caption class="sr-only">{title}</caption>
