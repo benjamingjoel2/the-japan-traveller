@@ -32,13 +32,11 @@ const ld = graph(
   ...jsonld,
 );
 const nav = [
-  { href: '/guide', label: 'Guide' },
+  { href: '/guide', label: 'The guide' },
   { href: '/seasons', label: 'Seasons' },
-  { href: '/rail-routes', label: 'Rail routes' },
-  { href: '/rankings', label: 'Rankings' },
-  { href: '/operators', label: 'Operators' },
-  { href: '/questions', label: 'Questions' },
-  { href: '/compare', label: 'Compare' },
+  { href: '/rail-routes', label: 'Rail' },
+  { href: '/rankings', label: 'Operators' },
+  { href: '/questions', label: 'Good to know' },
   { href: '/about', label: 'About' },
 ];
 const section = '/' + path.split('/')[1];
@@ -82,8 +80,8 @@ const isProduction = process.env.NODE_ENV === 'production';
     <header>
       <div class="strip">
         <div class="wrap">
-          <span>Reference edition · English</span>
-          <span>{disclosure.footerPublishedBy.replace('.', '')}</span>
+          <span class="strip-lead"><i aria-hidden="true"></i> THE JAPAN TRAVELLER&nbsp; — &nbsp;A FIELD GUIDE TO JAPAN</span>
+          <a href="/guide">START PLANNING <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div class="masthead">
@@ -93,7 +91,7 @@ const isProduction = process.env.NODE_ENV === 'production';
             <span class="brand-sub">{site.tagline}</span>
           </div>
           <div class="stub" aria-hidden="true">
-            Timetable<b>JP · {site.domain.split('.')[0]}</b>
+            INDEPENDENT TRAVEL JOURNAL<b>ISSUE 01 &nbsp;·&nbsp; JAPAN</b>
           </div>
         </div>
       </div>
@@ -102,7 +100,7 @@ const isProduction = process.env.NODE_ENV === 'production';
           {nav.map((n, i) => (
             <li>
               <a href={n.href} aria-current={section === n.href ? 'page' : undefined}>
-                <span class="no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{n.label}
+                {n.label}
               </a>
             </li>
           ))}
