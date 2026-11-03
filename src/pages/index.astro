@@ -4,7 +4,7 @@ import SeasonWheel from '../components/SeasonWheel.astro';
 import { site, disclosure } from '../config/site.mjs';
 import { publishedGuide, publishedQA } from '../lib/content.mjs';
 import { publishedCompanies, feedMeta } from '../lib/feed.mjs';
-import { NICHES, REGIONS, MONTHS } from '../data/reference.mjs';
+import { NICHES, REGIONS } from '../data/reference.mjs';
 import { destinationNode } from '../lib/schema.mjs';
 import { humanDate } from '../lib/dates.mjs';
 
@@ -12,8 +12,6 @@ const guide = await publishedGuide();
 const qa = await publishedQA();
 const companies = publishedCompanies();
 const feed = feedMeta();
-const nowMonth = new Date().getUTCMonth() + 1;
-const thisMonth = MONTHS.find((m) => m.n === nowMonth);
 ---
 <Base title={site.name} description={site.positioning} path="/" jsonld={[destinationNode()]}>
   <h1>Planning Japan with a local operator: the reference</h1>
@@ -25,12 +23,12 @@ const thisMonth = MONTHS.find((m) => m.n === nowMonth);
     <div><dt>Seasons</dt><dd>Cherry blossom late March to May (south to north); rainy season June to July; autumn leaves October to early December; snow December to March. <a href="/seasons">Season wheel</a></dd></div>
     <div><dt>Rail</dt><dd>Shinkansen from Kagoshima to Hokkaido. 7-day Japan Rail Pass ¥50,000 online (adult, ordinary). <a href="/rail-routes">Rail-route table</a></dd></div>
     <div><dt>Entry</dt><dd>Visa-free short stays (90 days for most exempt nationalities, including US, UK, EU and Brazil). Departure tax ¥3,000 from 1 July 2026. <a href="/guide/entry-basics">Entry basics</a></dd></div>
-    <div><dt>Operators listed</dt><dd><span class="mono">{companies.length}</span> verified or founder-owned {companies.length === 1 ? 'operator' : 'operators'} in the Tourground directory feed of {feed.generated_at ? humanDate(feed.generated_at) : 'the current build'}. <a href="/operators">All operators</a></dd></div>
+    <div><dt>Operators listed</dt><dd>{feed.isMock ? 'Live directory listings are not available in this build.' : <><span class="mono">{companies.length}</span> verified or founder-owned {companies.length === 1 ? 'operator' : 'operators'} in the Tourground directory feed of {feed.generated_at ? humanDate(feed.generated_at) : 'the current build'}. <a href="/operators">All operators</a></>}</dd></div>
   </dl>
 
-  <h2>This month: {thisMonth.name}</h2>
+  <h2>Explore the year</h2>
   <div class="wheel-wrap">
-    <SeasonWheel current={nowMonth} />
+    <SeasonWheel />
     <div class="prose">
       <p>Pick a month on the wheel to see what is happening in each region (blossom, leaves, snow and festivals) and which verified operators run trips that month.</p>
       <ul class="legend" aria-label="Wheel legend">
@@ -39,7 +37,7 @@ const thisMonth = MONTHS.find((m) => m.n === nowMonth);
         <li><i style="background:#2c4d7c"></i>Snow</li>
         <li><i style="background:#1b1b1a"></i>Festival</li>
       </ul>
-      <p><a href={`/seasons/${thisMonth.slug}`}>Open {thisMonth.name} in full</a></p>
+      <p><a href="/seasons">Open the season guide</a></p>
     </div>
   </div>
 

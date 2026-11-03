@@ -8,6 +8,7 @@ import sansFont from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-
 import '../styles/global.css';
 import { site, disclosure } from '../config/site.mjs';
 import { graph, websiteNode, publisherNode, breadcrumbNode, abs } from '../lib/schema.mjs';
+import { feedMeta } from '../lib/feed.mjs';
 
 interface Crumb { name: string; href: string }
 interface Props {
@@ -42,6 +43,8 @@ const nav = [
 ];
 const section = '/' + path.split('/')[1];
 const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.colors.accentOnDark}}`;
+const mockFeed = feedMeta().isMock;
+const isProduction = process.env.NODE_ENV === 'production';
 ---
 <!doctype html>
 <html lang={site.language}>
@@ -108,6 +111,13 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
     </header>
 
     <main id="main" class="wrap">
+      {mockFeed && (
+        <p class="callout" role="status">
+          {isProduction
+            ? 'Operator listings and rankings are unavailable until the live Tourground directory feed is connected.'
+            : 'Preview data: operator listings and rankings use the development mock, not the live Tourground directory feed.'}
+        </p>
+      )}
       {allCrumbs.length > 0 && (
         <nav class="crumbs" aria-label="Breadcrumb">
           <ol>

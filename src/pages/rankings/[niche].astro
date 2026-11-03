@@ -17,7 +17,9 @@ const { n } = Astro.props;
 const list = publishedCompanies().filter((c) => (n.niche ? c.niches.includes(n.niche) : true));
 const feed = feedMeta();
 const path = `/rankings/${n.slug}`;
-const description = `${n.blurb} Ranked only by the Tourground directory feed. ${list.length} ${list.length === 1 ? 'operator' : 'operators'} listed.`;
+const description = feed.isMock
+  ? `${n.blurb} Operator rankings are unavailable until the live Tourground directory feed is connected.`
+  : `${n.blurb} Ranked only by the Tourground directory feed. ${list.length} ${list.length === 1 ? 'operator' : 'operators'} listed.`;
 const sources = [
   { url: `${site.url}/how-we-rank`, label: 'How we rank (method)' },
   ...list.flatMap((c) => c.sources.slice(0, 1).map((s) => ({ url: s.url, label: `${c.name}: ${s.label}` }))),
@@ -30,10 +32,10 @@ const reviewed = feed.generated_at ?? n.published;
   <AdSlot ad={null} />
   <h1>{n.title}</h1>
   <p class="dek">{n.blurb}</p>
-  <PageMeta published={n.published} reviewed={reviewed} sourceCount={sources.length} extra={{ label: 'Operators', value: String(list.length) }} />
+  <PageMeta published={n.published} reviewed={reviewed} sourceCount={sources.length} extra={feed.isMock ? undefined : { label: 'Operators', value: String(list.length) }} />
   <DepartureBoard companies={list} title={n.short} feedDate={feed.generated_at} />
   <p class="note">{disclosure.rankingStatement}</p>
   <p class="note">{disclosure.verifiedOnlyStatement} {disclosure.founderOwnedExplainer} <a href="/how-we-rank">How we rank</a>.</p>
   <p class="note">Other lists: {NICHES.filter((x) => x.slug !== n.slug).map((x, i) => <>{i > 0 && ' · '}<a href={`/rankings/${x.slug}`}>{x.short}</a></>)}</p>
-  <Sources sources={sources} note={`Company data: Tourground directory export (${feed.source}), dated ${feed.generated_at}.`} />
+  <Sources sources={sources} note={feed.isMock ? 'Operator data and rankings are not published because the live directory feed is not connected.' : `Company data: Tourground directory export (${feed.source}), dated ${feed.generated_at}.`} />
 </Base>

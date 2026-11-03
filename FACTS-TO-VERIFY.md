@@ -7,13 +7,13 @@ Everything below appears on the site or in config and must be checked by a perso
 | Item | Where | Current value | Action |
 |---|---|---|---|
 | Business address | `src/config/site.mjs` → `address` (`placeholder: true`) | Marunouchi Nijubashi Building, 3-2-3 Marunouchi, Chiyoda-ku, Tokyo 100-0005 (the address Komorebi publishes) | Founders to confirm the publishing desk's coworking address |
-| Corrections / removal URL | `site.correctionsUrl` | `https://tourground.com/contact?topic=correction-or-removal&site=thejapantraveller` — **returns 404 today** | Replace with the real main-site contact flow |
+| Corrections / removal URL | `site.correctionsUrl` | Publishing-team email link (temporary fallback) | Replace with the real main-site contact flow when it is available and verified |
 | Publisher legal entity | `site.publisher.legalName` | "Tourground" | Confirm registered entity name |
 | Governing law in Terms | `legal.governingLaw` | "the laws of England and Wales" | Counsel to confirm |
 | Privacy, Terms, Cookie Policy, disclosure wording | `src/config/site.mjs`, `src/pages/privacy.astro`, `terms.astro`, `cookies.astro` | Drafted | US, UK, EU and Brazil sign-off |
 | Email retention (24 months) | Privacy Policy §2.3 | 24 months | Confirm internal policy |
 | Komorebi profile URL | feed mock | `https://komorebi.tourground.com` | Confirm the canonical Tourground profile URL |
-| Komorebi rank `JP: 1` | feed mock | Mock value | Replace with directory rank from the real export |
+| Komorebi rank `JP: 1` | feed mock | Mock value, not published in production | Replace only with the rank from a real directory export; otherwise keep the listing unpublished |
 
 ## Entry rules (`/guide/entry-basics`, home page)
 

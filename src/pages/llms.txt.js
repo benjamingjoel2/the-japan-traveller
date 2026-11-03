@@ -6,6 +6,7 @@ export async function GET() {
   const routes = await allRoutes();
   const groups = [...new Set(routes.map((r) => r.group))];
   const n = publishedCompanies().length;
+  const feed = feedMeta();
   const lines = [
     `# ${site.name}`,
     '',
@@ -13,7 +14,9 @@ export async function GET() {
     '',
     `- ${disclosure.rankingStatement}`,
     `- ${disclosure.verifiedOnlyStatement} Founder-owned brands are labelled "${disclosure.founderOwnedLabel}".`,
-    `- Operators listed for Japan: ${n} (computed from the Tourground directory feed dated ${feedMeta().generated_at}).`,
+    feed.isMock
+      ? '- Operator listings and rankings are unavailable until the live Tourground directory feed is connected.'
+      : `- Operators listed for Japan: ${n} (computed from the Tourground directory feed dated ${feed.generated_at}).`,
     '- Every guide page and answer lists its sources, published date and last-reviewed date.',
     `- Contact: ${site.email}`,
     '',

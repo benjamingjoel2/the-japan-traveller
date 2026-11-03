@@ -61,8 +61,12 @@ publish = (verified === true || founder_owned === true)
 order   = rank.JP ascending (companies without rank.JP sort last, shown as "–")
 ```
 
+Production additionally requires a real `data/feed.json` (or an explicit `FEED_PATH`).
+If only `data/feed.mock.json` is available, production publishes no operator records or
+ranks and displays a notice. The mock remains available for local layout development.
+
 ## Mock contents (`data/feed.mock.json`)
 
-- **Komorebi**: founder-owned (`verified: false`, `founder_owned: true`, `tier: founder`). Facts taken from komorebi.tourground.com on 2026-11-02. `rank.JP = 1` is a **mock value**, not a directory rank. Niches and months derived from its Journeys page; `winter-and-ski` reflects a winter snow-and-onsen journey, not skiing.
+- **Komorebi**: founder-owned (`verified: false`, `founder_owned: true`, `tier: founder`). Facts taken from komorebi.tourground.com on 2026-11-02. `rank.JP = 1` is a **mock value**, not a directory rank; it is never published in production. Niches and months derived from its Journeys page; `winter-and-ski` reflects a winter snow-and-onsen journey, not skiing.
 - **Example Operator One**: fake, `is_example: true`, verified, Platinum (tests sponsored link and multi-row board).
 - **Example Operator Two**: fake, `is_example: true`, unverified (tests that unverified companies never publish).

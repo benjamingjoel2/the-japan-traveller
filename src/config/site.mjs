@@ -47,8 +47,8 @@ export const site = {
     url: 'https://tourground.com',
   },
 
-  // Main-site contact flow for corrections and removals. PLACEHOLDER URL.
-  correctionsUrl: 'https://tourground.com/contact?topic=correction-or-removal&site=thejapantraveller',
+  // Use the published contact email until the main-site correction flow is available.
+  correctionsUrl: 'mailto:thejapantraveller@tourground.com?subject=Correction%20or%20removal%20request%20%E2%80%94%20The%20Japan%20Traveller',
 
   // Founder-owned brand group label
   founderGroup: 'Tourground Geotrax',
@@ -67,8 +67,8 @@ export const site = {
     },
   ],
 
-  // Date the legal pages took effect (update when a lawyer revises them)
-  legalEffectiveDate: '2026-11-02',
+  // Date the legal pages were last updated (not legal approval or sign-off).
+  legalLastUpdated: '2026-11-02',
 };
 
 // =============================================================================

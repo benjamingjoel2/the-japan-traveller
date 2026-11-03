@@ -6,6 +6,7 @@ import { publishedCompanies, feedMeta } from '../lib/feed.mjs';
 const title = `About ${site.name}`;
 const description = `What ${site.name} is, who publishes it, how it is edited and how to contact us.`;
 const n = publishedCompanies().length;
+const feed = feedMeta();
 ---
 <Base title={title} description={description} path="/about" crumbs={[{ name: 'About', href: '/about' }]}>
   <h1>About {site.name}</h1>
@@ -23,7 +24,9 @@ const n = publishedCompanies().length;
       <li>We do not publish reviews, testimonials, made-up statistics or quotes.</li>
     </ul>
     <h2>How companies get listed</h2>
-    <p>Company facts come only from the Tourground directory export and are never edited by hand here. {disclosure.verifiedOnlyStatement} The current feed{feedMeta().generated_at ? ` (${feedMeta().generated_at})` : ''} contains {n} such {n === 1 ? 'operator' : 'operators'} for Japan. Rankings follow the rules on <a href="/how-we-rank">How we rank</a>.</p>
+    {feed.isMock
+      ? <p>Operator listings and rankings are withheld until this site is built with the live Tourground directory feed. Rankings follow the rules on <a href="/how-we-rank">How we rank</a>.</p>
+      : <p>Company facts come only from the Tourground directory export and are never edited by hand here. {disclosure.verifiedOnlyStatement} The current feed{feed.generated_at ? ` (${feed.generated_at})` : ''} contains {n} such {n === 1 ? 'operator' : 'operators'} for Japan. Rankings follow the rules on <a href="/how-we-rank">How we rank</a>.</p>}
     <h2>Contact</h2>
     <p>Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>
     <address>{site.publisher.name}<br />{site.address.lines.map((l) => <>{l}<br /></>)}</address>
