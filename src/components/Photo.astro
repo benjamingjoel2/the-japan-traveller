@@ -28,5 +28,5 @@ const h = Math.round(w / r);
     decoding={eager ? 'auto' : 'async'}
     fetchpriority={eager ? 'high' : 'auto'}
   />
-  {caption && <figcaption>{p.caption}</figcaption>}
+  {Astro.slots.has('default') ? <figcaption><slot /></figcaption> : caption && <figcaption>{p.caption}</figcaption>}
 </figure>

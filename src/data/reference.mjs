@@ -2,27 +2,27 @@
 // source and a checked date, and is listed in FACTS-TO-VERIFY.md.
 
 export const REGIONS = [
-  { slug: 'hokkaido', name: 'Hokkaido' },
-  { slug: 'tohoku', name: 'Tohoku' },
-  { slug: 'kanto', name: 'Kanto and Tokyo' },
-  { slug: 'chubu', name: 'Chubu and the Alps' },
-  { slug: 'kansai', name: 'Kansai and Kyoto' },
-  { slug: 'chugoku', name: 'Chugoku' },
-  { slug: 'shikoku', name: 'Shikoku' },
-  { slug: 'kyushu', name: 'Kyushu' },
-  { slug: 'okinawa', name: 'Okinawa' },
+  { slug: 'hokkaido', name: 'Hokkaido', ja: '北海道' },
+  { slug: 'tohoku', name: 'Tohoku', ja: '東北' },
+  { slug: 'kanto', name: 'Kanto and Tokyo', ja: '関東' },
+  { slug: 'chubu', name: 'Chubu and the Alps', ja: '中部' },
+  { slug: 'kansai', name: 'Kansai and Kyoto', ja: '関西' },
+  { slug: 'chugoku', name: 'Chugoku', ja: '中国' },
+  { slug: 'shikoku', name: 'Shikoku', ja: '四国' },
+  { slug: 'kyushu', name: 'Kyushu', ja: '九州' },
+  { slug: 'okinawa', name: 'Okinawa', ja: '沖縄' },
 ];
 export const regionName = (slug) => REGIONS.find((r) => r.slug === slug)?.name ?? slug;
 
 // Ranked lists. `niche: null` = every published operator.
 export const NICHES = [
-  { slug: 'best-local-operators', image: 'fuji-blossom', niche: null, title: 'Best local operators in Japan', short: 'All operators', published: '2026-11-02', blurb: 'Every verified or founder-owned operator in the Tourground directory that delivers trips in Japan, in feed rank order.' },
-  { slug: 'culture-and-craft', image: 'daigoji', niche: 'culture-and-craft', title: 'Best operators in Japan for culture and craft', short: 'Culture and craft', published: '2026-11-02', blurb: 'Operators whose directory record lists culture and craft trips: temples, gardens, workshops and makers.' },
-  { slug: 'food-and-sake', image: 'kaiseki', niche: 'food-and-sake', title: 'Best operators in Japan for food and sake', short: 'Food and sake', published: '2026-11-02', blurb: 'Operators whose directory record lists food and sake trips.' },
-  { slug: 'hiking', image: 'kamikochi', niche: 'hiking', title: 'Best operators in Japan for hiking', short: 'Hiking', published: '2026-11-02', blurb: 'Operators whose directory record lists walking and hiking trips, such as the Kumano Kodo, the Nakasendo and the Japan Alps.' },
-  { slug: 'honeymoon', image: 'ryokan-room', niche: 'honeymoon', title: 'Best operators in Japan for honeymoons', short: 'Honeymoon', published: '2026-11-02', blurb: 'Operators whose directory record lists honeymoon trips.' },
-  { slug: 'family', image: 'okinawa', niche: 'family', title: 'Best operators in Japan for family trips', short: 'Family', published: '2026-11-02', blurb: 'Operators whose directory record lists family trips.' },
-  { slug: 'winter-and-ski', image: 'shirakawago-snow', niche: 'winter-and-ski', title: 'Best operators in Japan for winter and ski', short: 'Winter and ski', published: '2026-11-02', blurb: 'Operators whose directory record lists winter trips: snow country, onsen in winter and skiing.' },
+  { slug: 'best-local-operators', ja: '全ての旅行会社', image: 'fuji-blossom', niche: null, title: 'Best local operators in Japan', short: 'All operators', published: '2026-11-02', blurb: 'Every verified or founder-owned operator in the Tourground directory that delivers trips in Japan, in feed rank order.' },
+  { slug: 'culture-and-craft', ja: '文化と工芸', image: 'daigoji', niche: 'culture-and-craft', title: 'Best operators in Japan for culture and craft', short: 'Culture and craft', published: '2026-11-02', blurb: 'Operators whose directory record lists culture and craft trips: temples, gardens, workshops and makers.' },
+  { slug: 'food-and-sake', ja: '食と酒', image: 'kaiseki', niche: 'food-and-sake', title: 'Best operators in Japan for food and sake', short: 'Food and sake', published: '2026-11-02', blurb: 'Operators whose directory record lists food and sake trips.' },
+  { slug: 'hiking', ja: 'ハイキング', image: 'kamikochi', niche: 'hiking', title: 'Best operators in Japan for hiking', short: 'Hiking', published: '2026-11-02', blurb: 'Operators whose directory record lists walking and hiking trips, such as the Kumano Kodo, the Nakasendo and the Japan Alps.' },
+  { slug: 'honeymoon', ja: 'ハネムーン', image: 'ryokan-room', niche: 'honeymoon', title: 'Best operators in Japan for honeymoons', short: 'Honeymoon', published: '2026-11-02', blurb: 'Operators whose directory record lists honeymoon trips.' },
+  { slug: 'family', ja: '家族旅行', image: 'okinawa', niche: 'family', title: 'Best operators in Japan for family trips', short: 'Family', published: '2026-11-02', blurb: 'Operators whose directory record lists family trips.' },
+  { slug: 'winter-and-ski', ja: '冬とスキー', image: 'shirakawago-snow', niche: 'winter-and-ski', title: 'Best operators in Japan for winter and ski', short: 'Winter and ski', published: '2026-11-02', blurb: 'Operators whose directory record lists winter trips: snow country, onsen in winter and skiing.' },
 ];
 export const nicheLabel = (slug) => NICHES.find((n) => n.niche === slug)?.short ?? slug;
 
@@ -60,7 +60,7 @@ export const SOURCES = {
 export const MONTHS = [
   'january', 'february', 'march', 'april', 'may', 'june',
   'july', 'august', 'september', 'october', 'november', 'december',
-].map((slug, i) => ({ slug, n: i + 1, name: slug[0].toUpperCase() + slug.slice(1), short: slug.slice(0, 3).toUpperCase() }));
+].map((slug, i) => ({ slug, n: i + 1, name: slug[0].toUpperCase() + slug.slice(1), short: slug.slice(0, 3).toUpperCase(), ja: `${i + 1}月` }));
 
 // Each entry: [regionSlug, kind, text]. kind: blossom | leaves | snow | festival | weather
 export const SEASON_EVENTS = {

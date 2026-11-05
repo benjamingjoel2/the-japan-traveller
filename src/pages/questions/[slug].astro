@@ -3,8 +3,10 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ArticleHead from '../../components/ArticleHead.astro';
 import ArticleAside from '../../components/ArticleAside.astro';
+import CtaBand from '../../components/CtaBand.astro';
 import Sources from '../../components/Sources.astro';
 import { publishedQA } from '../../lib/content.mjs';
+import { humanDate } from '../../lib/dates.mjs';
 import { articleNode, faqNode } from '../../lib/schema.mjs';
 
 export async function getStaticPaths() {
@@ -21,16 +23,24 @@ const related = d.related.map((id) => all.find((q) => q.id === id)).filter(Boole
   crumbs={[{ name: 'Questions', href: '/questions' }, { name: d.title, href: path }]}
   jsonld={[faqNode([{ question: d.question, answer: d.answer }]), articleNode({ title: d.title, description: d.description, path, published: d.published, reviewed: d.reviewed, sources: d.sources })]}>
   <article>
-    <ArticleHead eyebrow="Traveller question" title={d.question} image={d.image}>
+    <ArticleHead back={{ href: '/questions', label: 'All questions' }} eyebrow="Traveller question" ja="よくある質問" title={d.question} image={d.image}
+      facts={[
+        { icon: 'calendar', label: 'Last reviewed', value: humanDate(d.reviewed) },
+        { icon: 'sources', label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' },
+      ]}
+      card={{ label: 'Book with a local', value: 'Ranked operators', href: '/rankings', cta: 'See the lists' }}>
       <div slot="after" class="answer"><span class="label">Short answer</span><p>{d.answer}</p></div>
     </ArticleHead>
-    <div class="wrap article-body">
-      <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length}
-        links={related.map((q) => ({ href: `/questions/${q.id}`, label: q.data.question }))} linksTitle="Related questions" />
-      <div>
-        <div class="prose"><Content /></div>
-        <Sources sources={d.sources} />
+    <div class="band-paper">
+      <div class="wrap article-body">
+        <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length}
+          links={related.map((q) => ({ href: `/questions/${q.id}`, label: q.data.question }))} linksTitle="Related questions" />
+        <div>
+          <div class="prose"><Content /></div>
+          <Sources sources={d.sources} />
+        </div>
       </div>
     </div>
   </article>
+  <CtaBand title="More questions, answered." text="Short answers first, then the detail and the sources." href="/questions" cta="All questions" />
 </Base>

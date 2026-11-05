@@ -3,11 +3,13 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ArticleHead from '../../components/ArticleHead.astro';
 import ArticleAside from '../../components/ArticleAside.astro';
+import CtaBand from '../../components/CtaBand.astro';
 import Sources from '../../components/Sources.astro';
 import RailTable from '../../components/RailTable.astro';
 import SeasonWheel from '../../components/SeasonWheel.astro';
 import Legend from '../../components/Legend.astro';
 import { publishedGuide } from '../../lib/content.mjs';
+import { humanDate } from '../../lib/dates.mjs';
 import { articleNode, destinationNode } from '../../lib/schema.mjs';
 
 export async function getStaticPaths() {
@@ -24,17 +26,27 @@ const others = all.filter((g) => g.id !== entry.id).map((g) => ({ href: `/guide/
   crumbs={[{ name: 'Guide', href: '/guide' }, { name: d.nav ?? d.title, href: path }]}
   jsonld={[articleNode({ title: d.title, description: d.description, path, published: d.published, reviewed: d.reviewed, sources: d.sources }), entry.id === 'regions' ? destinationNode() : null]}>
   <article>
-    <ArticleHead eyebrow={`Destination guide · ${d.nav ?? 'Guide'}`} title={d.title} dek={d.description} image={d.image} />
-    {d.embed === 'season-wheel' && (
-      <div class="wrap"><div class="wheel-wrap" style="padding-top:2rem"><div><SeasonWheel /><Legend /></div><p class="dek">Pick a month on the wheel to see each region in that month, with the operators who run trips then.</p></div></div>
-    )}
-    <div class="wrap article-body">
-      <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} links={[...others, { href: '/rail-routes', label: 'Rail-route table' }, { href: '/seasons', label: 'Season wheel' }]} linksTitle="More in the guide" />
-      <div>
-        <div class="prose"><Content /></div>
-        {d.embed === 'rail-table' && <RailTable />}
-        <Sources sources={d.sources} />
+    <ArticleHead back={{ href: '/guide', label: 'All guides' }} eyebrow={d.nav ?? 'Guide'} ja={d.ja} title={d.title} dek={d.description} image={d.image}
+      facts={[
+        { icon: 'calendar', label: 'Last reviewed', value: humanDate(d.reviewed) },
+        { icon: 'sources', label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' },
+        { icon: 'book', label: 'Published', value: humanDate(d.published) },
+        { icon: 'map', label: 'Covers', value: 'Japan' },
+      ]}
+      card={{ label: 'Book with a local', value: 'Ranked operators', href: '/rankings', cta: 'See the lists' }} />
+    <div class="band-paper">
+      {d.embed === 'season-wheel' && (
+        <div class="wrap" style="padding-top:clamp(3rem,6vw,5rem)"><div class="wheel-wrap"><div><SeasonWheel /><Legend /></div><p class="dek">Pick a month on the wheel to see each region in that month, with the operators who run trips then.</p></div></div>
+      )}
+      <div class="wrap article-body">
+        <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} links={[...others, { href: '/rail-routes', label: 'Rail-route table' }, { href: '/seasons', label: 'Season wheel' }]} linksTitle="More in the guide" />
+        <div>
+          <div class="prose"><Content /></div>
+          {d.embed === 'rail-table' && <RailTable />}
+          <Sources sources={d.sources} />
+        </div>
       </div>
     </div>
   </article>
+  <CtaBand title="Ready to plan the trip?" text="See which verified local operators deliver this kind of trip, ranked only by merit." href="/rankings" cta="Browse ranked lists" />
 </Base>

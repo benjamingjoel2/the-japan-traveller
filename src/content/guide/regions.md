@@ -6,6 +6,7 @@ order: 1
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+ja: 日本の地方
 image: shirakawago-valley
 sources:
   - url: https://www.japan.travel/en/

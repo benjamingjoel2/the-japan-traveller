@@ -6,6 +6,7 @@ order: 4
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+ja: 旅館と温泉
 image: ryokan-room
 sources:
   - url: https://www.japan.travel/en/guide/japanese-ryokan/

@@ -1,22 +1,22 @@
 ---
 import { humanDate, isoDate } from '../lib/dates.mjs';
 interface Link { href: string; label: string }
-interface Props { published: Date | string; reviewed: Date | string; sourceCount?: number; extra?: { label: string; value: string }[]; links?: Link[]; linksTitle?: string }
-const { published, reviewed, sourceCount, extra = [], links = [], linksTitle = 'Related' } = Astro.props;
+interface Props { eyebrow?: string; ja?: string; heading?: string; published: Date | string; reviewed: Date | string; sourceCount?: number; links?: Link[]; linksTitle?: string }
+const { eyebrow = 'The detail', ja = '詳細', heading = 'Read before you book.', published, reviewed, sourceCount, links = [], linksTitle = 'Related' } = Astro.props;
 ---
 <aside class="article-aside" aria-label="Page details">
+  <p class="eyebrow">{eyebrow} · <span lang="ja">{ja}</span></p>
+  <h2>{heading}</h2>
   <div class="aside-block">
-    <p class="eyebrow">Record</p>
     <dl>
       <dt>Published</dt><dd><time datetime={isoDate(published)}>{humanDate(published)}</time></dd>
       <dt>Last reviewed</dt><dd><time datetime={isoDate(reviewed)}>{humanDate(reviewed)}</time></dd>
       {sourceCount !== undefined && <><dt>Sources</dt><dd><a href="#sources">{sourceCount} listed</a></dd></>}
-      {extra.map((e) => <><dt>{e.label}</dt><dd>{e.value}</dd></>)}
     </dl>
   </div>
   {links.length > 0 && (
     <div class="aside-block">
-      <p class="eyebrow">{linksTitle}</p>
+      <p class="label">{linksTitle}</p>
       <ul>{links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
     </div>
   )}

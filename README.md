@@ -34,7 +34,8 @@ INCLUDE_EXAMPLES=true npm run dev
 | Guide pages (markdown) | `src/content/guide/*.md` |
 | Q&A pages (markdown) | `src/content/qa/*.md` |
 | Season wheel, rail routes, regions, niches (sourced reference data) | `src/data/reference.mjs` |
-| Styles (TIMETABLE theme) | `src/styles/global.css` |
+| Styles (layout from the approved Framer reference) | `src/styles/global.css` |
+| Fonts (generated) | `scripts/build-fonts.mjs` → `src/styles/fonts.css`, `public/fonts/` |
 | Field list and assumptions | `DATA-FIELDS.md` |
 | Facts and placeholders to check before launch | `FACTS-TO-VERIFY.md` |
 
@@ -97,6 +98,18 @@ Not built yet. `src/components/AdSlot.astro` renders the labelled, visually sepa
 - `sitemap.xml`, `robots.txt` (allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others) and `llms.txt` are generated from the same route list (`src/lib/routes.mjs`).
 - JSON-LD: WebSite and Organization (all pages), BreadcrumbList, Article (datePublished/dateModified), TouristDestination/Place, TravelAgency (company pages), ItemList (rankings), FAQPage (Q&A).
 - Clean URLs (`/guide/regions`), canonical on every page, Open Graph image at `public/og/default.png` (generated in-house by `scripts/make-images.cjs`).
+
+## Fonts and Japanese text
+
+Type is Noto Sans JP (SIL Open Font License), self-hosted: latin weights 400/600/700 plus one small Japanese subset (`src/assets/fonts/noto-sans-jp-ja-700.woff2`) holding only the Japanese characters the site uses. Japanese labels are decorative and marked `lang="ja"`; the site language is English.
+
+If you add Japanese text, the build stops and tells you which characters are missing. Rebuild the subset:
+
+```bash
+pip install fonttools brotli
+npm pack @expo-google-fonts/noto-sans-jp && tar xzf expo-google-fonts-noto-sans-jp-*.tgz
+python3 scripts/make_ja_font.py package/700Bold/NotoSansJP_700Bold.ttf
+```
 
 ## Images
 

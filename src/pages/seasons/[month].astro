@@ -34,8 +34,9 @@ const path = `/seasons/${m.slug}`;
 <Base title={title} description={description} path={path} bleed={true}
   crumbs={[{ name: 'Seasons', href: '/seasons' }, { name: m.name, href: path }]}
   jsonld={[articleNode({ title, description, path, published, reviewed, sources: SEASON_SOURCES })]}>
-  <ArticleHead eyebrow={`Season wheel · ${String(m.n).padStart(2, '0')} / 12`} title={`Japan in ${m.name}`} dek={`Region by region: blossom, leaves, snow and festivals in ${m.name}. Dates are typical windows and move from year to year; festival dates follow the usual calendar.`} image={SEASON_PHOTO[m.n]} />
-  <div class="wrap page">
+  <ArticleHead back={{ href: '/seasons', label: 'Season wheel' }} ja={m.ja} eyebrow={`Season wheel · ${String(m.n).padStart(2, '0')} / 12`} title={`Japan in ${m.name}`} dek={`Region by region: blossom, leaves, snow and festivals in ${m.name}. Dates are typical windows and move from year to year; festival dates follow the usual calendar.`} image={SEASON_PHOTO[m.n]} />
+  <div class="band-paper">
+  <div class="wrap page" style="padding-top:clamp(2.5rem,5vw,4rem)">
   <PageMeta published={published} reviewed={reviewed} sourceCount={SEASON_SOURCES.length} />
   <div class="wheel-wrap">
     <div><SeasonWheel current={m.n} /><Legend /></div>
@@ -81,5 +82,6 @@ const path = `/seasons/${m.slug}`;
     </div>
   )}
   <Sources sources={SEASON_SOURCES} />
+  </div>
   </div>
 </Base>

@@ -17,6 +17,8 @@ const base = {
   order: z.number().default(100),
   // key in src/data/photos.mjs (licensed photos only)
   image: z.string().optional(),
+  // short Japanese label shown next to the English (decorative, lang="ja")
+  ja: z.string().optional(),
 };
 
 const guide = defineCollection({

@@ -6,6 +6,7 @@ order: 6
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+ja: 入国
 image: fuji-blossom
 sources:
   - url: https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html

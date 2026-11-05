@@ -6,6 +6,7 @@ order: 5
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+ja: 旅程
 image: kumano
 sources:
   - url: https://global.jr-central.co.jp/en/

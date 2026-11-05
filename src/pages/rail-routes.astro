@@ -13,8 +13,9 @@ const description = `${RAIL_ROUTES.length} classic Japan rail routes with the ty
 ---
 <Base title={title} description={description} path="/rail-routes" bleed={true} crumbs={[{ name: 'Rail routes', href: '/rail-routes' }]}
   jsonld={[articleNode({ title, description, path: '/rail-routes', published: '2026-11-02', reviewed: RAIL_CHECKED, sources })]}>
-  <ArticleHead eyebrow="Rail · timetable" title="Rail-route table" dek="The classic routes travellers use in Japan, with the typical fastest scheduled journey time and whether the nationwide Japan Rail Pass covers them." image="shinkansen-motion" />
-  <div class="wrap page">
+  <ArticleHead back={{ href: '/guide', label: 'Guide' }} ja="時刻表" eyebrow="Rail" title="Rail-route table" dek="The classic routes travellers use in Japan, with the typical fastest scheduled journey time and whether the nationwide Japan Rail Pass covers them." image="shinkansen-motion" />
+  <div class="band-paper">
+  <div class="wrap page" style="padding-top:clamp(2.5rem,5vw,4rem)">
   <p class="note" style="margin-top:2rem">For prices and how the pass works, see <a href="/guide/rail-and-the-jr-pass">Rail in Japan and the Japan Rail Pass</a>.</p>
   <PageMeta published="2026-11-02" reviewed={RAIL_CHECKED} sourceCount={sources.length} />
   <RailTable />
@@ -27,5 +28,6 @@ const description = `${RAIL_ROUTES.length} classic Japan rail routes with the ty
     </ul>
   </div>
   <Sources sources={sources} />
+  </div>
   </div>
 </Base>

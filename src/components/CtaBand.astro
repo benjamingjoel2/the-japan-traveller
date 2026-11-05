@@ -1,0 +1,11 @@
+---
+interface Props { title: string; text: string; href: string; cta: string }
+const { title, text, href, cta } = Astro.props;
+---
+<section class="section band-accent">
+  <div class="wrap">
+    <h2>{title}</h2>
+    <p>{text}</p>
+    <a class="btn btn-light" href={href}>{cta}</a>
+  </div>
+</section>

@@ -29,13 +29,16 @@ const reviewed = feed.generated_at ?? n.published;
   crumbs={[{ name: 'Rankings', href: '/rankings' }, { name: n.short, href: path }]}
   jsonld={[list.length ? itemListNode({ name: n.title, path, companies: list }) : null, articleNode({ title: n.title, description, path, published: n.published, reviewed, sources })]}>
   <div class="wrap"><AdSlot ad={null} /></div>
-  <ArticleHead eyebrow={`Ranked list · ${n.short}`} title={n.title} dek={n.blurb} image={n.image} />
-  <div class="wrap page">
+  <ArticleHead back={{ href: '/rankings', label: 'All ranked lists' }} eyebrow={`Ranked list · ${n.short}`} ja={n.ja} title={n.title} dek={n.blurb} image={n.image}
+    facts={[{ icon: 'users', label: 'Operators listed', value: String(list.length) }, { icon: 'calendar', label: 'Feed dated', value: feed.generated_at ?? '' }, { icon: 'scale', label: 'Ranked by', value: 'Directory rank only', href: '/how-we-rank' }, { icon: 'shield', label: 'Listed', value: 'Verified only' }]} />
+  <div class="band-paper">
+  <div class="wrap page" style="padding-top:clamp(2.5rem,5vw,4rem)">
   <PageMeta published={n.published} reviewed={reviewed} sourceCount={sources.length} extra={{ label: 'Operators', value: String(list.length) }} />
   <DepartureBoard companies={list} title={n.short} feedDate={feed.generated_at} />
   <p class="note">{disclosure.rankingStatement}</p>
   <p class="note">{disclosure.verifiedOnlyStatement} {disclosure.founderOwnedExplainer} <a href="/how-we-rank">How we rank</a>.</p>
   <p class="note">Other lists: {NICHES.filter((x) => x.slug !== n.slug).map((x, i) => <>{i > 0 && ' · '}<a href={`/rankings/${x.slug}`}>{x.short}</a></>)}</p>
   <Sources sources={sources} note={`Company data: Tourground directory export (${feed.source}), dated ${feed.generated_at}.`} />
+  </div>
   </div>
 </Base>

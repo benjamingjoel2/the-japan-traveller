@@ -9,8 +9,8 @@ const description = 'Real questions travellers ask when planning Japan, each ans
 ---
 <Base title={title} description={description} path="/questions" crumbs={[{ name: 'Questions', href: '/questions' }]} bleed={true}
   jsonld={[faqNode(qa.map((q) => ({ question: q.data.question, answer: q.data.answer })))]}>
-  <ArticleHead eyebrow="Questions" title="Traveller questions" dek={description} image="trains-fuji" />
-  <section class="section">
+  <ArticleHead back={{ href: '/', label: 'Home' }} eyebrow="Questions" ja="よくある質問" title="Traveller questions" dek={description} image="trains-fuji" />
+  <section class="section band-paper">
     <div class="wrap">
       <ol class="rows">
         {qa.map((q, i) => (
@@ -18,7 +18,6 @@ const description = 'Real questions travellers ask when planning Japan, each ans
             <span class="n">Q{String(i + 1).padStart(2, '0')}</span>
             <span class="t">{q.data.question}<small>{q.data.answer}</small></span>
             <span class="m">{q.data.sources.length} sources</span>
-            <span class="arr" aria-hidden="true">→</span>
           </a></li>
         ))}
       </ol>

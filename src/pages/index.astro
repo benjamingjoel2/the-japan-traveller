@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import SeasonWheel from '../components/SeasonWheel.astro';
 import Legend from '../components/Legend.astro';
 import Photo from '../components/Photo.astro';
+import Icon from '../components/Icon.astro';
 import { site, disclosure } from '../config/site.mjs';
 import { publishedGuide, publishedQA } from '../lib/content.mjs';
 import { publishedCompanies, feedMeta } from '../lib/feed.mjs';
@@ -19,87 +20,53 @@ const thisMonth = MONTHS.find((m) => m.n === nowMonth);
 const KIND = { blossom: 'Blossom', leaves: 'Leaves', snow: 'Snow', festival: 'Festival', weather: 'Weather' };
 const monthEvents = SEASON_EVENTS[nowMonth].slice(0, 5);
 const count = (n) => (n.niche ? companies.filter((c) => c.niches.includes(n.niche)).length : companies.length);
-const [lead, ...rest] = guide;
+const short = (d) => humanDate(d).replace(/ \d{4}$/, '');
+const cardSizes = '(max-width: 36rem) 100vw, (max-width: 60rem) 50vw, 360px';
 ---
 <Base title={site.name} description={site.positioning} path="/" jsonld={[destinationNode()]} bleed={true}>
   <section class="hero">
     <div class="wrap hero-in">
       <div>
-        <p class="eyebrow"><i aria-hidden="true">●</i> Reference edition · Japan</p>
-        <h1 class="display">Plan Japan with a local operator.</h1>
-        <p class="dek">An independent reference for the regions, the seasons, rail and the Japan Rail Pass, ryokan etiquette, and which verified local operators deliver which kind of trip. Published by Tourground; rankings are never paid for.</p>
-        <p class="metaline"><span>Reviewed {humanDate(feed.generated_at ?? '2026-11-02')}</span><span>Sources on every page</span></p>
-        <a class="btn btn-solid" href="/guide">Start with the guide <span aria-hidden="true">↗</span></a>
+        <span class="badge"><Icon name="spark" />Sourced, dated, never paid</span>
+        <h1 class="display">Plan Japan with a local. <span lang="ja"><span class="nw">地元の人と、</span><span class="nw">日本を旅する。</span></span></h1>
+        <p class="dek">An independent reference for the regions, the seasons, rail and the Japan Rail Pass, ryokan etiquette, and which verified local operators deliver which kind of trip. Published by Tourground.</p>
+        <div class="cta-row">
+          <a class="btn btn-accent" href="/guide">Start with the guide</a>
+          <a class="textlink" href="/how-we-rank">How we rank →</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>{REGIONS.length}</b><span>regions covered</span></div>
+          <div><b>{RAIL_ROUTES.length}</b><span>rail routes timed</span></div>
+          <div><b>{companies.length}</b><span>verified {companies.length === 1 ? 'operator' : 'operators'}</span></div>
+        </div>
       </div>
-      <Photo id="fuji-chureito" class="r-45" ratio={4 / 5} eager={true} caption={true} widths={[400, 600, 800, 1000]} sizes="(max-width: 52rem) 100vw, 45vw" />
+      <Photo id="fuji-chureito" class="arch r-34" eager={true} ratio={3 / 4} widths={[400, 600, 860]} sizes="(max-width: 52rem) 100vw, 430px">Fujiyoshida · Yamanashi <span>Chureito Pagoda and Mount Fuji</span></Photo>
     </div>
   </section>
 
-  <div class="wrap">
-    <dl class="stats" aria-label="Japan at a glance">
-      <div><dt>Regions</dt><dd>{REGIONS.length}<small>Hokkaido to Okinawa</small></dd></div>
-      <div><dt>Season wheel</dt><dd>12<small>months, region by region</small></dd></div>
-      <div><dt>Rail routes</dt><dd>{RAIL_ROUTES.length}<small>timed, with JR Pass coverage</small></dd></div>
-      <div><dt>7-day JR Pass</dt><dd>¥50,000<small>adult, ordinary, bought online</small></dd></div>
-      <div><dt>Verified operators</dt><dd>{companies.length}<small>in the directory feed</small></dd></div>
-    </dl>
-  </div>
-
-  <section class="section">
+  <section class="section band-paper" id="guide">
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="eyebrow"><i aria-hidden="true">●</i> 01 / Destination guide</p>
-          <h2>Everything to plan the trip, <span class="ghost">sourced and dated.</span></h2>
+          <p class="eyebrow">Plan the trip · <span lang="ja">旅の計画</span></p>
+          <h2>Six ways into Japan.</h2>
         </div>
-        <a class="btn" href="/guide">All guides <span aria-hidden="true">↗</span></a>
+        <p class="aside-note">Every page lists its sources and the date it was last reviewed.</p>
       </div>
-      {lead && (
-        <article class="feature">
-          <a href={`/guide/${lead.id}`} tabindex="-1" aria-hidden="true"><Photo id={lead.data.image} class="r-32" ratio={3 / 2} widths={[480, 768, 1080]} sizes="(max-width: 52rem) 100vw, 55vw" /></a>
-          <div>
-            <p class="eyebrow">Guide · {lead.data.sources.length} sources</p>
-            <h3><a class="title-link" href={`/guide/${lead.id}`}>{lead.data.title}</a></h3>
-            <p class="dek">{lead.data.description}</p>
-            <ul class="pills">{REGIONS.map((r) => <li><span class="pill">{r.name}</span></li>)}</ul>
-          </div>
-        </article>
-      )}
       <ul class="tiles">
-        {rest.map((g) => (
+        {guide.map((g) => (
           <li class="tile">
             <a class="tile-link" href={`/guide/${g.id}`}>
-              {g.data.image && <Photo id={g.data.image} class="r-43" ratio={4 / 3} widths={[320, 480, 640]} sizes="(max-width: 34rem) 100vw, (max-width: 64rem) 50vw, 25vw" />}
-              <div class="tile-meta"><span>Guide</span><span>{g.data.sources.length} sources</span></div>
-              <h3>{g.data.title}</h3>
-              <p>{g.data.description}</p>
+              {g.data.image && <Photo id={g.data.image} ratio={4 / 3} sizes={cardSizes} />}
+              <div class="tile-body">
+                <p class="eyebrow">{g.data.nav ?? 'Guide'}{g.data.ja && <> · <span lang="ja">{g.data.ja}</span></>}</p>
+                <h3>{g.data.title}</h3>
+                <p>{g.data.description}</p>
+                <div class="tile-meta"><span class="ico"><Icon name="sources" />{g.data.sources.length} sources</span><b>Reviewed {short(g.data.reviewed)}</b></div>
+              </div>
             </a>
           </li>
         ))}
-        <li class="tile">
-          <a class="tile-link" href="/rail-routes">
-            <Photo id="shinkansen-motion" class="r-43" ratio={4 / 3} widths={[320, 480, 640]} sizes="(max-width: 34rem) 100vw, (max-width: 64rem) 50vw, 25vw" />
-            <div class="tile-meta"><span>Table</span><span>{RAIL_ROUTES.length} routes</span></div>
-            <h3>Rail-route table</h3>
-            <p>Classic routes with typical journey times and Japan Rail Pass coverage, sourced and dated.</p>
-          </a>
-        </li>
-        <li class="tile">
-          <a class="tile-link" href="/seasons">
-            <Photo id="autumn-maple" class="r-43" ratio={4 / 3} widths={[320, 480, 640]} sizes="(max-width: 34rem) 100vw, (max-width: 64rem) 50vw, 25vw" />
-            <div class="tile-meta"><span>Wheel</span><span>12 months</span></div>
-            <h3>Season wheel</h3>
-            <p>Blossom, leaves, snow and festivals, month by month and region by region.</p>
-          </a>
-        </li>
-        <li class="tile">
-          <a class="tile-link" href="/compare">
-            <Photo id="kaiseki" class="r-43" ratio={4 / 3} widths={[320, 480, 640]} sizes="(max-width: 34rem) 100vw, (max-width: 64rem) 50vw, 25vw" />
-            <div class="tile-meta"><span>Table</span><span>From the feed</span></div>
-            <h3>Compare operators</h3>
-            <p>Verified operators side by side: type, base, regions, niches and tier.</p>
-          </a>
-        </li>
       </ul>
     </div>
   </section>
@@ -108,11 +75,26 @@ const [lead, ...rest] = guide;
     <div class="wrap">
       <div class="section-head">
         <div>
-          <p class="eyebrow eyebrow-dark"><i aria-hidden="true">●</i> 02 / Ranked lists</p>
-          <h2 id="rank-h">Who to book with, <span class="ghost">ranked by merit.</span></h2>
-          <p class="dek">{disclosure.rankingStatement}</p>
+          <p class="eyebrow eyebrow-dark">How we rank · <span lang="ja">ランキングの基準</span></p>
+          <h2 id="rank-h">Merit before money. Verified before listed.</h2>
         </div>
-        <a class="btn btn-light" href="/how-we-rank">How we rank <span aria-hidden="true">↗</span></a>
+        <p class="dek">Every rank comes straight from the Tourground directory. We never reorder it, and no company can pay to change it.</p>
+      </div>
+      <ul class="fcards">
+        <li class="fcard"><Icon name="scale" /><h3>Rank is merit, never paid</h3><p>Ranks are taken unchanged from the directory feed. Paid placements, when they exist, are labelled and kept apart.</p></li>
+        <li class="fcard"><Icon name="shield" /><h3>Verified companies only</h3><p>Only companies the directory marks as verified are listed, plus Tourground's founder-owned brands, labelled every time.</p></li>
+        <li class="fcard"><Icon name="sources" /><h3>Sources on every page</h3><p>Prices, journey times, entry rules and season windows carry a source and a last-reviewed date.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section band-cream" id="rankings">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Who to book with · <span lang="ja">旅行会社を選ぶ</span></p>
+        <h2>Ranked lists, by kind of trip.</h2>
+        <p class="dek">{disclosure.verifiedOnlyStatement} Feed dated {humanDate(feed.generated_at ?? '2026-11-02')}.</p>
+        <a class="btn btn-accent" href="/rankings">All ranked lists</a>
       </div>
       <ol class="rows">
         {NICHES.map((n, i) => (
@@ -120,49 +102,49 @@ const [lead, ...rest] = guide;
             <span class="n">{String(i + 1).padStart(2, '0')}</span>
             <span class="t">{n.title}</span>
             <span class="m">{count(n)} {count(n) === 1 ? 'operator' : 'operators'}</span>
-            <span class="arr" aria-hidden="true">→</span>
           </a></li>
         ))}
       </ol>
-      <p class="note">Feed dated {feed.generated_at}. {disclosure.verifiedOnlyStatement}</p>
     </div>
   </section>
 
-  <section class="section band-tint" aria-labelledby="season-h">
-    <div class="wrap">
-      <div class="wheel-wrap">
-        <div><SeasonWheel current={nowMonth} /><Legend /></div>
-        <div>
-          <p class="eyebrow"><i aria-hidden="true">●</i> 03 / Season wheel</p>
-          <h2 id="season-h" style="margin-top:0.7rem">Japan in {thisMonth.name}</h2>
-          <ul class="season-list">
-            {monthEvents.map((e) => <li><span class="k">{KIND[e[1]]} · {regionName(e[0]).split(' ')[0]}</span><span>{e[2]}</span></li>)}
-          </ul>
-          <a class="btn" href={`/seasons/${thisMonth.slug}`}>All of {thisMonth.name} <span aria-hidden="true">↗</span></a>
-        </div>
+  <section class="section band-paper" aria-labelledby="season-h">
+    <div class="wrap wheel-wrap">
+      <div><SeasonWheel current={nowMonth} /><Legend /></div>
+      <div>
+        <p class="eyebrow">This month · <span lang="ja">{thisMonth.ja}</span></p>
+        <h2 id="season-h" style="margin-top:0.75rem">Japan in {thisMonth.name}.</h2>
+        <ul class="season-list">
+          {monthEvents.map((e) => <li><span class="k">{KIND[e[1]]} · {regionName(e[0]).split(' ')[0]}</span><span>{e[2]}</span></li>)}
+        </ul>
+        <a class="btn btn-accent" href={`/seasons/${thisMonth.slug}`}>All of {thisMonth.name}</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow"><i aria-hidden="true">●</i> 04 / Traveller questions</p>
-          <h2>Short answers first, <span class="ghost">then the detail.</span></h2>
-        </div>
-        <a class="btn" href="/questions">All questions <span aria-hidden="true">↗</span></a>
+  <section class="section band-cream" id="questions">
+    <div class="wrap split">
+      <div>
+        <p class="eyebrow">Good to know · <span lang="ja">知っておきたいこと</span></p>
+        <h2>Questions before booking.</h2>
+        <p class="dek">Short answer first, then the detail and the sources.</p>
+        <a class="textlink" href="/questions">All questions →</a>
       </div>
-      <ol class="rows">
-        {qa.map((q, i) => (
+      <ol class="rows plain">
+        {qa.map((q) => (
           <li><a href={`/questions/${q.id}`}>
-            <span class="n">Q{String(i + 1).padStart(2, '0')}</span>
             <span class="t">{q.data.question}<small>{q.data.answer}</small></span>
-            <span class="m">{q.data.sources.length} sources</span>
-            <span class="arr" aria-hidden="true">→</span>
           </a></li>
         ))}
       </ol>
+    </div>
+  </section>
+
+  <section class="section band-accent">
+    <div class="wrap">
+      <h2>One reference. Every season.</h2>
+      <p>Regions, rail, ryokan and the verified operators who deliver them, in one place.</p>
+      <a class="btn btn-light" href="/guide">Start with the guide</a>
     </div>
   </section>
 </Base>

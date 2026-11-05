@@ -7,6 +7,7 @@ embed: rail-table
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+ja: 鉄道
 image: shinkansen-station
 sources:
   - url: https://japanrailpass.net/en/purchase/price/
