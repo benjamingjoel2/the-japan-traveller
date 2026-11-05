@@ -15,6 +15,8 @@ const base = {
   reviewed: z.coerce.date(),
   status: z.enum(['draft', 'reviewed']),
   order: z.number().default(100),
+  // key in src/data/photos.mjs (licensed photos only)
+  image: z.string().optional(),
 };
 
 const guide = defineCollection({

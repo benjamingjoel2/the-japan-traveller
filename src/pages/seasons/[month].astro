@@ -6,6 +6,8 @@ import Legend from '../../components/Legend.astro';
 import PageMeta from '../../components/PageMeta.astro';
 import Sources from '../../components/Sources.astro';
 import FounderLabel from '../../components/FounderLabel.astro';
+import ArticleHead from '../../components/ArticleHead.astro';
+import { SEASON_PHOTO } from '../../data/photos.mjs';
 import { MONTHS, SEASON_EVENTS, SEASON_SOURCES, REGIONS, regionName } from '../../data/reference.mjs';
 import { publishedCompanies, hasRank, TIER_LABEL, feedMeta } from '../../lib/feed.mjs';
 import { site } from '../../config/site.mjs';
@@ -29,11 +31,11 @@ const description = `What is happening in each region of Japan in ${m.name}, fro
 const published = '2026-11-02', reviewed = '2026-11-02';
 const path = `/seasons/${m.slug}`;
 ---
-<Base title={title} description={description} path={path}
+<Base title={title} description={description} path={path} bleed={true}
   crumbs={[{ name: 'Seasons', href: '/seasons' }, { name: m.name, href: path }]}
   jsonld={[articleNode({ title, description, path, published, reviewed, sources: SEASON_SOURCES })]}>
-  <h1>Japan in {m.name}</h1>
-  <p class="dek">Region by region: blossom, leaves, snow and festivals in {m.name}. Dates are typical windows and move from year to year; festival dates are for the usual calendar.</p>
+  <ArticleHead eyebrow={`Season wheel · ${String(m.n).padStart(2, '0')} / 12`} title={`Japan in ${m.name}`} dek={`Region by region: blossom, leaves, snow and festivals in ${m.name}. Dates are typical windows and move from year to year; festival dates follow the usual calendar.`} image={SEASON_PHOTO[m.n]} />
+  <div class="wrap page">
   <PageMeta published={published} reviewed={reviewed} sourceCount={SEASON_SOURCES.length} />
   <div class="wheel-wrap">
     <div><SeasonWheel current={m.n} /><Legend /></div>
@@ -79,4 +81,5 @@ const path = `/seasons/${m.slug}`;
     </div>
   )}
   <Sources sources={SEASON_SOURCES} />
+  </div>
 </Base>

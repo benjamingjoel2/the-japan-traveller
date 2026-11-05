@@ -8,6 +8,7 @@ related: [best-week-for-cherry-blossom-in-kyoto, how-far-ahead-should-i-book-a-r
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: daigoji
 sources:
   - url: https://www.data.jma.go.jp/cpd/baiu/
     label: "Japan Meteorological Agency: rainy season start and end dates and normals"

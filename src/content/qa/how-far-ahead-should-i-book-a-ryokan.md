@@ -8,6 +8,7 @@ related: [best-week-for-cherry-blossom-in-kyoto, is-japan-good-in-the-rainy-seas
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: onsen-nozawa
 sources:
   - url: https://www.japan.travel/en/guide/japanese-ryokan/
     label: "JNTO: Japanese ryokan guide"

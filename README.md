@@ -100,7 +100,7 @@ Not built yet. `src/components/AdSlot.astro` renders the labelled, visually sepa
 
 ## Images
 
-The site ships no photographs. Any image added must be owned or licensed and recorded in `site.images` in the config (Unsplash allowed; no credit line on the site). No scraped images, no photos of identifiable people. Always set `width` and `height`, and `loading="lazy"` below the fold.
+Photos live in `src/assets/photos/` and are registered in `src/data/photos.mjs` with photographer, Unsplash URL, location and licence (all Unsplash License; no credit line is shown on the site, per the brief). Each was checked to be taken in Japan and to show no identifiable people. Use them only through `src/components/Photo.astro`, which crops at build time (`ratio`), outputs AVIF/WebP at several widths, sets `width` and `height`, and lazy-loads everything except the one `eager` image per page (the LCP). Guide and Q&A pages pick a photo with `image: <key>` in front matter. No scraped images, no photos of identifiable people.
 
 ## Deploy
 

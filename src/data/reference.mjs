@@ -16,13 +16,13 @@ export const regionName = (slug) => REGIONS.find((r) => r.slug === slug)?.name ?
 
 // Ranked lists. `niche: null` = every published operator.
 export const NICHES = [
-  { slug: 'best-local-operators', niche: null, title: 'Best local operators in Japan', short: 'All operators', published: '2026-11-02', blurb: 'Every verified or founder-owned operator in the Tourground directory that delivers trips in Japan, in feed rank order.' },
-  { slug: 'culture-and-craft', niche: 'culture-and-craft', title: 'Best operators in Japan for culture and craft', short: 'Culture and craft', published: '2026-11-02', blurb: 'Operators whose directory record lists culture and craft trips: temples, gardens, workshops and makers.' },
-  { slug: 'food-and-sake', niche: 'food-and-sake', title: 'Best operators in Japan for food and sake', short: 'Food and sake', published: '2026-11-02', blurb: 'Operators whose directory record lists food and sake trips.' },
-  { slug: 'hiking', niche: 'hiking', title: 'Best operators in Japan for hiking', short: 'Hiking', published: '2026-11-02', blurb: 'Operators whose directory record lists walking and hiking trips, such as the Kumano Kodo, the Nakasendo and the Japan Alps.' },
-  { slug: 'honeymoon', niche: 'honeymoon', title: 'Best operators in Japan for honeymoons', short: 'Honeymoon', published: '2026-11-02', blurb: 'Operators whose directory record lists honeymoon trips.' },
-  { slug: 'family', niche: 'family', title: 'Best operators in Japan for family trips', short: 'Family', published: '2026-11-02', blurb: 'Operators whose directory record lists family trips.' },
-  { slug: 'winter-and-ski', niche: 'winter-and-ski', title: 'Best operators in Japan for winter and ski', short: 'Winter and ski', published: '2026-11-02', blurb: 'Operators whose directory record lists winter trips: snow country, onsen in winter and skiing.' },
+  { slug: 'best-local-operators', image: 'fuji-blossom', niche: null, title: 'Best local operators in Japan', short: 'All operators', published: '2026-11-02', blurb: 'Every verified or founder-owned operator in the Tourground directory that delivers trips in Japan, in feed rank order.' },
+  { slug: 'culture-and-craft', image: 'daigoji', niche: 'culture-and-craft', title: 'Best operators in Japan for culture and craft', short: 'Culture and craft', published: '2026-11-02', blurb: 'Operators whose directory record lists culture and craft trips: temples, gardens, workshops and makers.' },
+  { slug: 'food-and-sake', image: 'kaiseki', niche: 'food-and-sake', title: 'Best operators in Japan for food and sake', short: 'Food and sake', published: '2026-11-02', blurb: 'Operators whose directory record lists food and sake trips.' },
+  { slug: 'hiking', image: 'kamikochi', niche: 'hiking', title: 'Best operators in Japan for hiking', short: 'Hiking', published: '2026-11-02', blurb: 'Operators whose directory record lists walking and hiking trips, such as the Kumano Kodo, the Nakasendo and the Japan Alps.' },
+  { slug: 'honeymoon', image: 'ryokan-room', niche: 'honeymoon', title: 'Best operators in Japan for honeymoons', short: 'Honeymoon', published: '2026-11-02', blurb: 'Operators whose directory record lists honeymoon trips.' },
+  { slug: 'family', image: 'okinawa', niche: 'family', title: 'Best operators in Japan for family trips', short: 'Family', published: '2026-11-02', blurb: 'Operators whose directory record lists family trips.' },
+  { slug: 'winter-and-ski', image: 'shirakawago-snow', niche: 'winter-and-ski', title: 'Best operators in Japan for winter and ski', short: 'Winter and ski', published: '2026-11-02', blurb: 'Operators whose directory record lists winter trips: snow country, onsen in winter and skiing.' },
 ];
 export const nicheLabel = (slug) => NICHES.find((n) => n.niche === slug)?.short ?? slug;
 

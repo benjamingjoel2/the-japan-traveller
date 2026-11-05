@@ -6,6 +6,7 @@ order: 5
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: kumano
 sources:
   - url: https://global.jr-central.co.jp/en/
     label: "JR Central: Tokaido Shinkansen timetables"

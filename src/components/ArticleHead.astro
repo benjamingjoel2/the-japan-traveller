@@ -1,0 +1,17 @@
+---
+import Photo from './Photo.astro';
+interface Props { eyebrow: string; title: string; dek?: string; image?: string; pills?: string[] }
+const { eyebrow, title, dek, image, pills = [] } = Astro.props;
+---
+<header class="article-head">
+  <div class="wrap article-head-in">
+    <div>
+      <p class="eyebrow"><i aria-hidden="true">●</i> {eyebrow}</p>
+      <h1>{title}</h1>
+      {dek && <p class="dek">{dek}</p>}
+      {pills.length > 0 && <ul class="pills">{pills.map((p) => <li><span class="pill">{p}</span></li>)}</ul>}
+      <slot name="after" />
+    </div>
+    {image && <Photo id={image} class="r-32" ratio={3 / 2} eager={true} caption={true} widths={[420, 640, 900, 1200]} sizes="(max-width: 52rem) 100vw, 46vw" />}
+  </div>
+</header>

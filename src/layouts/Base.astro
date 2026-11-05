@@ -1,10 +1,4 @@
 ---
-import '@fontsource/shippori-mincho/latin-600.css';
-import '@fontsource/zen-kaku-gothic-new/latin-400.css';
-import '@fontsource/zen-kaku-gothic-new/latin-700.css';
-import '@fontsource/ibm-plex-mono/latin-400.css';
-import serifFont from '@fontsource/shippori-mincho/files/shippori-mincho-latin-600-normal.woff2?url';
-import sansFont from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-latin-400-normal.woff2?url';
 import '../styles/global.css';
 import { site, disclosure } from '../config/site.mjs';
 import { graph, websiteNode, publisherNode, breadcrumbNode, abs } from '../lib/schema.mjs';
@@ -18,8 +12,10 @@ interface Props {
   jsonld?: object[];
   ogType?: string;
   noindex?: boolean;
+  /** full-bleed layout: the page provides its own .wrap sections */
+  bleed?: boolean;
 }
-const { title, description, path, crumbs = [], jsonld = [], ogType = 'article', noindex = false } = Astro.props;
+const { title, description, path, crumbs = [], jsonld = [], ogType = 'article', noindex = false, bleed = false } = Astro.props;
 const canonical = abs(path);
 const isHome = path === '/';
 const fullTitle = isHome ? `${site.name}: ${site.tagline}` : `${title} | ${site.name}`;
@@ -33,13 +29,14 @@ const ld = graph(
 const nav = [
   { href: '/guide', label: 'Guide' },
   { href: '/seasons', label: 'Seasons' },
-  { href: '/rail-routes', label: 'Rail routes' },
+  { href: '/rail-routes', label: 'Rail' },
   { href: '/rankings', label: 'Rankings' },
   { href: '/operators', label: 'Operators' },
   { href: '/questions', label: 'Questions' },
   { href: '/compare', label: 'Compare' },
-  { href: '/about', label: 'About' },
 ];
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const nowMonth = MONTH_NAMES[new Date().getUTCMonth()];
 const section = '/' + path.split('/')[1];
 const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.colors.accentOnDark}}`;
 ---
@@ -52,8 +49,9 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
-    <link rel="preload" href={serifFont} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/shippori-mincho-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/zen-kaku-gothic-new-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="theme-color" content="#1e3557" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
@@ -76,40 +74,29 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header>
-      <div class="strip">
-        <div class="wrap">
-          <span>Reference edition · English</span>
-          <span>{disclosure.footerPublishedBy.replace('.', '')}</span>
-        </div>
+    <div class="ticker">
+      <div class="wrap">
+        <span><i aria-hidden="true">●</i> {disclosure.footerPublishedBy} Rankings are never paid.</span>
+        <a href={`/seasons/${nowMonth.toLowerCase()}`}>This month: {nowMonth} <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="masthead">
-        <div class="wrap">
-          <div>
-            <a class="brand" href="/">{site.name}</a>
-            <span class="brand-sub">{site.tagline}</span>
-          </div>
-          <div class="stub" aria-hidden="true">
-            Timetable<b>JP · {site.domain.split('.')[0]}</b>
-          </div>
-        </div>
+    </div>
+    <header class="bar">
+      <div class="wrap bar-in">
+        <a class="brand" href="/">{site.name}</a>
+        <nav class="nav" aria-label="Main">
+          <ul>
+            {nav.map((n) => (
+              <li><a href={n.href} aria-current={section === n.href ? 'page' : undefined}>{n.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+        <a class="btn btn-solid bar-cta" href="/how-we-rank">How we rank <span aria-hidden="true">↗</span></a>
       </div>
-      <nav class="platforms" aria-label="Main">
-        <ol>
-          {nav.map((n, i) => (
-            <li>
-              <a href={n.href} aria-current={section === n.href ? 'page' : undefined}>
-                <span class="no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>{n.label}
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
     </header>
 
-    <main id="main" class="wrap">
+    <main id="main">
       {allCrumbs.length > 0 && (
-        <nav class="crumbs" aria-label="Breadcrumb">
+        <nav class="crumbs wrap" aria-label="Breadcrumb">
           <ol>
             {allCrumbs.map((c, i) => (
               <li>{i === allCrumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.href}>{c.name}</a>}</li>
@@ -117,37 +104,56 @@ const styleVars = `:root{--accent:${site.colors.accent};--accent-dark:${site.col
           </ol>
         </nav>
       )}
-      <slot />
+      {bleed ? <slot /> : <div class="wrap page"><slot /></div>}
     </main>
 
     <footer class="foot">
       <div class="wrap">
-        <div>
+        <div class="foot-grid">
+          <div class="foot-about">
+            <p class="eyebrow eyebrow-dark"><i aria-hidden="true">●</i> About this site</p>
+            <p>{disclosure.footerShort}</p>
+            <p>{site.editorLine}</p>
+          </div>
+          <div>
+            <p class="eyebrow eyebrow-dark">Plan</p>
+            <ul>
+              <li><a href="/guide">Destination guide</a></li>
+              <li><a href="/seasons">Season wheel</a></li>
+              <li><a href="/rail-routes">Rail-route table</a></li>
+              <li><a href="/questions">Questions</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow eyebrow-dark">Operators</p>
+            <ul>
+              <li><a href="/rankings">Ranked lists</a></li>
+              <li><a href="/operators">All operators</a></li>
+              <li><a href="/compare">Compare</a></li>
+              <li><a href="/how-we-rank">How we rank</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow eyebrow-dark">This site</p>
+            <ul>
+              <li><a href="/about">About</a></li>
+              <li><a href="/disclosure">Publisher disclosure</a></li>
+              <li><a href="/corrections">Corrections and removal</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms</a></li>
+              <li><a href="/cookies">Cookie Policy</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="eyebrow eyebrow-dark">Contact</p>
+            <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+            <address>{site.address.lines.map((l) => <>{l}<br /></>)}</address>
+          </div>
+        </div>
+        <p class="foot-mark" aria-hidden="true">{site.name}</p>
+        <div class="foot-base">
           <p class="pub">{disclosure.footerPublishedBy.replace('Tourground.', '')}<a href={site.publisher.url}>Tourground</a>.</p>
-          <p>{disclosure.footerShort}</p>
-          <p>{site.editorLine}</p>
-        </div>
-        <div>
-          <span class="label">This site</span>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/how-we-rank">How we rank</a></li>
-            <li><a href="/disclosure">Publisher disclosure</a></li>
-            <li><a href="/corrections">Corrections and removal</a></li>
-          </ul>
-        </div>
-        <div>
-          <span class="label">Legal</span>
-          <ul>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms">Terms</a></li>
-            <li><a href="/cookies">Cookie Policy</a></li>
-          </ul>
-        </div>
-        <div>
-          <span class="label">Contact</span>
-          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
-          <address>{site.address.lines.map((l) => <>{l}<br /></>)}</address>
+          <p>{site.domain}</p>
         </div>
       </div>
     </footer>

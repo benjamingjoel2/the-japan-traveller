@@ -6,6 +6,7 @@ order: 6
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: fuji-blossom
 sources:
   - url: https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html
     label: "Ministry of Foreign Affairs of Japan: visa exemption arrangements (page dated 1 September 2025)"

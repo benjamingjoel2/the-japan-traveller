@@ -6,6 +6,7 @@ order: 4
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: ryokan-room
 sources:
   - url: https://www.japan.travel/en/guide/japanese-ryokan/
     label: "JNTO: Japanese ryokan guide"

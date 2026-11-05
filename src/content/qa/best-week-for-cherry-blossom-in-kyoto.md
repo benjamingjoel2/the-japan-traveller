@@ -8,6 +8,7 @@ related: [is-the-jr-pass-still-worth-it, how-far-ahead-should-i-book-a-ryokan]
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: kyoto-pagoda
 sources:
   - url: https://tenki.jp/sakura/english/160.html
     label: "tenki.jp (Japan Weather Association): normal cherry blossom dates by city"

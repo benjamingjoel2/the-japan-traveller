@@ -1,34 +1,40 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import PageMeta from '../../components/PageMeta.astro';
+import ArticleHead from '../../components/ArticleHead.astro';
+import ArticleAside from '../../components/ArticleAside.astro';
 import Sources from '../../components/Sources.astro';
 import RailTable from '../../components/RailTable.astro';
 import SeasonWheel from '../../components/SeasonWheel.astro';
+import Legend from '../../components/Legend.astro';
 import { publishedGuide } from '../../lib/content.mjs';
 import { articleNode, destinationNode } from '../../lib/schema.mjs';
 
 export async function getStaticPaths() {
   const entries = await publishedGuide();
-  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry, all: entries } }));
 }
-const { entry } = Astro.props;
+const { entry, all } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const path = `/guide/${entry.id}`;
+const others = all.filter((g) => g.id !== entry.id).map((g) => ({ href: `/guide/${g.id}`, label: g.data.title }));
 ---
-<Base title={d.title} description={d.description} path={path}
+<Base title={d.title} description={d.description} path={path} bleed={true}
   crumbs={[{ name: 'Guide', href: '/guide' }, { name: d.nav ?? d.title, href: path }]}
   jsonld={[articleNode({ title: d.title, description: d.description, path, published: d.published, reviewed: d.reviewed, sources: d.sources }), entry.id === 'regions' ? destinationNode() : null]}>
   <article>
-    <h1>{d.title}</h1>
-    <p class="dek">{d.description}</p>
-    <PageMeta published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} />
+    <ArticleHead eyebrow={`Destination guide · ${d.nav ?? 'Guide'}`} title={d.title} dek={d.description} image={d.image} />
     {d.embed === 'season-wheel' && (
-      <div class="wheel-wrap"><SeasonWheel /><p class="note">Pick a month to see each region in that month.</p></div>
+      <div class="wrap"><div class="wheel-wrap" style="padding-top:2rem"><div><SeasonWheel /><Legend /></div><p class="dek">Pick a month on the wheel to see each region in that month, with the operators who run trips then.</p></div></div>
     )}
-    <div class="prose"><Content /></div>
-    {d.embed === 'rail-table' && <RailTable />}
-    <Sources sources={d.sources} />
+    <div class="wrap article-body">
+      <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} links={[...others, { href: '/rail-routes', label: 'Rail-route table' }, { href: '/seasons', label: 'Season wheel' }]} linksTitle="More in the guide" />
+      <div>
+        <div class="prose"><Content /></div>
+        {d.embed === 'rail-table' && <RailTable />}
+        <Sources sources={d.sources} />
+      </div>
+    </div>
   </article>
 </Base>

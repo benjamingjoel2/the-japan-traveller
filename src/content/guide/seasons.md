@@ -7,6 +7,7 @@ embed: season-wheel
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: meguro-blossom
 sources:
   - url: https://www.data.jma.go.jp/sakura/data/index.html
     label: "Japan Meteorological Agency: seasonal observations (cherry blossom and autumn leaves), normals 1991–2020"

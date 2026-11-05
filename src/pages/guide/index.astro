@@ -1,19 +1,39 @@
 ---
 import Base from '../../layouts/Base.astro';
+import ArticleHead from '../../components/ArticleHead.astro';
+import Photo from '../../components/Photo.astro';
 import { publishedGuide } from '../../lib/content.mjs';
 import { destinationNode } from '../../lib/schema.mjs';
+import { RAIL_ROUTES } from '../../data/reference.mjs';
 const guide = await publishedGuide();
 const title = 'Japan destination guide';
 const description = 'Regions, seasons, rail and the Japan Rail Pass, ryokan and onsen, typical 7, 10 and 14-day routes, and entry basics for Japan.';
+const sizes = '(max-width: 34rem) 100vw, (max-width: 64rem) 50vw, 25vw';
 ---
-<Base title={title} description={description} path="/guide" crumbs={[{ name: 'Guide', href: '/guide' }]} jsonld={[destinationNode()]}>
-  <h1>{title}</h1>
-  <p class="dek">{description} Each page lists its sources and the date it was last reviewed.</p>
-  <ol class="index">
-    {guide.map((g, i) => (
-      <li><span class="no">{String(i + 1).padStart(2, '0')}</span><div><a href={`/guide/${g.id}`}>{g.data.title}</a><p>{g.data.description}</p></div></li>
-    ))}
-    <li><span class="no">{String(guide.length + 1).padStart(2, '0')}</span><div><a href="/rail-routes">Rail-route table</a><p>Classic routes, typical journey times and Japan Rail Pass coverage.</p></div></li>
-    <li><span class="no">{String(guide.length + 2).padStart(2, '0')}</span><div><a href="/seasons">Season wheel</a><p>Month by month, region by region.</p></div></li>
-  </ol>
+<Base title={title} description={description} path="/guide" crumbs={[{ name: 'Guide', href: '/guide' }]} jsonld={[destinationNode()]} bleed={true}>
+  <ArticleHead eyebrow="Destination guide" title={title} dek={`${description} Each page lists its sources and the date it was last reviewed.`} image="fuji-blossom" />
+  <section class="section">
+    <div class="wrap">
+      <h2 class="sr-only">Guide pages</h2>
+      <ul class="tiles">
+        {guide.map((g, i) => (
+          <li class="tile"><a class="tile-link" href={`/guide/${g.id}`}>
+            {g.data.image && <Photo id={g.data.image} class="r-43" ratio={4 / 3} widths={[320, 480, 640]} sizes={sizes} />}
+            <div class="tile-meta"><span>{String(i + 1).padStart(2, '0')} / {g.data.nav ?? 'Guide'}</span><span>{g.data.sources.length} sources</span></div>
+            <h3>{g.data.title}</h3><p>{g.data.description}</p>
+          </a></li>
+        ))}
+        <li class="tile"><a class="tile-link" href="/rail-routes">
+          <Photo id="shinkansen-motion" class="r-43" ratio={4 / 3} widths={[320, 480, 640]} sizes={sizes} />
+          <div class="tile-meta"><span>Table</span><span>{RAIL_ROUTES.length} routes</span></div>
+          <h3>Rail-route table</h3><p>Classic routes, typical journey times and Japan Rail Pass coverage.</p>
+        </a></li>
+        <li class="tile"><a class="tile-link" href="/seasons">
+          <Photo id="autumn-maple" class="r-43" ratio={4 / 3} widths={[320, 480, 640]} sizes={sizes} />
+          <div class="tile-meta"><span>Wheel</span><span>12 months</span></div>
+          <h3>Season wheel</h3><p>Month by month, region by region: blossom, leaves, snow and festivals.</p>
+        </a></li>
+      </ul>
+    </div>
+  </section>
 </Base>

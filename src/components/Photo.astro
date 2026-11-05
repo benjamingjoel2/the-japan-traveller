@@ -1,0 +1,32 @@
+---
+// Responsive, right-sized photo with explicit width/height (no CLS).
+// - ratio: crop at build time (e.g. 4/5, 3/2), so no bytes are wasted on pixels CSS would hide
+// - eager: the LCP image. WebP only (decodes faster than AVIF on slow phones), high priority
+// - everything else: AVIF + WebP, lazy-loaded
+import { Picture } from 'astro:assets';
+import { photo } from '../data/photos.mjs';
+interface Props { id: string; sizes: string; widths?: number[]; ratio?: number; eager?: boolean; caption?: boolean; class?: string }
+const { id, sizes, widths = [320, 480, 640], ratio, eager = false, caption = false, class: cls } = Astro.props;
+const p = photo(id);
+const w = Math.max(...widths);
+const r = ratio ?? p.src.width / p.src.height;
+const h = Math.round(w / r);
+---
+<figure class:list={['photo', cls]}>
+  <Picture
+    src={p.src}
+    alt={p.alt}
+    widths={widths}
+    sizes={sizes}
+    width={w}
+    height={h}
+    fit="cover"
+    position="center"
+    formats={eager ? ['webp'] : ['avif', 'webp']}
+    quality={eager ? 60 : 45}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding={eager ? 'auto' : 'async'}
+    fetchpriority={eager ? 'high' : 'auto'}
+  />
+  {caption && <figcaption>{p.caption}</figcaption>}
+</figure>

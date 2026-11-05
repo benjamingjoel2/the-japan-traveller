@@ -8,6 +8,7 @@ related: [best-week-for-cherry-blossom-in-kyoto, how-far-ahead-should-i-book-a-r
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
+image: trains-fuji
 sources:
   - url: https://japanrailpass.net/en/purchase/price/
     label: "Japan Rail Pass official site: prices"

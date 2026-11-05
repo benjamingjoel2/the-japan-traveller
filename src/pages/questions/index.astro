@@ -1,18 +1,27 @@
 ---
 import Base from '../../layouts/Base.astro';
+import ArticleHead from '../../components/ArticleHead.astro';
 import { publishedQA } from '../../lib/content.mjs';
 import { faqNode } from '../../lib/schema.mjs';
 const qa = await publishedQA();
 const title = 'Traveller questions about Japan';
 const description = 'Real questions travellers ask when planning Japan, each answered briefly first and then in detail, with sources.';
 ---
-<Base title={title} description={description} path="/questions" crumbs={[{ name: 'Questions', href: '/questions' }]}
+<Base title={title} description={description} path="/questions" crumbs={[{ name: 'Questions', href: '/questions' }]} bleed={true}
   jsonld={[faqNode(qa.map((q) => ({ question: q.data.question, answer: q.data.answer })))]}>
-  <h1>Traveller questions</h1>
-  <p class="dek">{description}</p>
-  <ol class="index">
-    {qa.map((q, i) => (
-      <li><span class="no">Q{i + 1}</span><div><a href={`/questions/${q.id}`}>{q.data.question}</a><p>{q.data.answer}</p></div></li>
-    ))}
-  </ol>
+  <ArticleHead eyebrow="Questions" title="Traveller questions" dek={description} image="trains-fuji" />
+  <section class="section">
+    <div class="wrap">
+      <ol class="rows">
+        {qa.map((q, i) => (
+          <li><a href={`/questions/${q.id}`}>
+            <span class="n">Q{String(i + 1).padStart(2, '0')}</span>
+            <span class="t">{q.data.question}<small>{q.data.answer}</small></span>
+            <span class="m">{q.data.sources.length} sources</span>
+            <span class="arr" aria-hidden="true">→</span>
+          </a></li>
+        ))}
+      </ol>
+    </div>
+  </section>
 </Base>

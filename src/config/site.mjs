@@ -56,9 +56,9 @@ export const site = {
   // Analytics: Vercel Web Analytics only (cookieless). No other tracking.
   analytics: { vercel: true },
 
-  // Image credits. The site currently ships no photographs. Every image added
-  // must be owned or licensed and listed here (Unsplash allowed, no credit line
-  // shown on the site, but record it here for our files).
+  // Image credits. Photographs are listed with photographer, source URL,
+  // location and licence in src/data/photos.mjs (all Unsplash License; no
+  // credit line is shown on the site, per the brief). Other images:
   images: [
     {
       file: '/og/default.png',
