@@ -6,8 +6,7 @@ import ArticleAside from '../../components/ArticleAside.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Sources from '../../components/Sources.astro';
 import RailTable from '../../components/RailTable.astro';
-import SeasonWheel from '../../components/SeasonWheel.astro';
-import Legend from '../../components/Legend.astro';
+import MonthList from '../../components/MonthList.astro';
 import { publishedGuide } from '../../lib/content.mjs';
 import { humanDate } from '../../lib/dates.mjs';
 import { articleNode, destinationNode } from '../../lib/schema.mjs';
@@ -35,11 +34,11 @@ const others = all.filter((g) => g.id !== entry.id).map((g) => ({ href: `/guide/
       ]}
       card={{ label: 'Book with a local', value: 'Ranked operators', href: '/rankings', cta: 'See the lists' }} />
     <div class="band-paper">
-      {d.embed === 'season-wheel' && (
-        <div class="wrap" style="padding-top:clamp(3rem,6vw,5rem)"><div class="wheel-wrap"><div><SeasonWheel /><Legend /></div><p class="dek">Pick a month on the wheel to see each region in that month, with the operators who run trips then.</p></div></div>
+      {d.embed === 'month-list' && (
+        <div class="wrap" style="padding-top:clamp(3rem,6vw,5rem)"><div class="wheel-wrap"><p class="dek">Pick a month to see each region in that month, with the operators who run trips then.</p><MonthList /></div></div>
       )}
       <div class="wrap article-body">
-        <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} links={[...others, { href: '/rail-routes', label: 'Rail-route table' }, { href: '/seasons', label: 'Season wheel' }]} linksTitle="More in the guide" />
+        <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} links={[...others, { href: '/rail-routes', label: 'Rail-route table' }, { href: '/seasons', label: 'Month by month' }]} linksTitle="More in the guide" />
         <div>
           <div class="prose"><Content /></div>
           {d.embed === 'rail-table' && <RailTable />}

@@ -39,4 +39,4 @@ The rainy season (tsuyu) moves north. Okinawa's usually starts in May and ends i
 - **Okinawa from July**: after its rainy season ends, though typhoon season follows.
 - **Indoors and covered**: Tokyo and Osaka work well in any weather.
 
-See [June on the season wheel](/seasons/june) for what is happening in each region.
+See [June, month by month](/seasons/june) for what is happening in each region.

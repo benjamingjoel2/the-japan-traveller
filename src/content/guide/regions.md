@@ -23,7 +23,7 @@ sources:
     accessed: 2026-11-02
 ---
 
-Japan is usually divided into eight traditional regions on the four main islands, with Okinawa often treated as a ninth for travel planning. The list below runs north to south. Rail times between the main cities are in the [rail-route table](/rail-routes); what is happening in each region month by month is on the [season wheel](/seasons).
+Japan is usually divided into eight traditional regions on the four main islands, with Okinawa often treated as a ninth for travel planning. The list below runs north to south. Rail times between the main cities are in the [rail-route table](/rail-routes); what is happening in each region month by month is on the [month-by-month page](/seasons).
 
 ## Hokkaido
 

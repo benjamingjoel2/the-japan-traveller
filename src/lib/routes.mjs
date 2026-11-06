@@ -15,7 +15,7 @@ export async function allRoutes() {
     { path: '/guide', title: 'Japan destination guide', lastmod: base, group: 'Guide' },
     ...guide.map((g) => ({ path: `/guide/${g.id}`, title: g.data.title, desc: g.data.description, lastmod: isoDate(g.data.reviewed), group: 'Guide' })),
     { path: '/rail-routes', title: 'Rail-route table: journey times and JR Pass coverage', lastmod: RAIL_CHECKED, group: 'Guide' },
-    { path: '/seasons', title: 'Season wheel: Japan month by month', lastmod: base, group: 'Seasons' },
+    { path: '/seasons', title: 'Japan month by month', lastmod: base, group: 'Seasons' },
     ...MONTHS.map((m) => ({ path: `/seasons/${m.slug}`, title: `Japan in ${m.name}`, lastmod: base, group: 'Seasons' })),
     { path: '/rankings', title: 'Ranked lists', lastmod: feedDate, group: 'Rankings' },
     ...NICHES.map((n) => ({ path: `/rankings/${n.slug}`, title: n.title, lastmod: feedDate, group: 'Rankings' })),

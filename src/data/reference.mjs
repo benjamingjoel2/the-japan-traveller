@@ -53,7 +53,7 @@ export const SOURCES = {
 };
 
 // ---------------------------------------------------------------------------
-// SEASON WHEEL: month x region. Short, general windows only. Exact dates vary
+// SEASONS: month x region. Short, general windows only. Exact dates vary
 // every year; the guide links to live forecasts. Cells left empty = nothing
 // notable we can source.
 // ---------------------------------------------------------------------------
