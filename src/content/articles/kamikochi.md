@@ -69,9 +69,9 @@ Facilities close in stages before the end. The Kamikochi Tourism Association's c
 | 13 November | Taishoike Hotel |
 | 14 November | Most hotels near Kappa-bashi and the bus terminal |
 
-In winter, shops, hotels and other facilities are closed, and the Mount Yakedake trail is closed. The official site advises consulting a guide before a winter visit. Its rules page has separate winter guidance: submit a climbing registration form at Nakanoyu Gate, and watch for avalanches, falling rocks and snowdrifts, particularly on the road between Kamikochi Tunnel and Taisho-ike.
+In winter, shops, hotels and other facilities are closed, and the Mount Yakedake trail is closed. The official site advises consulting a guide before a winter visit. Its winter rules ask visitors to submit a climbing registration form at Nakanoyu Gate and to watch for avalanches, falling rocks and snowdrifts.
 
-The FAQ lists spring (May to June), summer (July to August) and autumn (October) as the best seasons. See /guide/seasons for how these months fit the rest of the country.
+The FAQ lists spring (May to June), summer (July to August) and autumn (October) as the best seasons. See also the [seasons guide](/guide/seasons).
 
 ## The private-car ban
 
@@ -80,7 +80,7 @@ Private cars, including rental cars and motorcycles, cannot enter Kamikochi at a
 - **Sawando**, on the Matsumoto (Nagano) side. About 2,000 spaces across several lots. The Kamikochi Tourism Association gives the daily fee for a car as 800 yen. The English-language site gives 700 yen, so check on arrival.
 - **Hirayu (Akandana parking)**, on the Takayama (Gifu) side. About 850 spaces, 600 yen per 24 hours for a car. Open 24 hours from 17 April to 15 November and closed in winter.
 
-The association warns that summer weekends, holidays, Obon and the October foliage period are very crowded. It advises allowing extra time.
+The association advises allowing extra time on summer weekends, holidays, Obon and in the October foliage period.
 
 ## Shuttle buses and taxis
 
@@ -96,9 +96,9 @@ Fixed taxi fares from the Sawando upper zone lots to the Kamikochi Bus Terminal 
 Without a car, the official site gives two main routes:
 
 - **From Matsumoto:** Matsumoto Dentetsu train to Shin-Shimashima (30 minutes), then bus to Kamikochi (about 60 minutes). The site states that the bus back from Kamikochi to Shin-Shimashima or Matsumoto must be reserved, as must the direct bus from Matsumoto.
-- **From Takayama:** Nohi bus from Takayama Bus Center to Hirayu Onsen (60 minutes), then bus or taxi to Kamikochi (25 minutes). See /articles/takayama for the town itself.
+- **From Takayama:** Nohi bus from Takayama Bus Center to Hirayu Onsen (60 minutes), then bus or taxi to Kamikochi (25 minutes). See the [Takayama guide](/articles/takayama) for the town itself.
 
-The JR Pass does not cover these buses or the Matsumoto-side train, according to the FAQ (see /guide/rail-and-the-jr-pass). The gate closes at 19:00 in spring and autumn and 20:00 in summer. The last bus leaves the bus terminal around 18:00.
+The JR Pass does not cover these buses or the Matsumoto-side train, according to the FAQ (see [rail and the JR Pass](/guide/rail-and-the-jr-pass)). The gate closes at 19:00 in spring and autumn and 20:00 in summer. The last bus leaves the bus terminal around 18:00.
 
 ## Kappa-bashi and the valley walks
 
@@ -139,4 +139,4 @@ Report sightings to the Kamikochi Information Center, +81-263-95-2433, open 08:0
 - There are no ATMs, banks or convenience stores in Kamikochi. Most places take major credit cards, but the FAQ advises carrying some cash.
 - The bus terminal baggage room is open 06:00 to 17:00. There are no coin lockers.
 - Check the official site for road closures. In 2026 the park road closed briefly in August after a fallen tree.
-- For Kanazawa and the wider region, see /articles/kanazawa and /guide/regions.
+- For the wider region, see [Kanazawa](/articles/kanazawa) and the [regions guide](/guide/regions).
