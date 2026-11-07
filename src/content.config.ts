@@ -40,4 +40,14 @@ const qa = defineCollection({
   }),
 });
 
-export const collections = { guide, qa };
+// Long-form articles (journal). Same publishing rules: reviewed + sourced only.
+const articles = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
+  schema: z.object({
+    ...base,
+    category: z.enum(['Walking', 'Rail and transport', 'Seasons', 'Places', 'Practical']),
+    region: z.string().optional(),
+  }),
+});
+
+export const collections = { guide, qa, articles };

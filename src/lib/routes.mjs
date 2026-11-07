@@ -1,5 +1,5 @@
 // The list of every public page, used by sitemap.xml and llms.txt.
-import { publishedGuide, publishedQA, isoDate } from './content.mjs';
+import { publishedGuide, publishedQA, publishedArticles, isoDate } from './content.mjs';
 import { publishedCompanies, feedMeta } from './feed.mjs';
 import { NICHES, MONTHS, RAIL_CHECKED } from '../data/reference.mjs';
 import { site } from '../config/site.mjs';
@@ -7,6 +7,7 @@ import { site } from '../config/site.mjs';
 export async function allRoutes() {
   const guide = await publishedGuide();
   const qa = await publishedQA();
+  const articles = await publishedArticles();
   const companies = publishedCompanies();
   const feedDate = feedMeta().generated_at ?? '2026-11-02';
   const base = '2026-11-02';
@@ -22,6 +23,8 @@ export async function allRoutes() {
     { path: '/operators', title: 'Operators in Japan', lastmod: feedDate, group: 'Operators' },
     ...companies.map((c) => ({ path: `/operators/${c.id}`, title: `${c.name} (operator fact page)`, lastmod: c.last_checked, group: 'Operators' })),
     { path: '/compare', title: 'Compare operators', lastmod: feedDate, group: 'Operators' },
+    { path: '/articles', title: 'Articles', lastmod: base, group: 'Articles' },
+    ...articles.map((a) => ({ path: `/articles/${a.id}`, title: a.data.title, desc: a.data.description, lastmod: isoDate(a.data.reviewed), group: 'Articles' })),
     { path: '/questions', title: 'Traveller questions', lastmod: base, group: 'Questions' },
     ...qa.map((q) => ({ path: `/questions/${q.id}`, title: q.data.question, desc: q.data.answer, lastmod: isoDate(q.data.reviewed), group: 'Questions' })),
     { path: '/about', title: 'About', lastmod: base, group: 'About and policies' },

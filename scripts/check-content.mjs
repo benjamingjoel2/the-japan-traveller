@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const dirs = ['src/content/guide', 'src/content/qa'];
+const dirs = ['src/content/guide', 'src/content/qa', 'src/content/articles'];
 let failed = false;
 for (const dir of dirs) {
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.md'))) {

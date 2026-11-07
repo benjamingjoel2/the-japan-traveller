@@ -49,3 +49,6 @@ export const photo = (key) => {
 
 // Season of each month, for month-page photos
 export const SEASON_PHOTO = { 12: 'shirakawago-snow', 1: 'shirakawago-snow', 2: 'shirakawago-snow', 3: 'meguro-blossom', 4: 'meguro-blossom', 5: 'fuji-blossom', 6: 'daigoji', 7: 'kamikochi', 8: 'kamikochi', 9: 'autumn-maple', 10: 'autumn-maple', 11: 'autumn-maple' };
+
+// Fallback photo per article category (used only when an article sets no image)
+export const CATEGORY_PHOTO = { Walking: 'kumano', 'Rail and transport': 'shinkansen-station', Seasons: 'autumn-maple', Places: 'kyoto-pagoda', Practical: 'ryokan-room' };

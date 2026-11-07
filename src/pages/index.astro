@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Photo from '../components/Photo.astro';
 import GuideList from '../components/GuideList.astro';
 import { site, disclosure } from '../config/site.mjs';
-import { publishedGuide, publishedQA } from '../lib/content.mjs';
+import { publishedGuide, publishedQA, publishedArticles } from '../lib/content.mjs';
 import { publishedCompanies, feedMeta } from '../lib/feed.mjs';
 import { NICHES, REGIONS, RAIL_ROUTES, regionName } from '../data/reference.mjs';
 import { destinationNode } from '../lib/schema.mjs';
@@ -11,6 +11,7 @@ import { humanDate } from '../lib/dates.mjs';
 
 const guide = await publishedGuide();
 const qa = await publishedQA();
+const articles = (await publishedArticles()).slice(0, 6);
 const companies = publishedCompanies();
 const feed = feedMeta();
 const count = (n) => (n.niche ? companies.filter((c) => c.niches.includes(n.niche)).length : companies.length);
@@ -60,6 +61,18 @@ const STEPS = [
     <div class="stick-head"><h2 id="guide-h">Many ways to plan the trip.</h2></div>
     <GuideList items={items} id="home-guide" />
   </section>
+
+  {articles.length > 0 && (
+    <section class="section-sm" aria-labelledby="art-h">
+      <div class="wrap">
+        <h2 id="art-h" class="center">Latest articles</h2>
+        <ol class="itin" style="max-width:52rem">
+          {articles.map((a, i) => <li><a href={`/articles/${a.id}`}><span class="t">{a.data.title}</span><span class="n">{String(i + 1).padStart(2, '0')}</span><span class="s">{a.data.category}</span></a></li>)}
+        </ol>
+        <p class="center" style="margin-top:2rem"><a class="btn" href="/articles">All articles</a></p>
+      </div>
+    </section>
+  )}
 
   <section class="section" aria-labelledby="rank-h" style="padding-bottom:clamp(2rem,4vw,3rem)">
     <h2 id="rank-h" class="center">How We Rank</h2>

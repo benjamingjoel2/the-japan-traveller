@@ -1,0 +1,41 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import DetailHead from '../../components/DetailHead.astro';
+import SectionRows from '../../components/SectionRows.astro';
+import FactsPanel from '../../components/FactsPanel.astro';
+import Sources from '../../components/Sources.astro';
+import { publishedArticles } from '../../lib/content.mjs';
+import { humanDate } from '../../lib/dates.mjs';
+import { articleNode } from '../../lib/schema.mjs';
+import { CATEGORY_PHOTO } from '../../data/photos.mjs';
+
+export async function getStaticPaths() {
+  const all = await publishedArticles();
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry, all } }));
+}
+const { entry, all } = Astro.props;
+const { Content, headings } = await render(entry);
+const d = entry.data;
+const path = `/articles/${entry.id}`;
+const rows = headings.filter((h) => h.depth === 2).map((h) => ({ href: `#${h.slug}`, title: h.text }));
+const next = all[(all.findIndex((a) => a.id === entry.id) + 1) % all.length];
+---
+<Base title={d.title} description={d.description} path={path} bleed={true}
+  crumbs={[{ name: 'Articles', href: '/articles' }, { name: d.title, href: path }]}
+  jsonld={[articleNode({ title: d.title, description: d.description, path, published: d.published, reviewed: d.reviewed, sources: d.sources })]}>
+  <article>
+    <DetailHead title={d.title} image={d.image}
+      meta={[{ label: d.region ? 'Region' : 'Category', value: d.region ?? d.category }, { label: 'Last reviewed', value: humanDate(d.reviewed) }, { label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' }]} />
+    <section class="section-sm">
+      <div class="wrap statement2"><h2>{d.description}</h2><p>{d.category}. Every figure in this article comes from the sources listed at the end, checked on the date shown.</p></div>
+    </section>
+    {rows.length > 1 && <section class="section-sm" style="padding-top:0"><div class="wrap"><SectionRows rows={rows} /></div></section>}
+    <div class="wrap" style="padding-bottom:clamp(4rem,8vw,6rem)">
+      <div class="prose"><Content /></div>
+      <Sources sources={d.sources} />
+    </div>
+  </article>
+  {next && next.id !== entry.id && <FactsPanel image={next.data.image ?? CATEGORY_PHOTO[next.data.category]} cta={{ href: `/articles/${next.id}`, label: 'Next article' }}
+    facts={[{ label: 'Next article', value: next.data.title, href: `/articles/${next.id}` }, { label: 'In short', value: next.data.description }, { label: 'Ready to book?', value: 'See the ranked lists of verified operators', href: '/rankings' }]} />}
+</Base>

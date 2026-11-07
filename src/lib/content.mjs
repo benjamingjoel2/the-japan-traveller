@@ -12,4 +12,8 @@ export async function publishedQA() {
   return (await getCollection('qa', isPublished)).sort((a, b) => a.data.order - b.data.order);
 }
 
+export async function publishedArticles() {
+  return (await getCollection('articles', isPublished)).sort((a, b) => b.data.published - a.data.published || a.data.order - b.data.order);
+}
+
 export { isoDate, humanDate } from './dates.mjs';
