@@ -5,11 +5,14 @@ nav: Rail
 order: 3
 embed: rail-table
 published: 2026-11-02
-reviewed: 2026-11-02
+reviewed: 2026-11-07
 status: reviewed
 ja: 鉄道
 image: shinkansen-station
 sources:
+  - url: https://global.jr-central.co.jp/en/info/oversized-baggage/
+    label: "JR Central: oversized baggage on the Shinkansen"
+    accessed: 2026-11-07
   - url: https://japanrailpass.net/en/purchase/price/
     label: "Japan Rail Pass official site: prices"
     accessed: 2026-11-02
@@ -58,7 +61,7 @@ It depends on the route. For a classic Tokyo, Kyoto and back trip it usually is 
 
 ## Booking seats and luggage
 
-Reserved seats on the Shinkansen can be booked online (for the Tokaido, Sanyo and Kyushu lines through SmartEX) or at stations. Large suitcases on the Tokaido, Sanyo and Kyushu Shinkansen need a seat with an oversized luggage area reserved in advance. Many travellers instead send bags ahead by courier (takkyubin) to their next hotel.
+Reserved seats on the Shinkansen can be booked online (for the Tokaido, Sanyo and Kyushu lines through SmartEX) or at stations. Large suitcases (161 to 250 cm in total dimensions) on the Tokaido, Sanyo, Kyushu and Nishi-Kyushu Shinkansen need a seat with an oversized baggage area reserved in advance; see [sending your luggage ahead](/articles/luggage-forwarding-takkyubin). Many travellers instead send bags ahead by courier (takkyubin) to their next hotel.
 
 ## Classic routes and journey times
 

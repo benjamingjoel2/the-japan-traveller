@@ -4,7 +4,7 @@ description: "Three standard first-trip routes through Japan, with the rail legs
 nav: Routes
 order: 5
 published: 2026-11-02
-reviewed: 2026-11-02
+reviewed: 2026-11-07
 status: reviewed
 ja: 旅程
 image: kumano
@@ -15,9 +15,12 @@ sources:
   - url: https://www.westjr.co.jp/global/en/
     label: "JR West: Sanyo and Hokuriku lines"
     accessed: 2026-11-02
-  - url: https://www.odakyu.jp/english/
-    label: "Odakyu: Romancecar to Hakone"
-    accessed: 2026-11-02
+  - url: https://odakyu-global.com/romancecar/
+    label: "Odakyu: Romancecar to Hakone (about 80 minutes)"
+    accessed: 2026-11-07
+  - url: https://www.tb-kumano.jp/en/transport/train/
+    label: "Tanabe City Kumano Tourism Bureau: trains to Kii-Tanabe"
+    accessed: 2026-11-07
   - url: https://japanrailpass.net/en/purchase/price/
     label: "Japan Rail Pass official site: prices"
     accessed: 2026-11-02
@@ -44,7 +47,7 @@ Rail pass: not worth it. A one-way Tokyo to Kyoto ticket plus local fares costs 
 | Nights | Base | Getting there |
 |---|---|---|
 | 3 | Tokyo | Arrive Narita or Haneda |
-| 1 | Hakone | Odakyu Romancecar from Shinjuku, about 1:25 (not JR) |
+| 1 | Hakone | Odakyu Romancecar from Shinjuku, about 1:20 (not JR) |
 | 4 | Kyoto | Odawara to Kyoto by Shinkansen |
 | 1 | Hiroshima | Shinkansen via Shin-Osaka; Miyajima as a side trip |
 | 1 | Osaka | Shinkansen back to Shin-Osaka, fly home from Kansai |
@@ -66,6 +69,6 @@ Rail pass: a 14-day pass can come close to paying for itself on this route, depe
 
 ## Variations
 
-- **Walking:** replace Takayama with two or three days on the Nakasendo (Magome to Tsumago) or the Kumano Kodo (from Kii-Tanabe, about 2:15 from Shin-Osaka).
+- **Walking:** replace Takayama with two or three days on the Nakasendo (Magome to Tsumago) or the Kumano Kodo (from Kii-Tanabe, about 2:00 from Shin-Osaka).
 - **Winter:** replace Kanazawa and Takayama with Hokkaido (fly from Tokyo) or the Northern Alps for snow.
 - **Shikoku and the art islands:** from Okayama, the Marine Liner reaches Takamatsu in about 0:55; ferries go on to Naoshima.

@@ -1,7 +1,7 @@
 ---
 import { RAIL_ROUTES, RAIL_CHECKED, PASS_LABEL, SOURCES } from '../data/reference.mjs';
 import { humanDate } from '../lib/dates.mjs';
-const SHORT = { jrCentral: 'JR Central', jrEast: 'JR East', jrWest: 'JR West', jrKyushu: 'JR Kyushu', jrHokkaido: 'JR Hokkaido', jrShikoku: 'JR Shikoku', odakyu: 'Odakyu', tobu: 'Tobu' };
+const SHORT = { jrCentral: 'JR Central', jrEast: 'JR East', jrWest: 'JR West', jrKyushu: 'JR Kyushu', jrHokkaido: 'JR Hokkaido', jrShikoku: 'JR Shikoku', odakyu: 'Odakyu', tobu: 'Tobu', tbKumano: 'Kumano Tourism Bureau' };
 const fmt = (t) => { const [h, m] = t.split('h'); return { iso: `PT${+h}H${+m}M`, text: `${+h}:${m}` }; };
 ---
 <div class="scroll" role="region" aria-label="Classic rail routes" tabindex="0">

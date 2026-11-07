@@ -43,7 +43,11 @@ export const SOURCES = {
   jrKyushu: { url: 'https://www.jrkyushu.co.jp/english/', label: 'JR Kyushu English site', accessed: C },
   jrHokkaido: { url: 'https://www.jrhokkaido.co.jp/global/', label: 'JR Hokkaido English site', accessed: C },
   jrShikoku: { url: 'https://www.jr-shikoku.co.jp/global/en/', label: 'JR Shikoku English site', accessed: C },
-  odakyu: { url: 'https://www.odakyu.jp/english/', label: 'Odakyu Electric Railway (Romancecar) English site', accessed: C },
+  odakyu: { url: 'https://odakyu-global.com/romancecar/', label: 'Odakyu Electric Railway: Romancecar (Shinjuku to Hakone-Yumoto about 80 minutes)', accessed: '2026-11-07' },
+  tbKumano: { url: 'https://www.tb-kumano.jp/en/transport/train/', label: 'Tanabe City Kumano Tourism Bureau: trains to Kii-Tanabe', accessed: '2026-11-07' },
+  shirakawagoLightup: { url: 'https://shirakawa-go.gr.jp/en/events/142/', label: 'Shirakawa-go Tourist Association: 2027 light-up evenings (January, reservation only)', accessed: '2026-11-07' },
+  hanagasa: { url: 'https://www.hanagasa.jp/en/', label: 'Yamagata Hanagasa Festival: official site', accessed: '2026-11-07' },
+  visitNikko: { url: 'https://www.visitnikko.jp/en/plan-your-trip/faqs/', label: 'Visit Nikko: FAQs (autumn foliage timing)', accessed: '2026-11-07' },
   tobu: { url: 'https://www.tobu.co.jp/en/access/nikko/', label: 'Tobu Railway: access from Tokyo to Nikko', accessed: C },
   jntoOnsen: { url: 'https://www.japan.travel/en/guide/bathing-manners-and-tips-onsen-bathing-guide/', label: 'JNTO: onsen bathing manners and tips', accessed: C },
   jntoRyokan: { url: 'https://www.japan.travel/en/guide/japanese-ryokan/', label: 'JNTO: Japanese ryokan guide', accessed: C },
@@ -69,6 +73,7 @@ export const SEASON_EVENTS = {
     ['hokkaido', 'snow', 'Deep snow; ski season (for example Niseko, Furano)'],
     ['tohoku', 'snow', 'Snow country; heavy snowfall on the Sea of Japan side'],
     ['chubu', 'snow', 'Ski season in the Northern Alps (Hakuba, Nozawa Onsen); Shirakawa-go under snow'],
+    ['chubu', 'festival', 'Shirakawa-go light-up on set evenings (11, 17, 24 and 31 January 2027, reservation only)'],
     ['kanto', 'weather', 'Dry, clear and cold; good visibility of Mount Fuji'],
     ['kansai', 'weather', 'Cold and dry; quiet month for temples outside New Year'],
   ],
@@ -76,7 +81,7 @@ export const SEASON_EVENTS = {
     ['hokkaido', 'festival', 'Sapporo Snow Festival (early February)'],
     ['hokkaido', 'snow', 'Peak snow; drift ice off the Okhotsk coast (Abashiri, Shiretoko)'],
     ['tohoku', 'snow', 'Snow continues; Zao "snow monsters" (rime-covered trees)'],
-    ['chubu', 'snow', 'Ski season; Shirakawa-go winter illuminations on selected evenings'],
+    ['chubu', 'snow', 'Ski season in the Northern Alps; Shirakawa-go under snow'],
     ['okinawa', 'blossom', 'Hikan-zakura continues'],
     ['kansai', 'blossom', 'Plum blossom begins in Kyoto and Nara'],
     ['kyushu', 'blossom', 'Plum blossom (for example Dazaifu)'],
@@ -124,7 +129,7 @@ export const SEASON_EVENTS = {
     ['hokkaido', 'blossom', 'Lavender in Furano, usually July'],
   ],
   8: [
-    ['tohoku', 'festival', 'Aomori Nebuta (2–7 August), Akita Kanto (3–6 August), Sendai Tanabata (6–8 August)'],
+    ['tohoku', 'festival', 'Aomori Nebuta (2–7 August), Akita Kanto (3–6 August), Yamagata Hanagasa (5–7 August), Sendai Tanabata (6–8 August)'],
     ['shikoku', 'festival', 'Awa Odori, Tokushima (12–15 August); Yosakoi, Kochi (9–12 August)'],
     ['kansai', 'festival', 'Gozan no Okuribi bonfires, Kyoto (16 August)'],
     ['kanto', 'weather', 'Hottest month; Obon holidays mid August are very busy'],
@@ -148,7 +153,7 @@ export const SEASON_EVENTS = {
   ],
   11: [
     ['kansai', 'leaves', 'Autumn leaves in Kyoto, mid November to early December'],
-    ['kanto', 'leaves', 'Autumn leaves in Nikko (October) and Hakone; Tokyo ginkgo and maples from late November'],
+    ['kanto', 'leaves', 'Autumn leaves in central Nikko (late October to mid November) and Hakone; Tokyo ginkgo and maples from late November'],
     ['kyushu', 'leaves', 'Autumn leaves, mid to late November'],
     ['shikoku', 'leaves', 'Autumn leaves (Iya Valley), November'],
     ['chugoku', 'leaves', 'Autumn leaves (Miyajima Momijidani), mid to late November'],
@@ -164,7 +169,7 @@ export const SEASON_EVENTS = {
   ],
 };
 
-export const SEASON_SOURCES = [SOURCES.jntoWeather, SOURCES.jmaSakura, SOURCES.jmaTokyoSakura, SOURCES.tenkiSakura, SOURCES.jmaBaiu, SOURCES.jntoFestivals, SOURCES.jnto];
+export const SEASON_SOURCES = [SOURCES.shirakawagoLightup, SOURCES.hanagasa, SOURCES.visitNikko, SOURCES.jntoWeather, SOURCES.jmaSakura, SOURCES.jmaTokyoSakura, SOURCES.tenkiSakura, SOURCES.jmaBaiu, SOURCES.jntoFestivals, SOURCES.jnto];
 
 // ---------------------------------------------------------------------------
 // RAIL ROUTES. Typical fastest scheduled journey time on the named service.
@@ -187,12 +192,12 @@ export const RAIL_ROUTES = [
   { from: 'Tokyo', to: 'Shin-Aomori', service: 'Tohoku Shinkansen Hayabusa', time: '3h00', pass: 'yes', alt: '', source: 'jrEast' },
   { from: 'Tokyo', to: 'Shin-Hakodate-Hokuto', service: 'Tohoku/Hokkaido Shinkansen Hayabusa', time: '4h00', pass: 'yes', alt: '', source: 'jrHokkaido' },
   { from: 'Hakodate', to: 'Sapporo', service: 'Limited Express Hokuto', time: '3h45', pass: 'yes', alt: '', source: 'jrHokkaido' },
-  { from: 'Kyoto', to: 'Nara', service: 'JR Nara Line Miyakoji rapid', time: '0h45', pass: 'yes', alt: 'Kintetsu is faster but not covered', source: 'jrWest' },
+  { from: 'Kyoto', to: 'Nara', service: 'JR Nara Line Miyakoji rapid', time: '0h45', pass: 'yes', alt: 'Kintetsu limited express is faster (surcharge), not covered', source: 'jrWest' },
   { from: 'Kansai Airport', to: 'Kyoto', service: 'Limited Express Haruka', time: '1h15', pass: 'yes', alt: '', source: 'jrWest' },
   { from: 'Narita Airport', to: 'Tokyo', service: "Narita Express (N'EX)", time: '1h00', pass: 'yes', alt: '', source: 'jrEast' },
-  { from: 'Shin-Osaka', to: 'Kii-Tanabe (Kumano Kodo)', service: 'Limited Express Kuroshio', time: '2h15', pass: 'yes', alt: 'Bus onward to trailheads is not JR', source: 'jrWest' },
+  { from: 'Shin-Osaka', to: 'Kii-Tanabe (Kumano Kodo)', service: 'Limited Express Kuroshio', time: '2h00', pass: 'yes', alt: 'Bus onward to trailheads is not JR', source: 'tbKumano' },
   { from: 'Okayama', to: 'Takamatsu', service: 'Rapid Marine Liner', time: '0h55', pass: 'yes', alt: 'Ferry onward to Naoshima is not JR', source: 'jrShikoku' },
-  { from: 'Tokyo (Shinjuku)', to: 'Hakone-Yumoto', service: 'Odakyu Romancecar', time: '1h25', pass: 'no', alt: 'Private railway. JR Shinkansen to Odawara (covered) then Hakone Tozan (not covered)', source: 'odakyu' },
+  { from: 'Tokyo (Shinjuku)', to: 'Hakone-Yumoto', service: 'Odakyu Romancecar', time: '1h20', pass: 'no', alt: 'Private railway; Odakyu gives about 80 minutes. JR Shinkansen to Odawara (covered) then Hakone Tozan (not covered)', source: 'odakyu' },
   { from: 'Tokyo', to: 'Nikko', service: 'Tohoku Shinkansen to Utsunomiya + JR Nikko Line', time: '1h50', pass: 'yes', alt: 'Tobu direct train from Asakusa about 1h50, not covered', source: 'jrEast' },
 ];
 export const RAIL_CHECKED = C;

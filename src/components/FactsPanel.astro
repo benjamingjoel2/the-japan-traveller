@@ -1,12 +1,12 @@
 ---
 import Photo from './Photo.astro';
 interface Fact { label: string; value: string; href?: string }
-interface Props { image: string; facts: Fact[]; cta?: { href: string; label: string } }
+interface Props { image?: string; facts: Fact[]; cta?: { href: string; label: string } }
 const { image, facts, cta } = Astro.props;
 ---
 <section class="section band-sand">
   <div class="wrap facts-panel">
-    <Photo id={image} ratio={1} widths={[400, 660]} sizes="(max-width: 52rem) 100vw, 45vw" />
+    {image ? <Photo id={image} ratio={1} widths={[400, 660]} sizes="(max-width: 52rem) 100vw, 45vw" /> : <span class="stick-ph" aria-hidden="true"><span>Next</span><b>{facts[0]?.value}</b></span>}
     <div>
       <dl>{facts.map((f) => <><dt>{f.label}</dt><dd>{f.href ? <a href={f.href}>{f.value}</a> : f.value}</dd></>)}</dl>
       {cta && <a class="btn btn-indigo" href={cta.href}>{cta.label}</a>}

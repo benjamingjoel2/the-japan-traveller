@@ -386,3 +386,11 @@ table.tt { border-collapse: collapse; width: 100%; font-size: 0.9375rem; line-he
 .foot-cols address a { color: var(--indigo); font-size: 0.75rem; overflow-wrap: anywhere; }
 .foot-base { grid-column: 1 / -1; text-align: center; font-size: 0.75rem; color: var(--grey); margin: 0.6rem 0 0; }
 .foot-base a { color: var(--indigo); }
+
+/* Text card used where no matching photo exists */
+.stick-ph { display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 1; width: 100%; background: var(--indigo); color: #fff; border-radius: 4px; padding: 1.4rem; text-decoration: none; }
+.stick-ph span { font-size: 0.8125rem; }
+.stick-ph b { font-family: var(--serif); font-weight: 500; font-size: clamp(1.6rem, 2.6vw, 2.4rem); line-height: 1.15; }
+.stick-item:nth-child(3n) .stick-ph { background: var(--red); }
+.stick-item:nth-child(3n+1) .stick-ph { background: #2a2a28; }
+.stick-list.long { top: 6rem; max-height: calc(100vh - 7rem); overflow-y: auto; scrollbar-width: thin; }

@@ -5,19 +5,19 @@
 // view; without JS every row still shows its own details and link.
 import Photo from './Photo.astro';
 import { humanDate } from '../lib/dates.mjs';
-interface Item { href: string; title: string; short: string; meta: string; text: string; image: string; label: string; when: string; cta: string }
-interface Props { items: Item[]; id?: string }
-const { items, id = 'gl' } = Astro.props;
+interface Item { href: string; title: string; short: string; meta: string; text: string; image?: string; label: string; when: string; cta: string }
+interface Props { items: Item[]; id?: string; eagerFirst?: boolean }
+const { items, id = 'gl', eagerFirst = false } = Astro.props;
 ---
 <div class="wrap stick" data-stick={id}>
-  <ol class="stick-list" aria-label="Pages in this list">
+  <ol class:list={["stick-list", items.length > 9 && "long"]} aria-label="Pages in this list">
     {items.map((it, i) => (
       <li><a href={`#${id}-${i}`} aria-current={i === 0 ? 'true' : undefined}>{it.short}<span class="d">{it.meta}</span></a></li>
     ))}
   </ol>
   {items.map((it, i) => (
     <div class="stick-item" id={`${id}-${i}`}>
-      <div class="stick-img" data-i={i}><a href={it.href} tabindex="-1" aria-hidden="true"><Photo id={it.image} ratio={1} widths={[360, 540, 840]} sizes="(max-width: 52rem) 100vw, 420px" /></a></div>
+      <div class="stick-img" data-i={i}><a href={it.href} tabindex="-1" aria-hidden="true">{it.image ? <Photo id={it.image} ratio={1} eager={eagerFirst && i === 0} widths={[360, 540, 840]} sizes="(max-width: 52rem) 100vw, 420px" /> : <span class="stick-ph"><span>{it.meta}</span><b>{it.short}</b></span>}</a></div>
       <div class="stick-info">
         <h3><a href={it.href} style="color:inherit;text-decoration:none">{it.title}</a></h3>
         <p class="label">{it.label}</p>

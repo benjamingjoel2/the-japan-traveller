@@ -8,7 +8,6 @@ import Sources from '../../components/Sources.astro';
 import { publishedArticles } from '../../lib/content.mjs';
 import { humanDate } from '../../lib/dates.mjs';
 import { articleNode } from '../../lib/schema.mjs';
-import { CATEGORY_PHOTO } from '../../data/photos.mjs';
 
 export async function getStaticPaths() {
   const all = await publishedArticles();
@@ -36,6 +35,6 @@ const next = all[(all.findIndex((a) => a.id === entry.id) + 1) % all.length];
       <Sources sources={d.sources} />
     </div>
   </article>
-  {next && next.id !== entry.id && <FactsPanel image={next.data.image ?? CATEGORY_PHOTO[next.data.category]} cta={{ href: `/articles/${next.id}`, label: 'Next article' }}
+  {next && next.id !== entry.id && <FactsPanel image={next.data.image} cta={{ href: `/articles/${next.id}`, label: 'Next article' }}
     facts={[{ label: 'Next article', value: next.data.title, href: `/articles/${next.id}` }, { label: 'In short', value: next.data.description }, { label: 'Ready to book?', value: 'See the ranked lists of verified operators', href: '/rankings' }]} />}
 </Base>

@@ -4,16 +4,15 @@ import DetailHead from '../../components/DetailHead.astro';
 import GuideList from '../../components/GuideList.astro';
 import { publishedArticles } from '../../lib/content.mjs';
 import { humanDate } from '../../lib/dates.mjs';
-import { CATEGORY_PHOTO } from '../../data/photos.mjs';
 const articles = await publishedArticles();
 const title = 'Articles';
 const description = 'Longer reads for planning Japan: walking routes, rail and transport, seasons, places and practical matters. Every article is sourced and dated.';
-const items = articles.map((a) => ({ href: `/articles/${a.id}`, title: a.data.title, short: a.data.title.split(':')[0], meta: a.data.category, text: a.data.description, image: a.data.image ?? CATEGORY_PHOTO[a.data.category], label: 'Last reviewed', when: humanDate(a.data.reviewed), cta: 'Read the article' }));
+const items = articles.map((a) => ({ href: `/articles/${a.id}`, title: a.data.title, short: a.data.title.split(':')[0], meta: a.data.category, text: a.data.description, image: a.data.image, label: 'Last reviewed', when: humanDate(a.data.reviewed), cta: 'Read the article' }));
 ---
 <Base title={title} description={description} path="/articles" crumbs={[{ name: 'Articles', href: '/articles' }]} bleed={true}>
   <DetailHead title={title} lede={description} meta={[{ label: 'Articles', value: String(articles.length) }, { label: 'Sources', value: `${articles.reduce((n, a) => n + a.data.sources.length, 0)} cited` }, { label: 'Categories', value: String(new Set(articles.map((a) => a.data.category)).size) }]} />
   <section class="section">
     <h2 class="sr-only">All articles</h2>
-    {items.length ? <GuideList items={items} id="articles" /> : <p class="wrap">No articles published yet.</p>}
+    {items.length ? <GuideList items={items} id="articles" eagerFirst={true} /> : <p class="wrap">No articles published yet.</p>}
   </section>
 </Base>
