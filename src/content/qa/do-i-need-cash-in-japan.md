@@ -36,7 +36,7 @@ On the railways, JNTO says cards can be used for Narita Express and Shinkansen f
 
 ## Where cash still matters
 
-JNTO's currency page describes Japan as "very much a cash-based society" and recommends that you keep some cash on you during your stay. Yen comes in 1,000, 2,000, 5,000 and 10,000 yen notes and 1, 5, 10, 50, 100 and 500 yen coins.
+JNTO's currency page describes Japan as "very much a cash-based society" and recommends that you keep some cash on you during your stay. Yen notes come in 1,000, 2,000, 5,000 and 10,000 yen denominations.
 
 JNTO also notes that ATM fees may be charged depending on the hour or day, and that many banks close at 3pm.
 
