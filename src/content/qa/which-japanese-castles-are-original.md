@@ -23,7 +23,7 @@ sources:
     accessed: 2026-11-07
 ---
 
-Japan has many castles, but most of the keeps you see today are reconstructions. JNTO puts it plainly: "Many of the castles you see in Japan today are in fact, modern replicas." Twelve castles still have their original keep, known in Japanese as genzon tenshu ("surviving keep").
+Many castle keeps in Japan are reconstructions. JNTO puts it plainly: "Many of the castles you see in Japan today are in fact, modern replicas." Twelve castles still have their original keep, known in Japanese as genzon tenshu ("surviving keep").
 
 ## The twelve original keeps
 
@@ -55,8 +55,8 @@ JNTO's twelve-castles article names Himeji, Inuyama, Matsue, Matsumoto and Hikon
 
 ## What "original" means here
 
-JNTO describes the twelve as castles "untouched by war and natural disaster", in contrast to the modern replicas found elsewhere. There is one qualification. JNTO notes that Maruoka's keep was levelled by the Fukui earthquake of 1948 and then reassembled using about 80 per cent of its original materials.
+JNTO describes the twelve as castles "untouched by war and natural disaster", in contrast to the modern replicas found elsewhere. There is one qualification. JNTO notes that Maruoka Castle was levelled by the Fukui earthquake of 1948 and then reassembled using about 80 per cent of its original materials.
 
 ## Planning a visit
 
-The two National Treasure castles covered in detail on this site are easy to reach by rail. Himeji is on the Shinkansen. Matsumoto is reached by limited express from Shinjuku or Nagoya. For whether a rail pass helps with trips like these, see [Is the JR Pass still worth it?](/questions/is-the-jr-pass-still-worth-it).
+The two National Treasure castles covered in detail on this site are both reached by rail. Himeji is on the Shinkansen. Matsumoto is reached by limited express from Shinjuku or Nagoya. For whether a rail pass helps with trips like these, see [Is the JR Pass still worth it?](/questions/is-the-jr-pass-still-worth-it).
