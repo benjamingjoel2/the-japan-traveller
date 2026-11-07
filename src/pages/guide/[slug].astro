@@ -1,9 +1,9 @@
 ---
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import ArticleHead from '../../components/ArticleHead.astro';
-import ArticleAside from '../../components/ArticleAside.astro';
-import CtaBand from '../../components/CtaBand.astro';
+import DetailHead from '../../components/DetailHead.astro';
+import SectionRows from '../../components/SectionRows.astro';
+import FactsPanel from '../../components/FactsPanel.astro';
 import Sources from '../../components/Sources.astro';
 import RailTable from '../../components/RailTable.astro';
 import MonthList from '../../components/MonthList.astro';
@@ -16,36 +16,29 @@ export async function getStaticPaths() {
   return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry, all: entries } }));
 }
 const { entry, all } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
 const d = entry.data;
 const path = `/guide/${entry.id}`;
-const others = all.filter((g) => g.id !== entry.id).map((g) => ({ href: `/guide/${g.id}`, label: g.data.title }));
+const rows = headings.filter((h) => h.depth === 2).map((h) => ({ href: `#${h.slug}`, title: h.text }));
+const next = all[(all.findIndex((g) => g.id === entry.id) + 1) % all.length];
 ---
 <Base title={d.title} description={d.description} path={path} bleed={true}
   crumbs={[{ name: 'Guide', href: '/guide' }, { name: d.nav ?? d.title, href: path }]}
   jsonld={[articleNode({ title: d.title, description: d.description, path, published: d.published, reviewed: d.reviewed, sources: d.sources }), entry.id === 'regions' ? destinationNode() : null]}>
   <article>
-    <ArticleHead back={{ href: '/guide', label: 'All guides' }} eyebrow={d.nav ?? 'Guide'} ja={d.ja} title={d.title} dek={d.description} image={d.image}
-      facts={[
-        { icon: 'calendar', label: 'Last reviewed', value: humanDate(d.reviewed) },
-        { icon: 'sources', label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' },
-        { icon: 'book', label: 'Published', value: humanDate(d.published) },
-        { icon: 'map', label: 'Covers', value: 'Japan' },
-      ]}
-      card={{ label: 'Book with a local', value: 'Ranked operators', href: '/rankings', cta: 'See the lists' }} />
-    <div class="band-paper">
-      {d.embed === 'month-list' && (
-        <div class="wrap" style="padding-top:clamp(3rem,6vw,5rem)"><div class="wheel-wrap"><p class="dek">Pick a month to see each region in that month, with the operators who run trips then.</p><MonthList /></div></div>
-      )}
-      <div class="wrap article-body">
-        <ArticleAside published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} links={[...others, { href: '/rail-routes', label: 'Rail-route table' }, { href: '/seasons', label: 'Month by month' }]} linksTitle="More in the guide" />
-        <div>
-          <div class="prose"><Content /></div>
-          {d.embed === 'rail-table' && <RailTable />}
-          <Sources sources={d.sources} />
-        </div>
-      </div>
+    <DetailHead title={d.title} image={d.image}
+      meta={[{ label: 'Last reviewed', value: humanDate(d.reviewed) }, { label: 'Published', value: humanDate(d.published) }, { label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' }]} />
+    <section class="section-sm">
+      <div class="wrap statement2"><h2>{d.description}</h2><p>Part of the {d.nav ?? 'destination'} guide. Every figure here comes from the sources listed at the end of the page.</p></div>
+    </section>
+    {rows.length > 1 && <section class="section-sm" style="padding-top:0"><div class="wrap"><SectionRows rows={rows} /></div></section>}
+    {d.embed === 'season-wheel' && <div class="wrap" style="max-width:46rem;margin:0 auto 3rem"><p class="small muted">Open any month to see each region in that month.</p><MonthList /></div>}
+    <div class="wrap" style="padding-bottom:clamp(4rem,8vw,6rem)">
+      <div class="prose"><Content /></div>
+      {d.embed === 'rail-table' && <div style="max-width:60rem;margin:0 auto"><RailTable /></div>}
+      <Sources sources={d.sources} />
     </div>
   </article>
-  <CtaBand title="Ready to plan the trip?" text="See which verified local operators deliver this kind of trip, ranked only by merit." href="/rankings" cta="Browse ranked lists" />
+  <FactsPanel image={next.data.image ?? 'kamikochi'} cta={{ href: `/guide/${next.id}`, label: `Next: ${next.data.nav ?? next.data.title}` }}
+    facts={[{ label: 'Next in the guide', value: next.data.title, href: `/guide/${next.id}` }, { label: 'What it covers', value: next.data.description }, { label: 'Ready to book?', value: 'See the ranked lists of verified operators', href: '/rankings' }]} />
 </Base>

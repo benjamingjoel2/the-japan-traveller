@@ -1,0 +1,45 @@
+---
+// Sticky list of guide pages (layout of the reference "tours" section):
+// left, a sticky index with the active item in red; centre, square photos;
+// right, the details for each photo. A small script highlights the item in
+// view; without JS every row still shows its own details and link.
+import Photo from './Photo.astro';
+import { humanDate } from '../lib/dates.mjs';
+interface Item { href: string; title: string; short: string; meta: string; text: string; image: string; label: string; when: string; cta: string }
+interface Props { items: Item[]; id?: string }
+const { items, id = 'gl' } = Astro.props;
+---
+<div class="wrap stick" data-stick={id}>
+  <ol class="stick-list" aria-label="Pages in this list">
+    {items.map((it, i) => (
+      <li><a href={`#${id}-${i}`} aria-current={i === 0 ? 'true' : undefined}>{it.short}<span class="d">{it.meta}</span></a></li>
+    ))}
+  </ol>
+  {items.map((it, i) => (
+    <div class="stick-item" id={`${id}-${i}`}>
+      <div class="stick-img" data-i={i}><a href={it.href} tabindex="-1" aria-hidden="true"><Photo id={it.image} ratio={1} widths={[360, 540, 840]} sizes="(max-width: 52rem) 100vw, 420px" /></a></div>
+      <div class="stick-info">
+        <h3><a href={it.href} style="color:inherit;text-decoration:none">{it.title}</a></h3>
+        <p class="label">{it.label}</p>
+        <p class="when">{it.when}</p>
+        <p>{it.text}</p>
+        <a class="btn" href={it.href}>{it.cta}</a>
+      </div>
+    </div>
+  ))}
+</div>
+<script is:inline define:vars={{ id }}>
+  (function () {
+    var root = document.querySelector('[data-stick="' + id + '"]');
+    if (!root || !('IntersectionObserver' in window)) return;
+    var links = root.querySelectorAll('.stick-list a');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = +e.target.getAttribute('data-i');
+        links.forEach(function (l, j) { if (j === i) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current'); });
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    root.querySelectorAll('.stick-img').forEach(function (el) { io.observe(el); });
+  })();
+</script>

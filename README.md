@@ -34,7 +34,7 @@ INCLUDE_EXAMPLES=true npm run dev
 | Guide pages (markdown) | `src/content/guide/*.md` |
 | Q&A pages (markdown) | `src/content/qa/*.md` |
 | Month-by-month seasons, rail routes, regions, niches (sourced reference data) | `src/data/reference.mjs` |
-| Styles (layout from the approved Framer reference) | `src/styles/global.css` |
+| Styles (design reference: tabi-tours.framer.website) | `src/styles/global.css` |
 | Fonts (generated) | `scripts/build-fonts.mjs` → `src/styles/fonts.css`, `public/fonts/` |
 | Field list and assumptions | `DATA-FIELDS.md` |
 | Facts and placeholders to check before launch | `FACTS-TO-VERIFY.md` |
@@ -101,14 +101,14 @@ Not built yet. `src/components/AdSlot.astro` renders the labelled, visually sepa
 
 ## Fonts and Japanese text
 
-Type is Noto Sans JP (SIL Open Font License), self-hosted: latin weights 400/600/700 plus one small Japanese subset (`src/assets/fonts/noto-sans-jp-ja-700.woff2`) holding only the Japanese characters the site uses. Japanese labels are decorative and marked `lang="ja"`; the site language is English.
+Design reference: tabi-tours.framer.website. Headings use Shippori Mincho 500 (indigo), text uses Inter 400/500, both SIL Open Font License and self-hosted (`scripts/build-fonts.mjs` writes `src/styles/fonts.css` and `public/fonts/`). Japanese characters (the vertical labels) come from one small Shippori Mincho subset, `src/assets/fonts/shippori-mincho-ja-500.woff2`, holding only the characters the site uses. Japanese labels are decorative and marked `lang="ja"`; the site language is English.
 
-If you add Japanese text, the build stops and tells you which characters are missing. Rebuild the subset:
+If you add Japanese text, the build stops and lists the missing characters. Rebuild the subset:
 
 ```bash
 pip install fonttools brotli
-npm pack @expo-google-fonts/noto-sans-jp && tar xzf expo-google-fonts-noto-sans-jp-*.tgz
-python3 scripts/make_ja_font.py package/700Bold/NotoSansJP_700Bold.ttf
+npm pack @expo-google-fonts/shippori-mincho && tar xzf expo-google-fonts-shippori-mincho-*.tgz
+python3 scripts/make_ja_font.py package/500Medium/ShipporiMincho_500Medium.ttf
 ```
 
 ## Images

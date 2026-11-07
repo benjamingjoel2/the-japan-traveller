@@ -1,12 +1,11 @@
 ---
 import Base from '../layouts/Base.astro';
-import MonthList from '../components/MonthList.astro';
 import Photo from '../components/Photo.astro';
-import Icon from '../components/Icon.astro';
+import GuideList from '../components/GuideList.astro';
 import { site, disclosure } from '../config/site.mjs';
 import { publishedGuide, publishedQA } from '../lib/content.mjs';
 import { publishedCompanies, feedMeta } from '../lib/feed.mjs';
-import { NICHES, REGIONS, MONTHS, SEASON_EVENTS, RAIL_ROUTES, regionName } from '../data/reference.mjs';
+import { NICHES, REGIONS, RAIL_ROUTES, regionName } from '../data/reference.mjs';
 import { destinationNode } from '../lib/schema.mjs';
 import { humanDate } from '../lib/dates.mjs';
 
@@ -14,139 +13,121 @@ const guide = await publishedGuide();
 const qa = await publishedQA();
 const companies = publishedCompanies();
 const feed = feedMeta();
-const nowMonth = new Date().getUTCMonth() + 1;
-const thisMonth = MONTHS.find((m) => m.n === nowMonth);
-const KIND = { blossom: 'Blossom', leaves: 'Leaves', snow: 'Snow', festival: 'Festival', weather: 'Weather' };
-const monthEvents = SEASON_EVENTS[nowMonth].slice(0, 5);
 const count = (n) => (n.niche ? companies.filter((c) => c.niches.includes(n.niche)).length : companies.length);
-const short = (d) => humanDate(d).replace(/ \d{4}$/, '');
-const cardSizes = '(max-width: 36rem) 100vw, (max-width: 60rem) 50vw, 360px';
+const ops = (n) => `${count(n)} ${count(n) === 1 ? 'operator' : 'operators'}`;
+const items = guide.map((g) => ({
+  href: `/guide/${g.id}`, title: g.data.title, short: g.data.nav ?? g.data.title, meta: `${g.data.sources.length} sources`,
+  text: g.data.description, image: g.data.image, label: 'Last reviewed', when: humanDate(g.data.reviewed), cta: 'Read the guide',
+}));
+items.push({ href: '/rail-routes', title: 'Rail-route table', short: 'Rail routes', meta: `${RAIL_ROUTES.length} routes`, text: 'Classic routes with typical journey times and whether the Japan Rail Pass covers them, each sourced and dated.', image: 'shinkansen-motion', label: 'Routes timed', when: `${RAIL_ROUTES.length} classic routes`, cta: 'Open the table' });
+const all = NICHES[0];
+const lead = companies.slice(0, 3);
+const STEPS = [
+  { t: 'The directory verifies the company', x: 'Tourground checks each company before it is listed. We publish only companies the directory marks as verified, plus Tourground’s founder-owned brands, which are always labelled.' },
+  { t: 'The directory ranks it', x: 'Each company carries a rank for each country it works in, set by the directory’s own method. Nothing on this site changes it.' },
+  { t: 'We publish the rank unchanged', x: 'Every list keeps the feed’s order. Niche lists only filter by kind of trip. No company can pay to be listed or to move up.' },
+  { t: 'Removed means removed', x: 'A company that leaves the directory disappears from every page, ranking and sitemap at the next build.' },
+];
 ---
 <Base title={site.name} description={site.positioning} path="/" jsonld={[destinationNode()]} bleed={true}>
   <section class="hero">
-    <div class="wrap hero-in">
-      <div>
-        <span class="badge"><Icon name="spark" />Sourced, dated, never paid</span>
-        <h1 class="display">Plan Japan with a local. <span lang="ja"><span class="nw">地元の人と、</span><span class="nw">日本を旅する。</span></span></h1>
-        <p class="dek">An independent reference for the regions, the seasons, rail and the Japan Rail Pass, ryokan etiquette, and which verified local operators deliver which kind of trip. Published by Tourground.</p>
-        <div class="cta-row">
-          <a class="btn btn-accent" href="/guide">Start with the guide</a>
-          <a class="textlink" href="/how-we-rank">How we rank →</a>
-        </div>
-        <div class="hero-stats">
-          <div><b>{REGIONS.length}</b><span>regions covered</span></div>
-          <div><b>{RAIL_ROUTES.length}</b><span>rail routes timed</span></div>
-          <div><b>{companies.length}</b><span>verified {companies.length === 1 ? 'operator' : 'operators'}</span></div>
-        </div>
-      </div>
-      <Photo id="fuji-chureito" class="arch r-34" eager={true} ratio={3 / 4} widths={[400, 600, 860]} sizes="(max-width: 52rem) 100vw, 430px">Fujiyoshida · Yamanashi <span>Chureito Pagoda and Mount Fuji</span></Photo>
+    <Photo id="fuji-chureito" eager={true} widths={[640, 960, 1280, 1920]} sizes="100vw" />
+    <div class="hero-in">
+      <div class="hero-row"><span>Independent reference · Verified operators</span><span>Published by Tourground</span></div>
+      <h1>The Japan Traveller</h1>
     </div>
   </section>
 
-  <section class="section band-paper" id="guide">
+  <section class="section" aria-labelledby="about-h">
     <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Plan the trip · <span lang="ja">旅の計画</span></p>
-          <h2>Six ways into Japan.</h2>
-        </div>
-        <p class="aside-note">Every page lists its sources and the date it was last reviewed.</p>
+      <div class="statement">
+        <span class="vert" lang="ja">編集方針</span>
+        <h2 id="about-h">We publish what you need to choose a local operator, and nothing we cannot source.</h2>
       </div>
-      <ul class="tiles">
-        {guide.map((g) => (
-          <li class="tile">
-            <a class="tile-link" href={`/guide/${g.id}`}>
-              {g.data.image && <Photo id={g.data.image} ratio={4 / 3} sizes={cardSizes} />}
-              <div class="tile-body">
-                <p class="eyebrow">{g.data.nav ?? 'Guide'}{g.data.ja && <> · <span lang="ja">{g.data.ja}</span></>}</p>
-                <h3>{g.data.title}</h3>
-                <p>{g.data.description}</p>
-                <div class="tile-meta"><span class="ico"><Icon name="sources" />{g.data.sources.length} sources</span><b>Reviewed {short(g.data.reviewed)}</b></div>
-              </div>
-            </a>
+      <p class="statement-note">{site.positioning} Every page lists its sources and the date it was last reviewed. Published by Tourground; rankings are never paid for.</p>
+      <ul class="bento">
+        <li class="fbox"><span class="pill">01</span><h3>Rank is merit, never paid</h3><p>Ranks come straight from the Tourground directory. We never reorder them.</p></li>
+        <li><Photo id="kyoto-pagoda" widths={[400, 640]} sizes="(max-width: 52rem) 100vw, 33vw" /></li>
+        <li class="fbox"><span class="pill">02</span><h3>Verified companies only</h3><p>Only companies the directory marks as verified, plus founder-owned brands, labelled every time.</p></li>
+        <li class="fbox"><span class="pill">03</span><h3>Sources on every page</h3><p>Prices, journey times, entry rules and season windows each carry a source and a date.</p></li>
+        <li class="fbox"><span class="pill">04</span><h3>Short answers first</h3><p>Traveller questions are answered in a sentence or two, then in detail.</p></li>
+        <li><Photo id="fuji-blossom" widths={[400, 640]} sizes="(max-width: 52rem) 100vw, 33vw" /></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-sm" id="guide" aria-labelledby="guide-h">
+    <div class="stick-head"><h2 id="guide-h">Many ways to plan the trip.</h2></div>
+    <GuideList items={items} id="home-guide" />
+  </section>
+
+  <section class="section" aria-labelledby="rank-h" style="padding-bottom:clamp(2rem,4vw,3rem)">
+    <h2 id="rank-h" class="center">How We Rank</h2>
+  </section>
+  <section class="band-red">
+    <div class="wrap">
+      <ol class="steps">
+        {STEPS.map((s, i) => (
+          <li>
+            <div class="t"><span class="pill pill-mustard">{String(i + 1).padStart(2, '0')}</span><h3>{s.t}</h3></div>
+            <div class="x"><p>{s.x}</p></div>
           </li>
         ))}
-      </ul>
-    </div>
-  </section>
-
-  <section class="section band-dark" aria-labelledby="rank-h">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow eyebrow-dark">How we rank · <span lang="ja">ランキングの基準</span></p>
-          <h2 id="rank-h">Merit before money. Verified before listed.</h2>
-        </div>
-        <p class="dek">Every rank comes straight from the Tourground directory. We never reorder it, and no company can pay to change it.</p>
-      </div>
-      <ul class="fcards">
-        <li class="fcard"><Icon name="scale" /><h3>Rank is merit, never paid</h3><p>Ranks are taken unchanged from the directory feed. Paid placements, when they exist, are labelled and kept apart.</p></li>
-        <li class="fcard"><Icon name="shield" /><h3>Verified companies only</h3><p>Only companies the directory marks as verified are listed, plus Tourground's founder-owned brands, labelled every time.</p></li>
-        <li class="fcard"><Icon name="sources" /><h3>Sources on every page</h3><p>Prices, journey times, entry rules and season windows carry a source and a last-reviewed date.</p></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section band-cream" id="rankings">
-    <div class="wrap split">
-      <div>
-        <p class="eyebrow">Who to book with · <span lang="ja">旅行会社を選ぶ</span></p>
-        <h2>Ranked lists, by kind of trip.</h2>
-        <p class="dek">{disclosure.verifiedOnlyStatement} Feed dated {humanDate(feed.generated_at ?? '2026-11-02')}.</p>
-        <a class="btn btn-accent" href="/rankings">All ranked lists</a>
-      </div>
-      <ol class="rows">
-        {NICHES.map((n, i) => (
-          <li><a href={`/rankings/${n.slug}`}>
-            <span class="n">{String(i + 1).padStart(2, '0')}</span>
-            <span class="t">{n.title}</span>
-            <span class="m">{count(n)} {count(n) === 1 ? 'operator' : 'operators'}</span>
-          </a></li>
-        ))}
       </ol>
     </div>
   </section>
 
-  <section class="section band-paper" aria-labelledby="season-h">
-    <div class="wrap wheel-wrap">
-      <div>
-        <p class="eyebrow">This month · <span lang="ja">{thisMonth.ja}</span></p>
-        <h2 id="season-h" style="margin-top:0.75rem">Japan in {thisMonth.name}.</h2>
-        <ul class="season-list">
-          {monthEvents.map((e) => <li><span class="k">{KIND[e[1]]} · {regionName(e[0]).split(' ')[0]}</span><span>{e[2]}</span></li>)}
-        </ul>
-        <a class="btn btn-accent" href={`/seasons/${thisMonth.slug}`}>All of {thisMonth.name}</a>
-      </div>
-      <div>
-        <p class="eyebrow">Month by month</p>
-        <div style="margin-top:0.75rem"><MonthList current={nowMonth} /></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section band-cream" id="questions">
-    <div class="wrap split">
-      <div>
-        <p class="eyebrow">Good to know · <span lang="ja">知っておきたいこと</span></p>
-        <h2>Questions before booking.</h2>
-        <p class="dek">Short answer first, then the detail and the sources.</p>
-        <a class="textlink" href="/questions">All questions →</a>
-      </div>
-      <ol class="rows plain">
-        {qa.map((q) => (
-          <li><a href={`/questions/${q.id}`}>
-            <span class="t">{q.data.question}<small>{q.data.answer}</small></span>
-          </a></li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <section class="section band-accent">
+  <section class="section" id="rankings" aria-labelledby="lists-h">
     <div class="wrap">
-      <h2>One reference. Every season.</h2>
-      <p>Regions, rail, ryokan and the verified operators who deliver them, in one place.</p>
-      <a class="btn btn-light" href="/guide">Start with the guide</a>
+      <h2 id="lists-h" class="center" style="max-width:20ch;margin:0 auto 2.4rem">Ranked by merit. The kind of trip decides the list.</h2>
+      <div class="tabs">
+        <div class="tab tab-red" aria-hidden="true"><span class="vert" lang="ja">{all.ja}</span><small>{ops(all)}</small></div>
+        <article class="tabcard">
+          <Photo id={all.image} widths={[300, 480]} sizes="(max-width: 52rem) 100vw, 240px" />
+          <div>
+            <h3>All operators <span class="tag">{ops(all)}</span></h3>
+            <p>{all.blurb}</p>
+            <ul class="checks">
+              {lead.length ? lead.map((c) => <li>{c.name}{c.founder_owned ? ` (${disclosure.founderOwnedLabel})` : ''}</li>) : <li>No verified operator yet</li>}
+              <li>Ranked only by the directory</li>
+              <li>Feed dated {humanDate(feed.generated_at ?? '2026-11-02')}</li>
+            </ul>
+            <a class="btn" href={`/rankings/${all.slug}`}>See the list</a>
+          </div>
+        </article>
+        <a class="tab tab-indigo" href="/rankings/culture-and-craft"><span class="vert" lang="ja">{NICHES[1].ja}</span><small>Culture</small></a>
+        <a class="tab tab-mustard" href="/rankings/hiking"><span class="vert" lang="ja">{NICHES[3].ja}</span><small>Hiking</small></a>
+      </div>
+      <p class="center small muted" style="margin-top:2rem">Other lists: {NICHES.slice(1).map((n, i) => <>{i > 0 && ' · '}<a href={`/rankings/${n.slug}`}>{n.short}</a> ({count(n)})</>)}</p>
+    </div>
+  </section>
+
+  <section class="section band-sand" id="faq" aria-labelledby="faq-h">
+    <div class="wrap faq">
+      <h2 id="faq-h">Frequently Asked Questions</h2>
+      <div class="acc">
+        {qa.map((q, i) => (
+          <details open={i === 0}>
+            <summary>{q.data.question}</summary>
+            <div class="a"><p>{q.data.answer}</p><a class="btn btn-ghost" href={`/questions/${q.id}`}>Read the full answer</a></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ref-h">
+    <div class="wrap about">
+      <Photo id="ryokan-room" widths={[400, 660]} sizes="(max-width: 52rem) 100vw, 45vw" />
+      <div>
+        <h2 id="ref-h">Written for travellers who want the facts before they book.</h2>
+        <p class="small">{site.name} is published by Tourground and edited by its Japan publishing desk. It sells nothing and takes no bookings. <a href="/disclosure">Read the publisher disclosure</a>.</p>
+        <dl class="stats">
+          <div><dt>Regions covered</dt><dd>{String(REGIONS.length).padStart(2, '0')}</dd></div>
+          <div><dt>Rail routes timed</dt><dd>{RAIL_ROUTES.length}</dd></div>
+          <div><dt>Verified operators listed</dt><dd>{String(companies.length).padStart(2, '0')}</dd></div>
+        </dl>
+      </div>
     </div>
   </section>
 </Base>

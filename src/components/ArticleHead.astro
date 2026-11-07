@@ -1,44 +1,10 @@
 ---
-// Detail-page header (template "experience" layout): back link, eyebrow,
-// big title, dek, fact boxes; portrait photo with a small card beneath.
-import Photo from './Photo.astro';
-import Icon from './Icon.astro';
-interface Fact { icon: string; label: string; value: string; href?: string }
-interface Props {
-  eyebrow: string; ja?: string; title: string; dek?: string; image?: string;
-  back?: { href: string; label: string }; facts?: Fact[];
-  card?: { label: string; value: string; href: string; cta: string };
-}
-const { eyebrow, ja, title, dek, image, back, facts = [], card } = Astro.props;
+// Compatibility wrapper: pages that still call ArticleHead get the reference
+// tour-page head (centred title, wide photo, meta row) via DetailHead.
+import DetailHead from './DetailHead.astro';
+interface Fact { icon?: string; label: string; value: string; href?: string }
+interface Props { eyebrow?: string; ja?: string; title: string; dek?: string; image?: string; back?: unknown; facts?: Fact[]; card?: unknown }
+const { title, dek, image, facts = [] } = Astro.props;
+const meta = facts.slice(0, 3).map((f) => ({ label: f.label, value: f.value, href: f.href }));
 ---
-<header class="article-head">
-  <div class="wrap">
-    {back && <a class="back" href={back.href}>← {back.label}</a>}
-    <div class="article-head-in">
-      <div>
-        <p class="eyebrow">{eyebrow}{ja && <> · <span lang="ja">{ja}</span></>}</p>
-        <h1>{title}</h1>
-        {dek && <p class="dek">{dek}</p>}
-        <slot name="after" />
-        {facts.length > 0 && (
-          <dl class="facts">
-            {facts.map((f) => (
-              <div><dt><Icon name={f.icon} />{f.label}</dt><dd>{f.href ? <a href={f.href}>{f.value}</a> : f.value}</dd></div>
-            ))}
-          </dl>
-        )}
-      </div>
-      {image && (
-        <div>
-          <Photo id={image} class="r-45" ratio={4 / 5} eager={true} caption={true} widths={[400, 600, 860]} sizes="(max-width: 52rem) 100vw, 430px" />
-          {card && (
-            <div class="headcard">
-              <div><span class="label">{card.label}</span><b>{card.value}</b></div>
-              <a class="btn btn-accent" href={card.href}>{card.cta}</a>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  </div>
-</header>
+<DetailHead title={title} lede={dek} image={image} meta={meta}><slot name="after" /></DetailHead>

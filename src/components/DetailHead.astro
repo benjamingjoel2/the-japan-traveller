@@ -1,0 +1,19 @@
+---
+// Detail-page head (reference tour page): centred serif title, wide photo,
+// a three-column meta row. Optional slot below for the short answer.
+import Photo from './Photo.astro';
+interface Meta { label: string; value: string; href?: string }
+interface Props { title: string; lede?: string; image?: string; meta?: Meta[] }
+const { title, lede, image, meta = [] } = Astro.props;
+---
+<header class="detail-head wrap">
+  <h1>{title}</h1>
+  {lede && <p class="lede">{lede}</p>}
+  {image && <div class="detail-media"><Photo id={image} ratio={7 / 3} eager={true} caption={true} widths={[480, 740, 1110, 1480]} sizes="(max-width: 50rem) 100vw, 740px" /></div>}
+  {meta.length > 0 && (
+    <dl class="meta-row">
+      {meta.map((m) => <div><dt>{m.label}</dt><dd>{m.href ? <a href={m.href}>{m.value}</a> : m.value}</dd></div>)}
+    </dl>
+  )}
+  <slot />
+</header>

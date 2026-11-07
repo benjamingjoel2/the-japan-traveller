@@ -1,0 +1,13 @@
+---
+// Page sections as "itinerary" rows: title, [ 01 ], short note. Links to anchors.
+interface Row { href: string; title: string; note?: string }
+interface Props { rows: Row[] }
+const { rows } = Astro.props;
+---
+{rows.length > 0 && (
+  <nav aria-label="On this page">
+    <ol class="itin">
+      {rows.map((r, i) => <li><a href={r.href}><span class="t">{r.title}</span><span class="n">{String(i + 1).padStart(2, '0')}</span><span class="s">{r.note ?? ''}</span></a></li>)}
+    </ol>
+  </nav>
+)}

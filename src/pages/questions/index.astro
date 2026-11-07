@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import ArticleHead from '../../components/ArticleHead.astro';
+import DetailHead from '../../components/DetailHead.astro';
 import { publishedQA } from '../../lib/content.mjs';
 import { faqNode } from '../../lib/schema.mjs';
 const qa = await publishedQA();
@@ -9,18 +9,18 @@ const description = 'Real questions travellers ask when planning Japan, each ans
 ---
 <Base title={title} description={description} path="/questions" crumbs={[{ name: 'Questions', href: '/questions' }]} bleed={true}
   jsonld={[faqNode(qa.map((q) => ({ question: q.data.question, answer: q.data.answer })))]}>
-  <ArticleHead back={{ href: '/', label: 'Home' }} eyebrow="Questions" ja="よくある質問" title="Traveller questions" dek={description} image="trains-fuji" />
-  <section class="section band-paper">
-    <div class="wrap">
-      <ol class="rows">
+  <DetailHead title="Frequently Asked Questions" lede={description} />
+  <section class="section band-sand" style="margin-top:clamp(2rem,4vw,3rem)">
+    <div class="wrap faq">
+      <h2>Short answers first.</h2>
+      <div class="acc">
         {qa.map((q, i) => (
-          <li><a href={`/questions/${q.id}`}>
-            <span class="n">Q{String(i + 1).padStart(2, '0')}</span>
-            <span class="t">{q.data.question}<small>{q.data.answer}</small></span>
-            <span class="m">{q.data.sources.length} sources</span>
-          </a></li>
+          <details open={i === 0}>
+            <summary>{q.data.question}</summary>
+            <div class="a"><p>{q.data.answer}</p><a class="btn btn-ghost" href={`/questions/${q.id}`}>Read the full answer</a></div>
+          </details>
         ))}
-      </ol>
+      </div>
     </div>
   </section>
 </Base>

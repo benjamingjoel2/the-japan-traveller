@@ -1,9 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import ArticleHead from '../../components/ArticleHead.astro';
-import CtaBand from '../../components/CtaBand.astro';
-import Photo from '../../components/Photo.astro';
-import Icon from '../../components/Icon.astro';
+import DetailHead from '../../components/DetailHead.astro';
+import GuideList from '../../components/GuideList.astro';
 import { publishedGuide } from '../../lib/content.mjs';
 import { destinationNode } from '../../lib/schema.mjs';
 import { humanDate } from '../../lib/dates.mjs';
@@ -11,52 +9,15 @@ import { RAIL_ROUTES } from '../../data/reference.mjs';
 const guide = await publishedGuide();
 const title = 'Japan destination guide';
 const description = 'Regions, seasons, rail and the Japan Rail Pass, ryokan and onsen, typical 7, 10 and 14-day routes, and entry basics for Japan.';
-const sizes = '(max-width: 36rem) 100vw, (max-width: 60rem) 50vw, 360px';
-const short = (d) => humanDate(d).replace(/ \d{4}$/, '');
+const items = guide.map((g) => ({ href: `/guide/${g.id}`, title: g.data.title, short: g.data.nav ?? g.data.title, meta: `${g.data.sources.length} sources`, text: g.data.description, image: g.data.image, label: 'Last reviewed', when: humanDate(g.data.reviewed), cta: 'Read the guide' }));
+items.push({ href: '/rail-routes', title: 'Rail-route table', short: 'Rail routes', meta: `${RAIL_ROUTES.length} routes`, text: 'Classic routes, typical journey times and Japan Rail Pass coverage.', image: 'shinkansen-motion', label: 'Routes timed', when: `${RAIL_ROUTES.length} classic routes`, cta: 'Open the table' });
+items.push({ href: '/seasons', title: 'Month by month', short: 'Month by month', meta: '12 months', text: 'Blossom, leaves, snow and festivals in each region, month by month.', image: 'autumn-maple', label: 'Covers', when: '12 months, 9 regions', cta: 'Pick a month' });
 ---
 <Base title={title} description={description} path="/guide" crumbs={[{ name: 'Guide', href: '/guide' }]} jsonld={[destinationNode()]} bleed={true}>
-  <ArticleHead back={{ href: '/', label: 'Home' }} eyebrow="Destination guide" ja="旅のガイド" title={title} dek={`${description} Each page lists its sources and the date it was last reviewed.`} image="fuji-blossom"
-    facts={[{ icon: 'book', label: 'Guide pages', value: String(guide.length) }, { icon: 'train', label: 'Rail routes', value: String(RAIL_ROUTES.length) }]} />
-  <section class="section band-paper">
-    <div class="wrap">
-      <h2 class="sr-only">Guide pages</h2>
-      <ul class="tiles">
-        {guide.map((g) => (
-          <li class="tile"><a class="tile-link" href={`/guide/${g.id}`}>
-            {g.data.image && <Photo id={g.data.image} ratio={4 / 3} sizes={sizes} />}
-            <div class="tile-body">
-              <p class="eyebrow">{g.data.nav ?? 'Guide'}{g.data.ja && <> · <span lang="ja">{g.data.ja}</span></>}</p>
-              <h3>{g.data.title}</h3><p>{g.data.description}</p>
-              <div class="tile-meta"><span class="ico"><Icon name="sources" />{g.data.sources.length} sources</span><b>Reviewed {short(g.data.reviewed)}</b></div>
-            </div>
-          </a></li>
-        ))}
-        <li class="tile"><a class="tile-link" href="/rail-routes">
-          <Photo id="shinkansen-motion" ratio={4 / 3} sizes={sizes} />
-          <div class="tile-body">
-            <p class="eyebrow">Table · <span lang="ja">時刻表</span></p>
-            <h3>Rail-route table</h3><p>Classic routes, typical journey times and Japan Rail Pass coverage.</p>
-            <div class="tile-meta"><span class="ico"><Icon name="train" />{RAIL_ROUTES.length} routes</span><b>Sourced</b></div>
-          </div>
-        </a></li>
-        <li class="tile"><a class="tile-link" href="/seasons">
-          <Photo id="autumn-maple" ratio={4 / 3} sizes={sizes} />
-          <div class="tile-body">
-            <p class="eyebrow">Months · <span lang="ja">季節</span></p>
-            <h3>Month by month</h3><p>Month by month, region by region: blossom, leaves, snow and festivals.</p>
-            <div class="tile-meta"><span class="ico"><Icon name="calendar" />12 months</span><b>9 regions</b></div>
-          </div>
-        </a></li>
-        <li class="tile"><a class="tile-link" href="/compare">
-          <Photo id="kaiseki" ratio={4 / 3} sizes={sizes} />
-          <div class="tile-body">
-            <p class="eyebrow">Table · <span lang="ja">比較</span></p>
-            <h3>Compare operators</h3><p>Verified operators side by side: type, base, regions, niches and tier.</p>
-            <div class="tile-meta"><span class="ico"><Icon name="shield" />From the feed</span><b>Verified only</b></div>
-          </div>
-        </a></li>
-      </ul>
-    </div>
+  <DetailHead title={title} lede={`${description} Each page lists its sources and the date it was last reviewed.`} image="fuji-blossom"
+    meta={[{ label: 'Guide pages', value: String(guide.length) }, { label: 'Rail routes', value: String(RAIL_ROUTES.length) }, { label: 'Regions', value: '9' }]} />
+  <section class="section">
+    <h2 class="sr-only">Guide pages</h2>
+    <GuideList items={items} id="guide-index" />
   </section>
-  <CtaBand title="Ready to plan the trip?" text="See which verified local operators deliver which kind of trip, ranked only by merit." href="/rankings" cta="Browse ranked lists" />
 </Base>
