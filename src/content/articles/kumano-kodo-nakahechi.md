@@ -122,5 +122,5 @@ The trail mixes uneven paths, old cobblestones and stairs, and paved village roa
 - **Stamps.** A free stamp credential has a Kumano Kodo side and a Way of St. James side. Stamps sit in wooden stands at most sites. The completion stamp is at Kumano Hongu Taisha. Credentials are available at the TANABE Tourist Information Center, the Kumano Hongu Heritage Center and the Kumano Kodo Kan at Takijiri-oji, among others.
 - **Dual Pilgrim.** Walkers who complete both the Way of St. James and a qualifying Kumano Kodo walk (for example, Takijiri-oji to Hongu on foot) can register in person in Tanabe or Santiago de Compostela.
 - **Cash.** The bureau notes that many places do not accept cards. Post office ATMs are the most reliable for withdrawals.
-- **Emergencies.** Dial 119 for fire and ambulance, 110 for police. The JNTO Japan Visitor Hotline is 050-3816-2787, 24 hours.
+- **Emergencies.** How to reach emergency services and the JNTO Japan Visitor Hotline is covered in [earthquakes, tsunami and safety alerts](/articles/earthquakes-and-safety).
 - **Closures.** Check the bureau's tips page for current closures and detours before you set out.
