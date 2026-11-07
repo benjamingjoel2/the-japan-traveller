@@ -55,6 +55,8 @@ The fastest trains on the Tokaido, Sanyo and Kyushu Shinkansen, Nozomi and Mizuh
 
 The pass is not valid on private railways, most city subways, or buses run by non-JR companies.
 
+JR Central and JR West have announced higher Nozomi and Mizuho reserved-seat prices for tickets bought from 1 July 2027 (Tokyo to Shin-Osaka, for example, from ¥14,720 to ¥15,420), and higher Green Car charges for travel from 15 December 2027. Whether the pass's special Nozomi/Mizuho ticket changes has not been announced. See [Nozomi and Green Car prices rise in 2027](/articles/news-nozomi-green-fares-2027).
+
 ## Is it worth it?
 
 It depends on the route. For a classic Tokyo, Kyoto and back trip it usually is not; for a long route that covers several regions in one week it may be. Price your journeys individually first and compare. See [Is the JR Pass still worth it?](/questions/is-the-jr-pass-still-worth-it) Regional JR passes, sold by each JR company, are often better value for trips that stay in one area.

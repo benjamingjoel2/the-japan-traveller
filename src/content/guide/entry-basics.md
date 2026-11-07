@@ -4,11 +4,14 @@ description: "Who can visit Japan without a visa, the 90-day short-stay rule, Vi
 nav: Entry basics
 order: 6
 published: 2026-11-02
-reviewed: 2026-11-02
+reviewed: 2026-11-07
 status: reviewed
 ja: 入国
 image: fuji-blossom
 sources:
+  - url: https://www.moj.go.jp/isa/01_00643.html
+    label: "Immigration Services Agency of Japan: JESTA (electronic travel authorisation) law"
+    accessed: 2026-11-07
   - url: https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html
     label: "Ministry of Foreign Affairs of Japan: visa exemption arrangements (page dated 1 September 2025)"
     accessed: 2026-11-02
@@ -43,6 +46,10 @@ Japan has visa exemption arrangements for short-term stays with 74 countries and
 ## Passport
 
 Your passport must be valid for the length of your stay. Check the Ministry of Foreign Affairs page and your airline's rules for any additional requirement.
+
+## Electronic travel authorisation (JESTA)
+
+Japan has passed a law for an electronic travel authorisation, JESTA. The Diet enacted it on 29 May 2026 and it was promulgated on 5 June 2026. It will apply to visa-exempt short-stay visitors, with the start targeted for fiscal 2028 and a legal deadline of 31 March 2029. Nothing is required yet; no fee or application site has been announced. See [JESTA: what the new law means](/articles/news-jesta-travel-authorisation-law).
 
 ## Visit Japan Web
 

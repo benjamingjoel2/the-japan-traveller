@@ -1,6 +1,6 @@
 ---
 title: "Getting around Kyoto: buses, subway, trains and the crowd measures"
-description: "How Kyoto's city buses and subway work and what they cost, the sightseeing express buses and seasonal crowd measures, rail routes to Arashiyama, Fushimi Inari and Uji, and the city's accommodation tax."
+description: "Kyoto city buses and subway and what they cost, the sightseeing express buses and crowd measures, rail to Arashiyama, Fushimi Inari and Uji, and the accommodation tax."
 category: Rail and transport
 region: "Kansai and Kyoto"
 order: 60

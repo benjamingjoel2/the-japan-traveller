@@ -132,7 +132,7 @@ Asiatic black bears live in the valley. The Ministry of the Environment's biling
 - Do not approach or photograph a bear out of curiosity. Mother bears are especially dangerous.
 - Do not leave food out and take all rubbish with you, because a bear that has tasted human food may become extremely dangerous.
 
-Report sightings to the Kamikochi Information Center, +81-263-95-2433, open 08:00 to 17:00.
+Report sightings to the Kamikochi Information Center (open 08:00 to 17:00).
 
 ## Before you go
 

@@ -120,3 +120,7 @@ The JR route from Kyoto is in the site's [rail-route table](/rail-routes). Kinte
 - From Kyoto, Kintetsu gets you closer to the park. From JR Kyoto Station, the JR line is the option covered by the rail pass.
 - If you feed the deer, use only shika senbei, and keep bags and paper held securely.
 - For other Kansai trips, see the [regions guide](/guide/regions) and, for autumn colour around Kyoto, [Kyoto in autumn](/articles/kyoto-autumn-leaves).
+
+## Related news
+
+- Nara Prefecture has a further World Heritage property since July 2026, the Ancient Capitals of Asuka and Fujiwara, south of Nara city: [Asuka and Fujiwara added to the World Heritage List](/articles/news-asuka-fujiwara-world-heritage).

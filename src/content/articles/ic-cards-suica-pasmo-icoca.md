@@ -112,3 +112,8 @@ During the suspension, cards already issued could still be used and topped up as
 - A standard card has a 500 yen deposit, which is refunded with the balance when you return a PASMO.
 - IC cards cover everyday fares. For Shinkansen tickets and passes, see /guide/rail-and-the-jr-pass.
 - For paying for other things, see /questions/do-i-need-cash-in-japan.
+
+## Related news
+
+- Card and phone tap-to-ride on JR Kyushu around Fukuoka since 18 September 2026: [JR Kyushu card tap at 92 Fukuoka stations](/articles/news-jr-kyushu-card-tap-fukuoka).
+- Magnetic paper tickets are being replaced by QR-code tickets on seven railways from spring 2027; IC cards are not affected: [QR paper tickets from 2027](/articles/news-qr-paper-tickets-2027).

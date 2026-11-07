@@ -1,0 +1,48 @@
+---
+// "Plan it with a local operator": the bridge from every reference page into
+// the Tourground directory. Generated from the feed only: operators that are
+// published (verified or founder-owned), deliver in Japan and, when the page
+// has a region, cover that region. Order is the feed's rank, never paid.
+import { site, disclosure } from '../config/site.mjs';
+import { publishedCompanies, hasRank, companyLink } from '../lib/feed.mjs';
+import { REGIONS, NICHES, regionName, nicheLabel } from '../data/reference.mjs';
+interface Props { region?: string; niche?: string }
+const { region, niche } = Astro.props;
+const C = site.destination.country;
+const regionSlug = region ? REGIONS.find((r) => r.name === region)?.slug : undefined;
+const all = publishedCompanies();
+let list = all.filter((c) => (regionSlug ? (c.regions ?? []).includes(regionSlug) : true));
+if (niche) { const n = list.filter((c) => c.niches.includes(niche)); if (n.length) list = n; }
+list = list.slice(0, 3);
+const listPage = niche && NICHES.find((n) => n.niche === niche) ? NICHES.find((n) => n.niche === niche) : NICHES[0];
+const where = regionSlug ? regionName(regionSlug) : site.destination.name;
+---
+<aside class="bwl" aria-labelledby="bwl-h">
+  <p class="label">From the Tourground directory</p>
+  <h2 id="bwl-h">Plan it with a local operator</h2>
+  {list.length > 0 ? (
+    <>
+      <p class="bwl-lede">Verified and founder-owned operators in the Tourground directory that deliver trips in {where}, in the directory's rank order. {disclosure.rankingStatement.split('.')[0]}.</p>
+      <ol class="bwl-list">
+        {list.map((c) => (
+          <li>
+            <span class="bwl-rank">{hasRank(c) ? String(c.rank[C]).padStart(2, '0') : '–'}</span>
+            <span class="bwl-name">
+              <a href={`/operators/${c.id}`}>{c.name}</a>
+              {c.founder_owned && <span class="founder">{disclosure.founderOwnedLabel}</span>}
+              <small>{(c.niches ?? []).map(nicheLabel).join(' · ')}</small>
+            </span>
+            <a class="bwl-out" href={companyLink(c).href} rel={companyLink(c).rel}>{companyLink(c).label}</a>
+          </li>
+        ))}
+      </ol>
+    </>
+  ) : (
+    <p class="bwl-lede">No verified operator in the Tourground directory lists {where} yet. The ranked lists show every verified operator for Japan.</p>
+  )}
+  <p class="bwl-actions">
+    <a class="btn" href={`/rankings/${listPage.slug}`}>See the ranked list</a>
+    <a href={site.publisher.url}>Browse the Tourground directory</a>
+    <a href="/how-we-rank">How we rank</a>
+  </p>
+</aside>

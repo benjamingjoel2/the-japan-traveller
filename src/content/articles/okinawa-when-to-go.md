@@ -131,3 +131,8 @@ OCVB notes that taxis and buses are limited on remote islands, so check in advan
 - July to October carries the highest typhoon risk. Build a spare day into island-hopping plans and check JMA forecasts before ferry days.
 - January and February bring cherry blossom and whale season, with mean temperatures around 17°C in Naha.
 - Buy Yui Rail passes just before you ride, as the validity runs from purchase.
+
+## Related news
+
+- The rebuilt main hall of Shuri Castle reopens on 23 November 2026, with timed booking and a higher adult fee: [Shuri Castle's main hall reopens](/articles/news-shuri-castle-seiden-reopening).
+- Okinawa Prefecture's accommodation tax starts on 1 February 2027: [Okinawa's accommodation tax](/articles/news-okinawa-accommodation-tax-2027).

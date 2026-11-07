@@ -106,5 +106,5 @@ For more on Shinkansen tickets and seat reservations, see /guide/rail-and-the-jr
 - Keep an overnight bag with you, since the suitcase arrives after you do.
 - Check with your next hotel that it will accept a parcel before you send it.
 - Keep medicines, valuables and documents in your hand luggage. JNTO lists valuables and fragile items as not accepted.
-- Yamato runs an English helpline on 0120-67-9625 (toll-free in Japan) or +81-3-6834-7503, open 8.00am to 9.00pm every day.
+- Yamato runs an English helpline, open 8.00am to 9.00pm every day; contact details are on its English site.
 - Coin lockers are an alternative for a few hours. JNTO says to expect to pay 300 to 600 yen depending on size, and that lockers in busy places fill quickly.

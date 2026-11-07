@@ -47,6 +47,8 @@ export const SOURCES = {
   tbKumano: { url: 'https://www.tb-kumano.jp/en/transport/train/', label: 'Tanabe City Kumano Tourism Bureau: trains to Kii-Tanabe', accessed: '2026-11-07' },
   shirakawagoLightup: { url: 'https://shirakawa-go.gr.jp/en/events/142/', label: 'Shirakawa-go Tourist Association: 2027 light-up evenings (January, reservation only)', accessed: '2026-11-07' },
   hanagasa: { url: 'https://www.hanagasa.jp/en/', label: 'Yamagata Hanagasa Festival: official site', accessed: '2026-11-07' },
+  furanoLavender: { url: 'https://furanotourism.com/en/bigkey/flower/lavender_kaika.php', label: 'Furano Tourism Association: lavender season', accessed: '2026-11-07' },
+  hokkaidoAsahidake: { url: 'https://visit-hokkaido.jp/en/spot/detail_10355.html', label: 'Hokkaido Tourism Organization: Asahidake (autumn colours from late August)', accessed: '2026-11-07' },
   visitNikko: { url: 'https://www.visitnikko.jp/en/plan-your-trip/faqs/', label: 'Visit Nikko: FAQs (autumn foliage timing)', accessed: '2026-11-07' },
   tobu: { url: 'https://www.tobu.co.jp/en/access/nikko/', label: 'Tobu Railway: access from Tokyo to Nikko', accessed: C },
   jntoOnsen: { url: 'https://www.japan.travel/en/guide/bathing-manners-and-tips-onsen-bathing-guide/', label: 'JNTO: onsen bathing manners and tips', accessed: C },
@@ -126,7 +128,7 @@ export const SEASON_EVENTS = {
     ['kansai', 'festival', 'Nachi Fire Festival, Kumano (14 July)'],
     ['kanto', 'weather', 'Rainy season usually ends mid to late July; heat and humidity follow'],
     ['chubu', 'weather', 'Alpine hiking season opens; Mount Fuji climbing season (July to early September)'],
-    ['hokkaido', 'blossom', 'Lavender in Furano, usually July'],
+    ['hokkaido', 'blossom', 'Lavender in Furano: peak mid July to early August'],
   ],
   8: [
     ['tohoku', 'festival', 'Aomori Nebuta (2–7 August), Akita Kanto (3–6 August), Yamagata Hanagasa (5–7 August), Sendai Tanabata (6–8 August)'],
@@ -137,7 +139,7 @@ export const SEASON_EVENTS = {
     ['chubu', 'weather', 'High-alpine hiking season'],
   ],
   9: [
-    ['hokkaido', 'leaves', 'First autumn colour in Daisetsuzan, from mid September'],
+    ['hokkaido', 'leaves', 'Autumn colour in Daisetsuzan: from late August at Asahidake, peaking in mid September'],
     ['okinawa', 'weather', 'Typhoon season continues'],
     ['kyushu', 'weather', 'Typhoon season; can affect all of western Japan'],
     ['kansai', 'festival', 'Kishiwada Danjiri Matsuri, Osaka (September)'],
@@ -169,7 +171,7 @@ export const SEASON_EVENTS = {
   ],
 };
 
-export const SEASON_SOURCES = [SOURCES.shirakawagoLightup, SOURCES.hanagasa, SOURCES.visitNikko, SOURCES.jntoWeather, SOURCES.jmaSakura, SOURCES.jmaTokyoSakura, SOURCES.tenkiSakura, SOURCES.jmaBaiu, SOURCES.jntoFestivals, SOURCES.jnto];
+export const SEASON_SOURCES = [SOURCES.furanoLavender, SOURCES.hokkaidoAsahidake, SOURCES.shirakawagoLightup, SOURCES.hanagasa, SOURCES.visitNikko, SOURCES.jntoWeather, SOURCES.jmaSakura, SOURCES.jmaTokyoSakura, SOURCES.tenkiSakura, SOURCES.jmaBaiu, SOURCES.jntoFestivals, SOURCES.jnto];
 
 // ---------------------------------------------------------------------------
 // RAIL ROUTES. Typical fastest scheduled journey time on the named service.

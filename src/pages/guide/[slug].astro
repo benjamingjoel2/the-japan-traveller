@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import DetailHead from '../../components/DetailHead.astro';
 import ArticleLayout from '../../components/ArticleLayout.astro';
+import BookWithLocal from '../../components/BookWithLocal.astro';
 import FactsPanel from '../../components/FactsPanel.astro';
 import Sources from '../../components/Sources.astro';
 import RailTable from '../../components/RailTable.astro';
@@ -35,6 +36,7 @@ const next = all[(all.findIndex((g) => g.id === entry.id) + 1) % all.length];
     <ArticleLayout published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} rows={rows}>
       <div class="prose"><Content /></div>
       {d.embed === 'rail-table' && <RailTable />}
+      <BookWithLocal />
       <Sources sources={d.sources} />
     </ArticleLayout>
   </article>

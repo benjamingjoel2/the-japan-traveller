@@ -5,6 +5,7 @@ import DetailHead from '../../components/DetailHead.astro';
 import FactsPanel from '../../components/FactsPanel.astro';
 import Sources from '../../components/Sources.astro';
 import ArticleLayout from '../../components/ArticleLayout.astro';
+import BookWithLocal from '../../components/BookWithLocal.astro';
 import { publishedQA } from '../../lib/content.mjs';
 import { humanDate } from '../../lib/dates.mjs';
 import { articleNode, faqNode } from '../../lib/schema.mjs';
@@ -31,6 +32,7 @@ const rel = related[0] ?? all.find((q) => q.id !== entry.id);
     </DetailHead>
     <ArticleLayout published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} rows={rows}>
       <div class="prose"><Content /></div>
+      <BookWithLocal />
       <Sources sources={d.sources} />
     </ArticleLayout>
   </article>

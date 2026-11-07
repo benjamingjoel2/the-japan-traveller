@@ -6,7 +6,7 @@ description: "Since the October 2023 price rise, the JR Pass rarely pays for a T
 order: 1
 related: [best-week-for-cherry-blossom-in-kyoto, how-far-ahead-should-i-book-a-ryokan]
 published: 2026-11-02
-reviewed: 2026-11-02
+reviewed: 2026-11-07
 status: reviewed
 image: trains-fuji
 sources:
@@ -35,6 +35,10 @@ For a first trip that goes Tokyo to Kyoto and back, or Tokyo to Kyoto and flies 
 ## When it can be
 
 The pass becomes good value when you cover long distances in a short time: for example Tokyo to Hiroshima and back with Kanazawa and Sendai in the same week, or a route that combines Tohoku, Tokyo and Kyushu. Use the journey times and coverage in the [rail-route table](/rail-routes) to plan the legs.
+
+## Coming in 2027
+
+Nozomi and Mizuho reserved seats on the Tokaido and Sanyo Shinkansen cost more for tickets bought from 1 July 2027, which makes individual tickets slightly dearer; the national pass price has not changed. See [Nozomi and Green Car prices rise in 2027](/articles/news-nozomi-green-fares-2027).
 
 ## How to check
 
