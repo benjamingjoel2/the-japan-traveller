@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import DetailHead from '../../components/DetailHead.astro';
 import FactsPanel from '../../components/FactsPanel.astro';
 import Sources from '../../components/Sources.astro';
+import ArticleLayout from '../../components/ArticleLayout.astro';
 import { publishedQA } from '../../lib/content.mjs';
 import { humanDate } from '../../lib/dates.mjs';
 import { articleNode, faqNode } from '../../lib/schema.mjs';
@@ -13,7 +14,8 @@ export async function getStaticPaths() {
   return all.map((entry) => ({ params: { slug: entry.id }, props: { entry, all } }));
 }
 const { entry, all } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const rows = headings.filter((h) => h.depth === 2).map((h) => ({ href: `#${h.slug}`, title: h.text }));
 const d = entry.data;
 const path = `/questions/${entry.id}`;
 const related = d.related.map((id) => all.find((q) => q.id === id)).filter(Boolean);
@@ -27,10 +29,10 @@ const rel = related[0] ?? all.find((q) => q.id !== entry.id);
       meta={[{ label: 'Last reviewed', value: humanDate(d.reviewed) }, { label: 'Published', value: humanDate(d.published) }, { label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' }]}>
       <div class="answer"><span class="label">Short answer</span><p>{d.answer}</p></div>
     </DetailHead>
-    <div class="wrap" style="padding-top:clamp(3rem,6vw,5rem);padding-bottom:clamp(4rem,8vw,6rem)">
+    <ArticleLayout published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} rows={rows}>
       <div class="prose"><Content /></div>
       <Sources sources={d.sources} />
-    </div>
+    </ArticleLayout>
   </article>
   {rel && <FactsPanel image={rel.data.image ?? 'kamikochi'} cta={{ href: `/questions/${rel.id}`, label: 'Next question' }}
     facts={[{ label: 'Related question', value: rel.data.question, href: `/questions/${rel.id}` }, { label: 'Short answer', value: rel.data.answer }]} />}

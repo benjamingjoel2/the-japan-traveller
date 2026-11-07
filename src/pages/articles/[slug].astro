@@ -2,7 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import DetailHead from '../../components/DetailHead.astro';
-import SectionRows from '../../components/SectionRows.astro';
+import ArticleLayout from '../../components/ArticleLayout.astro';
 import FactsPanel from '../../components/FactsPanel.astro';
 import Sources from '../../components/Sources.astro';
 import { publishedArticles } from '../../lib/content.mjs';
@@ -29,11 +29,10 @@ const next = all[(all.findIndex((a) => a.id === entry.id) + 1) % all.length];
     <section class="section-sm">
       <div class="wrap statement2"><h2>{d.description}</h2><p>{d.newsDate ? `News reported on ${humanDate(d.newsDate)}, rewritten for travellers and checked against the sources listed at the end.` : `${d.category}. Every figure in this article comes from the sources listed at the end, checked on the date shown.`}</p></div>
     </section>
-    {rows.length > 1 && <section class="section-sm" style="padding-top:0"><div class="wrap"><SectionRows rows={rows} /></div></section>}
-    <div class="wrap" style="padding-bottom:clamp(4rem,8vw,6rem)">
+    <ArticleLayout published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} rows={rows} newsDate={d.newsDate}>
       <div class="prose"><Content /></div>
       <Sources sources={d.sources} />
-    </div>
+    </ArticleLayout>
   </article>
   {next && next.id !== entry.id && <FactsPanel image={next.data.image} cta={{ href: `/articles/${next.id}`, label: 'Next article' }}
     facts={[{ label: 'Next article', value: next.data.title, href: `/articles/${next.id}` }, { label: 'In short', value: next.data.description }, { label: 'Ready to book?', value: 'See the ranked lists of verified operators', href: '/rankings' }]} />}

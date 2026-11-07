@@ -2,7 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import DetailHead from '../../components/DetailHead.astro';
-import SectionRows from '../../components/SectionRows.astro';
+import ArticleLayout from '../../components/ArticleLayout.astro';
 import FactsPanel from '../../components/FactsPanel.astro';
 import Sources from '../../components/Sources.astro';
 import RailTable from '../../components/RailTable.astro';
@@ -31,13 +31,12 @@ const next = all[(all.findIndex((g) => g.id === entry.id) + 1) % all.length];
     <section class="section-sm">
       <div class="wrap statement2"><h2>{d.description}</h2><p>Part of the {d.nav ?? 'destination'} guide. Every figure here comes from the sources listed at the end of the page.</p></div>
     </section>
-    {rows.length > 1 && <section class="section-sm" style="padding-top:0"><div class="wrap"><SectionRows rows={rows} /></div></section>}
-    {d.embed === 'season-wheel' && <div class="wrap" style="max-width:46rem;margin:0 auto 3rem"><p class="small muted">Open any month to see each region in that month.</p><MonthList /></div>}
-    <div class="wrap" style="padding-bottom:clamp(4rem,8vw,6rem)">
+    {d.embed === 'season-wheel' && <div class="wrap" style="max-width:64rem;margin:0 auto 3rem"><p class="small muted">Open any month to see each region in that month.</p><MonthList /></div>}
+    <ArticleLayout published={d.published} reviewed={d.reviewed} sourceCount={d.sources.length} rows={rows}>
       <div class="prose"><Content /></div>
-      {d.embed === 'rail-table' && <div style="max-width:60rem;margin:0 auto"><RailTable /></div>}
+      {d.embed === 'rail-table' && <RailTable />}
       <Sources sources={d.sources} />
-    </div>
+    </ArticleLayout>
   </article>
   <FactsPanel image={next.data.image ?? 'kamikochi'} cta={{ href: `/guide/${next.id}`, label: `Next: ${next.data.nav ?? next.data.title}` }}
     facts={[{ label: 'Next in the guide', value: next.data.title, href: `/guide/${next.id}` }, { label: 'What it covers', value: next.data.description }, { label: 'Ready to book?', value: 'See the ranked lists of verified operators', href: '/rankings' }]} />

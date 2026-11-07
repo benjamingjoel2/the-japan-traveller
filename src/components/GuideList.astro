@@ -17,7 +17,7 @@ const { items, id = 'gl', eagerFirst = false } = Astro.props;
   </ol>
   {items.map((it, i) => (
     <div class="stick-item" id={`${id}-${i}`}>
-      <div class="stick-img" data-i={i}><a href={it.href} tabindex="-1" aria-hidden="true">{it.image ? <Photo id={it.image} ratio={1} eager={eagerFirst && i === 0} widths={[360, 540, 840]} sizes="(max-width: 52rem) 100vw, 420px" /> : <span class="stick-ph"><span>{it.meta}</span><b>{it.short}</b></span>}</a></div>
+      <div class="stick-img" data-i={i}><a href={it.href} tabindex="-1" aria-hidden="true">{it.image ? <Photo id={it.image} ratio={1} eager={eagerFirst && i === 0} widths={[400, 608, 900, 1216]} sizes="(max-width: 52rem) 100vw, 608px" /> : <span class="stick-ph"><span>{it.meta}</span><b>{it.short}</b></span>}</a></div>
       <div class="stick-info">
         <h3><a href={it.href} style="color:inherit;text-decoration:none">{it.title}</a></h3>
         <p class="label">{it.label}</p>

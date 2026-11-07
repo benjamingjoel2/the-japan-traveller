@@ -1,0 +1,25 @@
+---
+// Two-column article body: a sticky side column (record + section links)
+// beside the text, so long pages use the width and stay navigable.
+import { humanDate, isoDate } from '../lib/dates.mjs';
+interface Row { href: string; title: string }
+interface Props { published: Date | string; reviewed: Date | string; sourceCount: number; rows?: Row[]; newsDate?: Date | string }
+const { published, reviewed, sourceCount, rows = [], newsDate } = Astro.props;
+---
+<div class="wrap article-layout">
+  <aside class="art-aside" aria-label="About this page">
+    <dl>
+      {newsDate && <><dt>News from</dt><dd><time datetime={isoDate(newsDate)}>{humanDate(newsDate)}</time></dd></>}
+      <dt>Published</dt><dd><time datetime={isoDate(published)}>{humanDate(published)}</time></dd>
+      <dt>Last reviewed</dt><dd><time datetime={isoDate(reviewed)}>{humanDate(reviewed)}</time></dd>
+      <dt>Sources</dt><dd><a href="#sources">{sourceCount} listed</a></dd>
+    </dl>
+    {rows.length > 1 && (
+      <nav aria-label="On this page">
+        <p class="label">On this page</p>
+        <ol>{rows.map((r, i) => <li><a href={r.href}><span>{String(i + 1).padStart(2, '0')}</span>{r.title}</a></li>)}</ol>
+      </nav>
+    )}
+  </aside>
+  <div class="art-main"><slot /></div>
+</div>

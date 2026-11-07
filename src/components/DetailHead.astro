@@ -9,7 +9,7 @@ const { title, lede, image, meta = [] } = Astro.props;
 <header class="detail-head wrap">
   <h1>{title}</h1>
   {lede && <p class="lede">{lede}</p>}
-  {image && <div class="detail-media"><Photo id={image} ratio={7 / 3} eager={true} caption={true} widths={[480, 740, 1110, 1480]} sizes="(max-width: 50rem) 100vw, 740px" /></div>}
+  {image && <div class="detail-media"><Photo id={image} ratio={7 / 3} eager={true} caption={true} widths={[640, 960, 1312, 1640, 2000]} sizes="(max-width: 90rem) 100vw, 1312px" /></div>}
   {meta.length > 0 && (
     <dl class="meta-row">
       {meta.map((m) => <div><dt>{m.label}</dt><dd>{m.href ? <a href={m.href}>{m.value}</a> : m.value}</dd></div>)}
