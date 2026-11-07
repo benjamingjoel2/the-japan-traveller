@@ -33,6 +33,9 @@ sources:
   - url: https://www.gotokyo.org/en/destinations/western-tokyo/harajuku/index.html
     label: "GO TOKYO: Harajuku"
     accessed: 2026-11-07
+  - url: https://www.gotokyo.org/en/plan/getting-around/index.html
+    label: "GO TOKYO: getting around"
+    accessed: 2026-11-07
   - url: https://www.gotokyo.org/en/plan/getting-around/subways/index.html
     label: "GO TOKYO: subways"
     accessed: 2026-11-07
@@ -57,11 +60,11 @@ This article is a starting point for a first visit to Tokyo. It covers six distr
 
 ## The main districts
 
-GO TOKYO splits the city into areas: Central, Eastern, Western, Southern and Northern Tokyo, the Tama Area, and the Izu and Ogasawara Islands. The districts below are the ones JNTO's Tokyo page names first.
+GO TOKYO splits the city into areas: Central, Eastern, Western, Southern and Northern Tokyo, the Tama Area, and the Izu and Ogasawara Islands. The seven districts below are among those GO TOKYO profiles; JNTO's Tokyo page also singles out Shinjuku, Asakusa, Harajuku, Shibuya and Ginza.
 
 | District | GO TOKYO area | What the official pages highlight |
 | --- | --- | --- |
-| Asakusa | Eastern Tokyo | Sensoji Temple, the Kaminarimon gate with its giant red lantern, Nakamise shopping street, the Sumida River and Kappabashi kitchenware street |
+| Asakusa | Eastern Tokyo | Sensoji Temple, the Thunder Gate (Kaminarimon) with its giant red lantern, Nakamise shopping street, the Sumida River and Kappabashi kitchenware street |
 | Ueno | Northern Tokyo | Ueno Park, Ueno Zoo, the Tokyo National Museum and other national museums, and the Ameyoko market street |
 | Tokyo Station and Marunouchi | Central Tokyo | The red-brick station building, shops and restaurants in and around the station, the Marunouchi office district, and the Imperial Palace a short walk west |
 | Ginza | Central Tokyo | Department stores, boutiques, restaurants, Kabukiza theatre and galleries |
@@ -71,16 +74,15 @@ GO TOKYO splits the city into areas: Central, Eastern, Western, Southern and Nor
 
 A few details from the official pages:
 
-- **Asakusa.** Sensoji is Asakusa's largest temple. Nakamise runs from the Kaminarimon gate to the temple and is lined with stalls selling souvenirs and snacks. JNTO calls Asakusa "the heart of Tokyo's downtown".
+- **Asakusa.** Sensoji is Asakusa's largest temple. Nakamise runs from the Thunder Gate to the temple and is lined with stalls selling souvenirs and snacks. JNTO calls Asakusa "the heart of Tokyo's downtown".
 - **Ueno.** GO TOKYO says Ueno Park holds a large boating pond, a shrine with a pagoda and "Japan's oldest zoo", and is especially busy in April when the cherry trees bloom. It suggests allowing about half a day for the zoo.
 - **Ginza.** The main street becomes a pedestrian zone on weekends and national holidays.
 - **Tokyo Station.** GO TOKYO calls it "Japan's busiest station by number of trains". Shinkansen leave here for destinations across the country (see [/guide/rail-and-the-jr-pass](/guide/rail-and-the-jr-pass)).
-- **Shinjuku Gyoen.** GO TOKYO lists rules for the garden, including no alcohol and no smoking.
-- **Shibuya.** GO TOKYO says SHIBUYA SKY gives a 360-degree view from about 230 metres. It is about a 20-minute walk from Shibuya Station to Harajuku, Aoyama and Omotesando.
+- **Shibuya.** GO TOKYO says SHIBUYA SKY gives a 360-degree view from about 230 metres.
 
 ## The JR Yamanote Line
 
-The JR Yamanote Line is a loop line run by JR East. JNTO calls it the "City Circle Loop". GO TOKYO describes Harajuku as the station between Shibuya and Shinjuku on the loop. Most of the districts above have a Yamanote station or sit close to one.
+The JR Yamanote Line is a loop line run by JR East. JNTO calls it the "City Circle Loop". GO TOKYO describes Harajuku as the station between Shibuya and Shinjuku on the loop. Ueno, Tokyo, Shinjuku, Harajuku and Shibuya all have stations on the line.
 
 Journey times on the Yamanote Line, as given on GO TOKYO's district pages:
 
@@ -103,7 +105,7 @@ Tokyo has two subway operators, and they issue separate tickets. According to GO
 - **Toei** runs four lines (Asakusa, Mita, Shinjuku and Oedo) with 106 stations. Single fares are 180 to 430 yen.
 - The subway lines are not run by JR, so you cannot use a Japan Rail Pass on them.
 
-An IC card such as Suica or PASMO works on both networks and on JR, so you do not need to buy separate tickets (see [/articles/ic-cards-suica-pasmo-icoca](/articles/ic-cards-suica-pasmo-icoca)). Examples from the GO TOKYO pages: Asakusa Station is on the Tokyo Metro Ginza Line, the Toei Asakusa Line and the Tobu Skytree Line. Ginza Station is on the Ginza, Marunouchi and Hibiya lines.
+GO TOKYO says you can use an IC card, a travel pass or individual tickets on the subway, and that a rechargeable IC card lets you enter, exit and change between lines easily (see [/articles/ic-cards-suica-pasmo-icoca](/articles/ic-cards-suica-pasmo-icoca)). Examples from the GO TOKYO pages: Asakusa Station is on the Tokyo Metro Ginza Line, the Toei Asakusa Line and the Tobu Skytree Line. Ginza Station is on the Ginza, Marunouchi and Hibiya lines.
 
 ### The Tokyo Subway Ticket
 
@@ -115,13 +117,13 @@ The Tokyo Subway Ticket gives unlimited rides on all Tokyo Metro and Toei subway
 | 48-hour | 1,500 yen | 750 yen |
 | 72-hour | 2,000 yen | 1,000 yen |
 
-For paper tickets, the period runs from first use, before the expiry date printed on the back. GO TOKYO says that if the ticket is loaded on a PASMO card, the period runs from purchase instead. It is sold at airports, subway stations, tourist information centres and other outlets. GO TOKYO says you need your passport to show you are a visitor to Japan. The ticket does not cover JR lines, including the Yamanote Line.
+For paper tickets, the period runs from first use, before the expiry date printed on the back. GO TOKYO says that if the ticket is loaded on a PASMO card, the period runs from purchase instead. It is sold at airports, subway stations, tourist information centres and other outlets. GO TOKYO says you need your passport to show you are a visitor to Japan. It covers the two subway networks only; the Yamanote Line is a JR line.
 
-Some older official pages still show lower prices, so check Tokyo Metro's own site before you buy. GO TOKYO also lists other passes, such as the Common One-Day Ticket for Tokyo Metro and Toei (1,100 yen for adults) and the Tokyo Metro 24-Hour Ticket (700 yen for adults), which is valid on Tokyo Metro only.
+Some older official pages still show lower prices, so check Tokyo Metro's own site before you buy.
 
 ## Getting in from Narita and Haneda
 
-Haneda (officially Tokyo International Airport) is the closer of Tokyo's two international airports. Narita is the larger, and JNTO calls it "Japan's largest international airport". The times below are from GO TOKYO's airport pages and are approximate. The site's [/rail-routes](/rail-routes) table also lists Narita to Tokyo.
+Tokyo has two international airports. JNTO notes that Haneda is officially Tokyo International Airport, and calls Narita "Japan's largest international airport". The times below are from GO TOKYO's airport pages and are approximate. The site's [/rail-routes](/rail-routes) table also lists Narita to Tokyo.
 
 **From Narita**
 
@@ -146,7 +148,6 @@ GO TOKYO notes that the Toei Asakusa Line connects directly with other railways 
 
 ## Before you go
 
-- Most districts above are linked by the Yamanote Line. Asakusa and Ginza are easier by subway.
-- If you plan to ride mainly the subway for one to three days, compare the Tokyo Subway Ticket with paying by IC card. It does not cover JR lines.
+- If you plan to ride mainly the subway for one to three days, compare the Tokyo Subway Ticket with paying by IC card. It covers the subway lines only.
 - Take your passport when buying the Tokyo Subway Ticket.
 - For trips beyond the city, see [/articles/tokyo-day-trips](/articles/tokyo-day-trips). For the wider region, see [/guide/regions](/guide/regions).

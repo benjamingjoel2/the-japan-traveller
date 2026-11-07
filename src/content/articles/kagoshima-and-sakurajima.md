@@ -68,7 +68,7 @@ The Kagoshima prefectural tourism site describes Sakurajima as one of Japan's mo
 - **Sakurajima Visitor Center**, with exhibits on the volcano's history and geology and on life beside it.
 - **Yunohira Observatory**, at 373 m the highest point open to visitors.
 - **Arimura Lava Observatory**, on the lava field from the 1946 eruption.
-- **Kurokami**, where a shrine torii gate was buried by the volcano.
+- **Kurokami observation point**, with views of the volcano and the buried torii gate of Kurokami Shrine.
 
 ## Volcanic activity and ash
 

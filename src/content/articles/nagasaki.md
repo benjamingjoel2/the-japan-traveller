@@ -55,7 +55,7 @@ sources:
     accessed: 2026-11-07
 ---
 
-Nagasaki is a harbour city in western Kyushu. This article covers the Atomic Bomb Museum and Peace Park, the restored Dutch trading post at Dejima, Glover Garden, Oura Church and its World Heritage listing, the rules for landing on Gunkanjima, and the rail route from Hakata.
+This article covers the Atomic Bomb Museum and Peace Park, the restored Dutch trading post at Dejima, Glover Garden, Oura Church and its World Heritage listing, the rules for landing on Gunkanjima, and the rail route from Hakata.
 
 ## Getting there from Hakata
 
@@ -105,15 +105,15 @@ The restoration project aims to recreate Dejima as it was around 1820. Sixteen b
 
 The garden's opening hours are 8:00 to 18:00, with evening opening to 20:00 from 1 November to 31 December 2026. Last entry is 20 minutes before closing. From 1 April 2026, admission is ¥1,300 for visitors aged 15 and over and ¥650 for elementary, junior high and high school students. Viewing of the Former Alt House has been suspended for repairs since December 2022, and the garden plans to reopen it in March 2027.
 
-**Oura Church** (Oura Cathedral) stands below the garden. Nagasaki Prefecture's tourism site says it was completed in November 1864 and dedicated on 19 February 1865. About a month later, on 17 March, hidden Christians from Urakami made themselves known to the missionaries, an event known as the discovery of the Hidden Christians. The church was designated a National Treasure in 1933.
+**Oura Church** (Oura Cathedral). Nagasaki Prefecture's tourism site says it was completed in November 1864 and dedicated on 19 February 1865. The prefecture dates the discovery of the Hidden Christians at the church to 17 March, about a month after the dedication. The church was designated a National Treasure in 1933.
 
 The prefecture says "The Hidden Christian Sites in the Nagasaki Region" were inscribed on the World Heritage List on 1 July 2018. Nagasaki City's tourism site lists church admission as ¥1,000 for adults, ¥400 for junior high and high school students and ¥300 for elementary pupils, including entry to the church's Christian museum.
 
 ## Gunkanjima (Hashima)
 
-Hashima, known as Gunkanjima, is an abandoned island about 40 minutes by boat from Nagasaki Port. Nagasaki City's tourism site says it was listed in July 2015 as part of the "Sites of Japan's Meiji Industrial Revolution: Iron and Steel, Shipbuilding and Coal Mining".
+Hashima, known as Gunkanjima, is an artificial island about 40 minutes by boat from Nagasaki Port. Nagasaki City's tourism site says it was listed in July 2015 as part of the "Sites of Japan's Meiji Industrial Revolution: Iron and Steel, Shipbuilding and Coal Mining".
 
-You can only land by joining a landing tour run by one of several licensed boat operators, booked directly with the operator. A facility fee applies on top of the boat fare: ¥650 for visitors aged 15 and over and ¥320 for children. The city warns that landing may not be possible because of the weather.
+You can only land by joining a landing tour run by one of several boat operators, booked directly with the operator. A facility fee applies on top of the boat fare: ¥650 for visitors aged 15 and over and ¥320 for children. The city warns that landing may not be possible because of the weather.
 
 Landing is governed by the city's rules on when the Hashima viewing facilities may not be used. Since 22 April 2023, the city has run a trial to review those rules. Under the trial, landing is allowed only when:
 
@@ -129,6 +129,6 @@ The city's answer is dated 18 May 2023, and the page was last updated on 5 Febru
 
 - From Hakata, allow for the change at Takeo-Onsen and reserve seats at a station counter if you hold a rail pass.
 - The Atomic Bomb Museum is under partial renovation until March 2027.
-- Glover Garden and Oura Church are next to each other, so plan to visit them together.
+- Glover Garden's evening hours change through the year, so check the garden's guide page for your dates.
 - Gunkanjima landings depend on the sea. A tour can sail without landing.
 - For where Nagasaki fits into a Kyushu trip, see [the regions guide](/guide/regions).
