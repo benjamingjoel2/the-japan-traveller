@@ -46,14 +46,14 @@ The official site describes the castle as five connected structures:
 - the Great Keep (dai-tenshu)
 - the small Inui (north-west) Keep
 - the Watari Tower, which links the Great Keep and the Inui Keep
-- the Tatsumi Tsukeyagura, an attached turret on the south-east side
-- the Tsukimi Yagura, a moon-viewing turret, joined to the Tatsumi Tsukeyagura
+- the Tatsumi Tsukeyagura (Tatsumitsuke Tower)
+- the Tsukimi Yagura (Tsukimi Tower), joined to the Tatsumi Tsukeyagura
 
 The site's heading calls it the oldest surviving castle of this five-structure, six-storey type. The castle's 1936 designation document described it as a rare "connected towers" castle older than Nagoya Castle.
 
 ## What is original, and when it was built
 
-According to the official site, the Great Keep, the Inui Keep and the Watari Tower date from the end of the Warring States period. Matsumoto City's view is that Ishikawa Kazumasa and his son Yasunaga built them in 1593 and 1594. The Tatsumi Tsukeyagura and the Tsukimi Yagura are thought to have been added about 40 years later, early in the Edo period. The official site adds that the stone walls under the three older structures have been repaired but never rebuilt since they were first laid.
+According to the official site, the Great Keep, the Inui Keep and the Watari Tower date from the end of the Warring States period. Matsumoto City's view is that Ishikawa Kazumasa and Ishikawa Yasunaga built them in 1593 and 1594. The Tatsumi Tsukeyagura and the Tsukimi Yagura are thought to have been added about 40 years later, early in the Edo period. The official site adds that the stone walls under the three older structures have been repaired but never rebuilt since they were first laid.
 
 The building date is not settled. The castle's "construction age" page sets out several dates. A 1958 catalog gives 1594 to 1596. A 2012 Agency for Cultural Affairs catalog dates the Inui Keep to 1592, and the Great Keep and Watari Tower to 1615. Other theories put completion at various dates between 1596 and 1601. The city describes its own dating as a strong presumption, not proof, and plans tree-ring dating.
 
