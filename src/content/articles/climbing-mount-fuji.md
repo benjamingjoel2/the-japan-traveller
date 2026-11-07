@@ -32,7 +32,7 @@ sources:
     accessed: 2026-11-07
 ---
 
-Mount Fuji can be climbed only in a short summer season. Yamanashi Prefecture has restricted entry to the Yoshida Trail since 2024, and in 2026 both prefectures charged a hiking fee and limited night-time entry. This article sets out the 2026 season, the four trails, the rules on the Yamanashi and Shizuoka sides, and the official safety guidance. All details come from the official climbing website run by the Council for the Promotion of Appropriate Use of Mt. Fuji; dates and fees can change from year to year.
+Mount Fuji can be climbed only in a short summer season. Yamanashi Prefecture has restricted entry to the Yoshida Trail since 2024, and in 2026 both prefectures charged a hiking fee and limited night-time entry. This article sets out the 2026 season, the four trails, the rules on the Yamanashi and Shizuoka sides, and the official safety guidance. Details come from the official climbing website, fujisan-climb.jp, and can change each year.
 
 ## The 2026 season
 
@@ -58,16 +58,16 @@ Figures are from the official trail comparison page.
 | Fujinomiya | Fujinomiya Trail 5th Station (2,400 m) | 4.3 km, about 5 h 10 min | 4.3 km, about 2 h 40 min |
 | Gotemba | Gotemba Trail New 5th Station (1,440 m) | 10.5 km, about 8 h 40 min | 8.4 km, about 3 h 30 min |
 
-The Subashiri Trail starts in forest, with volcanic gravel above the 6th station. The Gotemba Trail starts much lower than the others and is the longest. The Yoshida and Subashiri descent trails split near the 8th station, so take care to follow the right one.
+The Subashiri Trail starts in forest, with volcanic gravel above the 6th station. The Yoshida and Subashiri descent trails split near the 8th station, so take care to follow the right one.
 
 ## Rules on the Yoshida Trail (Yamanashi)
 
 Restrictions have applied on the Yoshida Trail since 2024. Yamanashi Prefecture said there were no major changes for 2026. The rules were:
 
-- **Hiking fee:** 4,000 yen per person per visit. It also applies if you start from another trail and descend by the Yoshida descending trail. Walking the trail around the 5th station area outside the gate is free.
+- **Hiking fee:** 4,000 yen per person per visit. It also applies if you start from another trail and descend by the Yoshida descending trail.
 - **Gate hours:** the gate at the 5th station is closed to climbers from 14:00 to 3:00 the next morning. Descending is allowed at any time. People with a mountain hut booking are exempt.
 - **Daily cap:** the gate also closes once 4,000 climbers have entered that day. Mountain hut guests are not counted. Without an advance reservation you may be turned away once the cap is reached.
-- **Reservations:** passage reservations are optional and paid in advance through the prefecture's online booking system. They can be made up to the day of the climb. Advance bookers receive a wooden tag while stocks last. A passage reservation is not a hut booking. Reservation holders who have not passed the gate by 14:00 on their date are subject to restrictions.
+- **Reservations:** passage reservations are optional and paid in advance through the prefecture's online booking system. They can be made up to the day of the climb. A passage reservation is not a hut booking. Reservation holders who have not passed the gate by 14:00 on their date are subject to restrictions.
 - **Equipment check:** climbers must have cold-weather clothing, separate (two-piece) rain gear and proper climbing footwear. Those without them may not be allowed through.
 - **Overnight climbing:** the prefecture asks climbers not to climb overnight without staying in a mountain hut.
 
@@ -80,14 +80,14 @@ The Subashiri, Fujinomiya and Gotemba trails were covered by Shizuoka Prefecture
 - **Daily cap:** none. Shizuoka Prefecture did not set a limit.
 - **Pre-study and test:** climbers complete e-learning on conservation and safe climbing, then pass a test. All questions must be answered correctly to receive the entry permit.
 - **Registration:** through the "Shizuoka Prefecture FUJI NAVI" app, which opened for 2026 on 8 May. Paying the fee issues a QR-code permit, shown at the trailhead. The permit expires at 23:59 on the entry day. A full refund is available up to the day of entry, but not after on-site authentication.
-- **No smartphone:** you can complete the process at the 5th station. The official site says it takes about 30 minutes and there may be queues in peak season.
+- **No smartphone:** you can register at the 5th station, which takes about 30 minutes.
 - **Huts:** mountain hut bookings are made directly with the huts, not through the app.
 
 ## Safety and weather
 
 The official guidance stresses the cold and the weather:
 
-- Temperature drops by about 0.6 degrees C per 100 m of height gained, and wind makes it feel colder still.
+- Temperature drops by about 0.6 degrees C per 100 m of height gained,.
 - Before sunrise the summit can be near 0 degrees C. The longer you wait for sunrise, the higher the risk of hypothermia.
 - Sudden weather changes and thunderstorms are not uncommon in summer. Check the forecast before starting.
 - Essential kit includes high-cut boots, two-piece rain gear, warm layers (fleece, down jacket, gloves), a headlamp with spare batteries, 1 to 2 litres of water, snacks, rubbish bags and cash including 100-yen coins for huts and toilets. A helmet is recommended because of falling rocks.
@@ -104,6 +104,6 @@ The official guidance stresses the cold and the weather:
 
 ## Before you go
 
-- Check the official site, fujisan-climb.jp, for the next season's dates and any rule changes.
+- Check fujisan-climb.jp for the next season's dates and rules.
 - Book a mountain hut if you want to start after 14:00 or watch the sunrise from the top.
 - For the wider region, see [Japan's regions](/guide/regions); for weather by month, see [Seasons](/guide/seasons). Early July falls in the rainy season in much of Japan; see [Is Japan good in the rainy season?](/questions/is-japan-good-in-the-rainy-season).
