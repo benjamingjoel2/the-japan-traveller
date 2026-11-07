@@ -84,7 +84,7 @@ Since 1 October 2024 the art facilities on Naoshima, Teshima and Inujima have so
 
 Chichu Art Museum and Teshima Art Museum both state "Advance reservation with date and time required." Teshima Art Museum adds that if online tickets sell out, there are no on-site sales that day. The official site warns that online tickets may sell out and recommends booking before you visit. Online prices are lower than on-site prices at the museums listed below. Children aged 15 and under are free at these museums, but you still reserve for the number of people at the timed ones.
 
-Other facilities, such as the Naoshima New Museum of Art and the Lee Ufan Museum, list both online and on-site prices. Naoshima Bath, The Naoshima Plan "The Water", La foret des murmures, Inujima Life Garden and INUJIMA Art Rendezvous are listed as needing no reservation. Children aged five and under cannot enter Minamidera or Ring of Fire. Kinza admits one person per time slot.
+Naoshima Bath, The Naoshima Plan "The Water", La foret des murmures, Inujima Life Garden and INUJIMA Art Rendezvous are listed as needing no reservation. Children aged five and under cannot enter Minamidera or Ring of Fire. Kinza admits one person per time slot.
 
 ## Opening hours and closing days
 
@@ -110,7 +110,7 @@ Naoshima has two main ports, Miyanoura and Honmura. The Benesse Art Site access 
 
 Shikoku Kisen does not take boarding reservations. Seats are first come, first served. The fares above are as listed on its route pages in November 2026; the pages give no revision date.
 
-Shikoku Kisen also runs Miyanoura to Ieura (Teshima) and Inujima. Teshima Ferry and Shodoshima Teshima Ferry run other routes to Teshima, and Inujima is also reached from Hoden in Okayama. Benesse Art Site notes that boats to Ieura and Inujima depend on museum opening days. A boat may skip a stop when that island's museum is closed.
+Shikoku Kisen also runs Miyanoura to Ieura (Teshima) and Inujima. These boats depend on museum opening days and may skip a stop when that island's museum is closed.
 
 Uno Port is about three minutes on foot from Uno Station. Benesse Art Site gives the JR Uno Line from Okayama Station as about 50 minutes. Takamatsu Port is about five minutes on foot from Takamatsu Station. For the rail link between Okayama and Takamatsu across the Seto Ohashi bridge, see [rail routes](/rail-routes).
 
@@ -139,7 +139,6 @@ Venues in all three 2028 sessions are Naoshima, Teshima, Megijima, Ogijima, Shod
 ## Planning notes
 
 - Book timed tickets for Chichu Art Museum and Teshima Art Museum online before you travel.
-- Check the closing days of each museum against your dates. Mondays affect several Naoshima museums; Tuesdays affect Teshima.
-- Inujima Seirensho Art Museum is closed every day from 1 December to the end of February.
+- Check each museum's closing days against your dates.
 - Ferries are first come, first served. Check the operator's timetable and same-day service status before travelling.
 - For Shikoku and the wider region, see [regions](/guide/regions) and [routes](/guide/routes).

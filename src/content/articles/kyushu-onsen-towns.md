@@ -38,7 +38,7 @@ Beppu, Yufuin and Kurokawa are the three onsen towns most often grouped together
 
 ## Beppu: hot-spring sources and the hells
 
-JNTO says there are close to 3,000 hot-spring sources in Beppu City, representing more than 10% of all vents in Japan. The city's hot springs are grouped into eight onsen areas known together as Beppu Hatto. JNTO says all eight can be reached from Beppu Station by public transport, and the closest, Ekimae-koto Onsen, is a two-minute walk from the station. JNTO also lists the Beppu Beach Sand Bath, where you are buried in naturally hot sand.
+JNTO says there are close to 3,000 hot-spring sources in Beppu City, representing more than 10% of all vents in Japan. The city's hot springs are grouped into eight onsen areas known together as Beppu Hatto. JNTO says all eight can be reached from Beppu Station by public transport, and the closest, Ekimae-koto Onsen, is a two-minute walk from the station. JNTO also lists the Beppu Beach Sand Bath, for bathing in naturally hot sand.
 
 **The hells (jigoku).** Beppu's best-known sight is the Seven Hells of Beppu. The Beppu tourism pamphlet describes them as places people once feared to approach because of the steam, hot mud and boiling water that gush out at around 100°C. JNTO notes that the hells are for viewing, not bathing. The seven are:
 
@@ -64,7 +64,7 @@ Yufu City also includes other hot-spring areas. The tourism association describe
 
 JNTO describes Kurokawa Onsen as a picturesque riverside town in the mountains with around thirty onsen ryokan. It is in Minamioguni, in the Aso district of Kumamoto Prefecture.
 
-JNTO's advice is to buy the Nyuto Tegata, an onsen-hopping pass, on arrival. It lets you visit up to three participating bathhouses and is sold at the information centre, which also has an English-language pamphlet. Prices are set locally, so check the current fee at the information centre.
+JNTO's advice is to buy the Nyuto Tegata, an onsen-hopping pass, on arrival. It lets you visit up to three participating bathhouses and is sold at the information centre, which also has an English-language pamphlet. Check the current price at the information centre.
 
 ## Getting there by train and bus
 
@@ -81,6 +81,6 @@ All seats are reserved. JR Kyushu says seats on YUFUIN NO MORI and the YUFU limi
 ## Before you go
 
 - Seats on YUFUIN NO MORI sell out. Book early or plan the Kokura and Oita route as a fallback.
-- Allow a full morning for the Beppu hells, and note the two Shibaseki hells are a separate stop.
+- JNTO puts a tour of all seven Beppu hells at around 2 to 2.5 hours. Two of them are in Shibaseki, away from the Kannawa group.
 - Kurokawa has no railway. Check highway bus times from Fukuoka before you set out.
 - Tattoo policies differ between baths. Check with each inn or bath; see [ryokan and onsen](/guide/ryokan-and-onsen). For where Kyushu fits in a wider trip, see [the regions guide](/guide/regions).
