@@ -45,7 +45,9 @@ const articles = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
   schema: z.object({
     ...base,
-    category: z.enum(['Walking', 'Rail and transport', 'Seasons', 'Places', 'Practical']),
+    category: z.enum(['Walking', 'Rail and transport', 'Seasons', 'Places', 'Practical', 'News']),
+    // News pieces: the date the underlying news was announced or reported
+    newsDate: z.coerce.date().optional(),
     region: z.string().optional(),
   }),
 });

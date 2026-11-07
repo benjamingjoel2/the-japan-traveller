@@ -25,9 +25,9 @@ const next = all[(all.findIndex((a) => a.id === entry.id) + 1) % all.length];
   jsonld={[articleNode({ title: d.title, description: d.description, path, published: d.published, reviewed: d.reviewed, sources: d.sources })]}>
   <article>
     <DetailHead title={d.title} image={d.image}
-      meta={[{ label: d.region ? 'Region' : 'Category', value: d.region ?? d.category }, { label: 'Last reviewed', value: humanDate(d.reviewed) }, { label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' }]} />
+      meta={[d.newsDate ? { label: 'News from', value: humanDate(d.newsDate) } : { label: d.region ? 'Region' : 'Category', value: d.region ?? d.category }, { label: 'Last reviewed', value: humanDate(d.reviewed) }, { label: 'Sources', value: `${d.sources.length} listed`, href: '#sources' }]} />
     <section class="section-sm">
-      <div class="wrap statement2"><h2>{d.description}</h2><p>{d.category}. Every figure in this article comes from the sources listed at the end, checked on the date shown.</p></div>
+      <div class="wrap statement2"><h2>{d.description}</h2><p>{d.newsDate ? `News reported on ${humanDate(d.newsDate)}, rewritten for travellers and checked against the sources listed at the end.` : `${d.category}. Every figure in this article comes from the sources listed at the end, checked on the date shown.`}</p></div>
     </section>
     {rows.length > 1 && <section class="section-sm" style="padding-top:0"><div class="wrap"><SectionRows rows={rows} /></div></section>}
     <div class="wrap" style="padding-bottom:clamp(4rem,8vw,6rem)">
