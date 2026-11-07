@@ -90,7 +90,7 @@ The 63rd Shikinen Sengu is under way. The shrine's published schedule says it be
 
 - Timber-hauling events (okibiki) from May to July 2026 and from May to July 2027.
 - The ceremony for the first crossing of the new Ujibashi Bridge in November 2029.
-- The transfer at Naiku and Geku in October 2033, with the shrine's other betsugu shrines following in 2034.
+- Sengyo no gi in October 2033, with the transfer at 12 other betsugu shrines scheduled for 2034.
 
 ## Oharai-machi and Okage Yokocho
 
@@ -114,11 +114,11 @@ Between the shrines, the association says the bus from the "Outer Shrine No. 3" 
 
 **From Kyoto.** JNTO's Naiku page gives about 2 hours 30 minutes from Kyoto to Isuzugawa by Kintetsu. The Shimakaze from Kyoto leaves at 10:00 and reaches Iseshi at 12:03 on weekdays (not in service on Wednesdays as a rule).
 
-**Tickets.** Kintetsu says a limited express ticket must be bought in addition to the basic fare ticket. Kintetsu is a private railway, and the official Japan Rail Pass site states that the fare and fee for private railway sections must be paid. JR's Rapid Mie, listed by the JR Pass site for Nagoya to Toba, does not have a private railway section named on that page. See [Rail and the JR Pass](/guide/rail-and-the-jr-pass).
+**Tickets.** Kintetsu says a limited express ticket must be bought in addition to the basic fare ticket. Kintetsu is a private railway, and the official Japan Rail Pass site states that the fare and fee for private railway sections must be paid. See [Rail and the JR Pass](/guide/rail-and-the-jr-pass).
 
 ## Planning notes
 
 - Visit Geku first, then Naiku, as the shrine asks.
-- Shrine gates close at 17:00 from October to December.
-- Okage Yokocho shops generally close in the early evening, so plan to visit before 17:00.
+- From October to December the shrine's hours end at 17:00.
+- Okage Yokocho's listed hours end at 17:00 outside long holidays.
 - During the 63rd Shikinen Sengu, check the shrine's schedule for ceremonies and timber-hauling events.
