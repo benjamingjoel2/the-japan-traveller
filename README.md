@@ -33,7 +33,7 @@ INCLUDE_EXAMPLES=true npm run dev
 | Feed loading and publishing rules | `src/lib/feed.mjs` |
 | Guide pages (markdown) | `src/content/guide/*.md` |
 | Q&A pages (markdown) | `src/content/qa/*.md` |
-| Season wheel, rail routes, regions, niches (sourced reference data) | `src/data/reference.mjs` |
+| Month-by-month seasons, rail routes, regions, niches (sourced reference data) | `src/data/reference.mjs` |
 | Styles (layout from the approved Framer reference) | `src/styles/global.css` |
 | Fonts (generated) | `scripts/build-fonts.mjs` → `src/styles/fonts.css`, `public/fonts/` |
 | Field list and assumptions | `DATA-FIELDS.md` |
@@ -68,7 +68,7 @@ INCLUDE_EXAMPLES=true npm run dev
 4. Only `status: reviewed` **with at least one source** is published. A reviewed file without sources fails the build. Drafts never appear.
 5. When you re-check a page, update `reviewed` (and `accessed` on sources). Add any changeable figure to `FACTS-TO-VERIFY.md`.
 
-Guide pages can embed the rail table or the season wheel with `embed: rail-table` or `embed: season-wheel`.
+Guide pages can embed the rail table or the month list with `embed: rail-table` or `embed: month-list`.
 
 ## Refresh the feed
 

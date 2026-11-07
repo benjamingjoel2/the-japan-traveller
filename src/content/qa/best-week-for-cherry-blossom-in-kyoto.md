@@ -35,5 +35,5 @@ The dates depend on the winter and early spring temperatures, so they shift ever
 
 - Book Kyoto accommodation for a span that covers late March and early April, rather than a single weekend.
 - Different varieties and places flower at different times. Weeping cherries and trees at higher elevation (northern Kyoto, Ohara) often flower later than the city centre.
-- If you miss Kyoto's peak, the blossom front continues north: the Alps and Tohoku in mid to late April. See [April on the season wheel](/seasons/april).
+- If you miss Kyoto's peak, the blossom front continues north: the Alps and Tohoku in mid to late April. See [April, month by month](/seasons/april).
 - This is the busiest time of year in Kyoto. Popular inns fill early: see [How far ahead should I book a ryokan?](/questions/how-far-ahead-should-i-book-a-ryokan)

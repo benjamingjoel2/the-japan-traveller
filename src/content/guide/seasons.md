@@ -1,9 +1,9 @@
 ---
 title: "Japan's seasons, month by month"
-description: "When cherry blossom, the rainy season, summer heat, autumn leaves and winter snow arrive, region by region, with links to each month on the season wheel."
+description: "When cherry blossom, the rainy season, summer heat, autumn leaves and winter snow arrive, region by region, with links to each month."
 nav: Seasons
 order: 2
-embed: season-wheel
+embed: month-list
 published: 2026-11-02
 reviewed: 2026-11-02
 status: reviewed
@@ -30,7 +30,7 @@ sources:
     accessed: 2026-11-02
 ---
 
-Japan runs about 3,000 km from north to south, so each season arrives at a different time in each region. Use the wheel above to open any month and see what is happening region by region, and which verified operators run trips that month.
+Japan runs about 3,000 km from north to south, so each season arrives at a different time in each region. Use the month list above to open any month and see what is happening region by region, and which verified operators run trips that month.
 
 ## Cherry blossom (sakura)
 

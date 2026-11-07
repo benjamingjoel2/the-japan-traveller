@@ -73,7 +73,7 @@ h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.0
 .textlink { font-size: 0.875rem; font-weight: 700; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; gap: 0.3rem; }
 .textlink:hover { color: var(--accent-text); }
 .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.4rem; }
-.badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent-soft); color: var(--accent-text); border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.badge { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent-text); padding: 0; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .badge svg { width: 14px; height: 14px; }
 .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0 0 1rem; }
 .pill { display: inline-block; font-size: 0.75rem; font-weight: 600; border: 1px solid var(--line-2); border-radius: 999px; padding: 0.2rem 0.75rem; color: var(--ink); background: var(--paper); text-decoration: none; }
@@ -295,26 +295,13 @@ table.tt { border-collapse: collapse; width: 100%; font-size: 0.9375rem; line-he
 .ad .label { display: inline-block; background: var(--ink); color: var(--on-dark); border-radius: 999px; padding: 0.2rem 0.7rem; margin-bottom: 0.4rem; }
 .ad p { margin: 0.2rem 0; font-size: 0.92rem; }
 
-/* ---------- Season wheel ---------- */
-.wheel-wrap { display: grid; grid-template-columns: minmax(0, 24rem) 1fr; gap: clamp(1.5rem, 5vw, 4.5rem); align-items: center; margin: 1rem 0 1.5rem; }
+/* ---------- Month by month ---------- */
+.wheel-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 5vw, 4.5rem); align-items: start; margin: 1rem 0 1.5rem; }
 @media (max-width: 48rem) { .wheel-wrap { grid-template-columns: 1fr; } }
-.wheel { width: 100%; max-width: 24rem; aspect-ratio: 1; display: block; }
-.wheel a .seg { fill: var(--paper); stroke: var(--line-2); stroke-width: 1; transition: fill 0.12s; }
-.wheel a:hover .seg, .wheel a:focus .seg { fill: var(--cream-2); }
-.wheel a[aria-current='page'] .seg { fill: var(--accent-fill); stroke: var(--accent-fill); }
-.wheel a text { font-family: var(--font); font-weight: 700; font-size: 12px; fill: var(--ink); letter-spacing: 0.06em; }
-.wheel a[aria-current='page'] text { fill: #fff; }
-.wheel .hub { fill: var(--cream); stroke: var(--line-2); }
-.wheel .hub-t { font-family: var(--font); font-size: 24px; font-weight: 700; fill: var(--ink); letter-spacing: -0.04em; }
-.wheel .hub-s { font-family: var(--font); font-size: 9px; font-weight: 700; letter-spacing: 0.12em; fill: var(--accent-text); }
-.wheel .dot-blossom { fill: #c44b72; } .wheel .dot-leaves { fill: #b0661a; } .wheel .dot-snow { fill: #3b6aa0; } .wheel .dot-festival { fill: var(--ink); }
-.wheel a[aria-current='page'] circle { fill: #fff; }
-.monthlist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(6.6rem, 1fr)); gap: 0.45rem; }
-.monthlist a { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.4rem 0.6rem; font-size: 0.8125rem; font-weight: 700; text-decoration: none; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; }
-.monthlist a[aria-current='page'] { background: var(--accent-fill); border-color: var(--accent-fill); color: #fff; }
-.monthlist a:hover { border-color: var(--ink); }
-.legend { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-size: 0.75rem; font-weight: 600; color: var(--muted); margin: 0.9rem 0; padding: 0; list-style: none; }
-.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.4rem; vertical-align: middle; }
+.monthlist { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0 1.5rem; }
+.monthlist a { display: flex; align-items: center; min-height: 44px; padding: 0.4rem 0; font-size: 0.95rem; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); }
+.monthlist a[aria-current='page'] { color: var(--accent-text); font-weight: 700; border-bottom-color: var(--accent-text); }
+.monthlist a:hover { border-bottom-color: var(--ink); }
 .season-list { list-style: none; padding: 0; margin: 1.2rem 0 1.6rem; }
 .season-list li { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; padding: 0.85rem 0; border-top: 1px solid var(--line-2); }
 .season-list li:last-child { border-bottom: 1px solid var(--line-2); }

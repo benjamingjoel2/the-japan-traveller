@@ -26,7 +26,7 @@ const guide = defineCollection({
   schema: z.object({
     ...base,
     nav: z.string().optional(),
-    embed: z.enum(['rail-table', 'season-wheel']).optional(),
+    embed: z.enum(['rail-table', 'month-list']).optional(),
   }),
 });
 

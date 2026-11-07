@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import SeasonWheel from '../components/SeasonWheel.astro';
-import Legend from '../components/Legend.astro';
+import MonthList from '../components/MonthList.astro';
 import Photo from '../components/Photo.astro';
 import Icon from '../components/Icon.astro';
 import { site, disclosure } from '../config/site.mjs';
@@ -110,7 +109,6 @@ const cardSizes = '(max-width: 36rem) 100vw, (max-width: 60rem) 50vw, 360px';
 
   <section class="section band-paper" aria-labelledby="season-h">
     <div class="wrap wheel-wrap">
-      <div><SeasonWheel current={nowMonth} /><Legend /></div>
       <div>
         <p class="eyebrow">This month · <span lang="ja">{thisMonth.ja}</span></p>
         <h2 id="season-h" style="margin-top:0.75rem">Japan in {thisMonth.name}.</h2>
@@ -118,6 +116,10 @@ const cardSizes = '(max-width: 36rem) 100vw, (max-width: 60rem) 50vw, 360px';
           {monthEvents.map((e) => <li><span class="k">{KIND[e[1]]} · {regionName(e[0]).split(' ')[0]}</span><span>{e[2]}</span></li>)}
         </ul>
         <a class="btn btn-accent" href={`/seasons/${thisMonth.slug}`}>All of {thisMonth.name}</a>
+      </div>
+      <div>
+        <p class="eyebrow">Month by month</p>
+        <div style="margin-top:0.75rem"><MonthList current={nowMonth} /></div>
       </div>
     </div>
   </section>
