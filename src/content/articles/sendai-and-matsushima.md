@@ -34,7 +34,7 @@ sources:
     accessed: 2026-11-07
 ---
 
-Sendai is the largest city in Tohoku and the usual starting point for trips around northern Honshu. This article covers getting there, two Date-era sites in the city, and the short rail trip to Matsushima Bay. Opening hours and fees below are as published by Sendai's and Matsushima's tourism bodies on 7 November 2026.
+This article covers getting there, two Date-era sites in the city, and the short rail trip to Matsushima Bay. Opening hours and fees below are as published by Sendai's and Matsushima's tourism bodies on 7 November 2026.
 
 ## Sendai as a base
 
@@ -54,7 +54,7 @@ It also lists direct flights to Sendai from Sapporo (New Chitose), Nagoya, Osaka
 
 ## Zuihoden
 
-Zuihoden is the mausoleum of Date Masamune, the founding lord of Sendai. According to Sentabi, it was built in 1637 in an ornate style that carries on the Momoyama tradition. It was designated a National Treasure in 1931 but was destroyed in the war. The present building is a reconstruction from 1979.
+Zuihoden is the mausoleum of the feudal lord Date Masamune. According to Sentabi, it was built in 1637 in an ornate style that carries on the Momoyama tradition. It was designated a National Treasure in 1931 but was destroyed in the war. The present building is a reconstruction from 1979.
 
 | Item | Detail (Sentabi) |
 |---|---|
@@ -121,5 +121,5 @@ For the Senseki Line, trains leave from platform 10 at Sendai Station. Take a tr
 ## Planning notes
 
 - Coin lockers are at JR Matsushimakaigan and JR Matsushima stations, among other places. The Matsushima Tourism Association will keep large luggage for 700 yen.
-- For a two-way trip from Tokyo, the [Tohoku festivals article](/articles/tohoku-summer-festivals) covers Sendai Tanabata in early August.
+- The [Tohoku festivals article](/articles/tohoku-summer-festivals) covers Sendai Tanabata in early August.
 - See the [Tohoku section of the regions guide](/guide/regions) for the wider area.
