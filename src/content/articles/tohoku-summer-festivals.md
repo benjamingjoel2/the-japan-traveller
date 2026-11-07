@@ -63,7 +63,7 @@ Nebuta are large illuminated floats. The official English page says the large fl
 - **7 August, from 1pm:** a daytime parade of about 15 floats.
 - **7 August, 7.15pm to 9pm:** floats are put on boats and taken around Aomori Bay, with the Aomori Fireworks Festival.
 
-**Joining in.** Dancers who accompany the floats are called haneto. The official page says anyone can join as long as they wear a haneto costume, and there is no need to book. Costumes are sold at department stores in Aomori City and elsewhere, and some stores rent them and help with dressing.
+**Joining in.** Dancers who accompany the floats are called haneto. The official page says anyone can join as long as they wear a haneto costume, and there is no need to book. Some stores in Aomori City rent costumes and help with dressing.
 
 **Paid seating.** Paid seats are set up along the route. The organiser asks visitors to buy them in advance. Unsold seats may be sold on the day. The English page links to a reservation page for overseas visitors but does not list prices.
 
@@ -80,9 +80,9 @@ A kanto is a long bamboo pole hung with paper lanterns, balanced by a single per
 | Kowaka | 7 m | 15 kg | 24 |
 | Yowaka | 5 m | 5 kg | 24 |
 
-The FAQ lists five balancing techniques: nagashi, hirate, hitai (forehead), kata (shoulder) and koshi (hips). It says 38 neighbourhoods take part, and over 70 groups including companies and schools.
+The FAQ lists five balancing techniques, including balancing on the forehead, shoulder and hips.
 
-**Evening performances.** These take place on Kanto Odori, an 800 m avenue in Akita. The 2026 plan was: traffic closures from 6.15pm; poles enter at 6.45pm (3 and 6 August) or 6.50pm (4 and 5 August); performances from 7.10pm or 7.15pm; a "fureai kanto" session, when spectators can try the poles, at the end; finish at 9pm. The FAQ says performances may be shortened in bad weather but the festival is not normally cancelled.
+**Evening performances.** These take place on Kanto Odori, an 800 m avenue in Akita. The 2026 plan was: traffic closures from 6.15pm; poles enter at 6.45pm (3 and 6 August) or 6.50pm (4 and 5 August); performances from 7.10pm or 7.15pm; a short "fureai kanto" session after the performances; finish at 9pm. The FAQ says performances may be shortened in bad weather but the festival is not normally cancelled.
 
 **Daytime competition.** The Kanto Myogi Taikai skills competition runs from 4 to 6 August at Area Nakaichi Nigiwai Hiroba, about 10 minutes' walk from Akita Station. In 2026 the heats ran 9am to 3.40pm on 4 and 5 August and the final 9.20am to 3pm on 6 August. In rain it moves to the CNA Arena Akita (Akita City Gymnasium).
 
@@ -95,21 +95,20 @@ The FAQ lists five balancing techniques: nagashi, hirate, hitai (forehead), kata
 | A seat (other tiered and folding chairs) | 4,000 yen |
 | B seat (benches) | 3,500 yen |
 
-Adults and children pay the same. Infants who do not need a seat are free. For 2026, group bookings (15 or more) opened on 16 April and individual bookings (14 or fewer) on 14 May. Masu boxes were limited to 14 a day and allocated by lottery when oversubscribed. The seating page now says 2026 sales have ended. Wheelchair spaces can be booked by phone, fax or at the counter, not online.
+Adults and children pay the same. Infants who do not need a seat are free. For 2026, group bookings (15 or more) opened on 16 April and individual bookings (14 or fewer) on 14 May. Masu boxes were limited to 14 a day and allocated by lottery when oversubscribed. The seating page now says 2026 sales have ended.
 
 ## Sendai Tanabata Matsuri
 
 Sendai Tanabata is a decorations festival rather than a parade. Large bamboo streamers hang over the shopping arcades of central Sendai. The 2026 English guide says the festival dates from the time of Date Masamune and was revived in 1927, when merchants decorated the town to lift spirits after a recession. The organiser says more than two million people visit over the three days.
 
-The guide explains seven traditional paper ornaments, the nanatsu-kazari. They include paper kimonos (sewing skills), paper cranes (long life), tanzaku poem strips (study and calligraphy), a purse (business), a fishing net (good hauls and good fortune), fukinagashi streamers (weaving skills) and a waste basket (cleanliness and thrift).
+The guide explains seven traditional paper ornaments, the nanatsu-kazari. Examples are paper cranes, a wish for long life, and tanzaku poem strips, a wish for better study and calligraphy.
 
 Other points from the 2026 guide:
 
 - 16,000 fireworks are launched on the eve of the festival.
 - A Sendai Tanabata Suzume Yoi Odori (sparrow dance) procession ran on 7 August, 7.30pm to 8.30pm.
-- A Tanabata Night Bus on the Loople Sendai route ran from 6 to 8 August, every 15 minutes from 5.15pm, last bus 9pm, fare 260 yen for adults and 130 yen for children.
 
-The organiser's decorated areas include the Sendai Station front, Clis Road, Sunmall, Ichibancho and Omachi. Tourist information offices run during the festival, including one inside Sendai Station.
+The organiser's decorated areas include the Sendai Station front, Clis Road, Sunmall, Ichibancho and Omachi.
 
 ## Yamagata Hanagasa Matsuri
 
@@ -119,7 +118,7 @@ Each evening runs from 6pm (opening in front of Yamagata City Office) with the p
 
 ## Getting there by rail
 
-All four cities are on JR East's Shinkansen network. The Sendai Tanabata organiser gives these shortest times from Sendai Station:
+The Sendai Tanabata organiser gives these shortest times from Sendai Station:
 
 | From Sendai | Line | Time |
 |---|---|---|
@@ -133,6 +132,6 @@ Tokyo to Shin-Aomori times are on the [rail routes table](/rail-routes). For rai
 ## Planning notes
 
 - The Kanto, Hanagasa and Tanabata dates overlap, and Nebuta runs alongside all three. Moving between cities is possible by Shinkansen, but the evening events start at similar times.
-- Paid seats for Kanto sold out of their booking window well before August in 2026. Check each organiser's booking dates in spring.
+- Kanto seat bookings for 2026 opened in April (groups) and May (individuals). Check each organiser's booking dates in spring.
 - Mid-August is Obon, a busy domestic travel period. See [peak holiday periods](/articles/peak-holiday-periods).
 - See [Seasons in Japan](/guide/seasons) and the [Tohoku section of the regions guide](/guide/regions).

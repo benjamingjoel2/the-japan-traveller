@@ -57,8 +57,6 @@ Visit Nara lists eight parts of the city in the listing:
 - Kasuga Taisha
 - Kasugayama Primeval Forest
 
-Todai-ji, Kofuku-ji, Kasuga Taisha and the primeval forest lie in and around Nara Park. Yakushi-ji, Toshodai-ji and the palace site are further west and need a bus or train.
-
 ## Todai-ji
 
 Todai-ji's Daibutsu-den (Great Buddha Hall) houses the Great Buddha. Visit Nara gives the statue's height as 15 metres and says it was completed in 752. You enter through the Nandaimon (Great Southern Gate), whose guardian figures Visit Nara credits to the carvers Unkei and Kaikei.
@@ -93,7 +91,7 @@ Feeding rules, as set out by the Nara Park Office:
 
 Safety guidance from the same office:
 
-- Deer can charge, butt with their antlers, bite or kick, and people are injured each year in these ways.
+- Deer are wild and can sometimes attack. People can be hurt when a deer charges, butts with its antlers, bites or kicks.
 - Take particular care in spring, when females with young are protective, and in autumn, the males' rutting season, when they are more aggressive.
 - Do not let children approach the deer on their own.
 - Keep dogs on a lead and away from the deer.
@@ -120,6 +118,5 @@ The JR route from Kyoto is in the site's [rail-route table](/rail-routes). Kinte
 ## Planning notes
 
 - From Kyoto, Kintetsu gets you closer to the park. From JR Kyoto Station, the JR line is the option covered by the rail pass.
-- Visit Nara notes that Yakushi-ji, Toshodai-ji and the Heijo palace site are outside the park, so a day limited to the park area will not cover all eight World Heritage parts.
-- Buy shika senbei only if you plan to feed the deer, and keep them out of sight until you do.
+- If you feed the deer, use only shika senbei, and keep bags and paper held securely.
 - For other Kansai trips, see the [regions guide](/guide/regions) and, for autumn colour around Kyoto, [Kyoto in autumn](/articles/kyoto-autumn-leaves).
